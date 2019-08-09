@@ -20,3 +20,13 @@
 * [Ubuntu 增加最大文件打开数量限制](linux/ubuntu-zeng-jia-zui-da-wen-jian-da-kai-shu-liang-xian-zhi.md)
 * [Ubuntu 下使用 zsh](linux/ubuntu-xia-shi-yong-zsh.md)
 
+## PHP
+
+* [正确调试PHP](php/zheng-que-tiao-shi-php.md)
+
+## 网络
+
+* [模拟超星网课 Android 客户端](wang-luo/mo-ni-chao-xing-wang-ke-android-ke-hu-duan.md)
+* [模拟 Bilibili Android 客户端登录](wang-luo/mo-ni-bilibili-android-ke-hu-duan-deng-lu.md)
+* [Telegram Bot 收不到普通群聊消息的问题](wang-luo/telegram-bot-shou-bu-dao-pu-tong-qun-liao-xiao-xi-de-wen-ti.md)
+
