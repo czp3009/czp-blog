@@ -4,5 +4,5 @@
 
 ## czp 讲故事
 
-* [小明学英语](czp-jiang-gu-shi/test.md)
+* [小明学英语](czp-jiang-gu-shi/xiao-ming-xue-ying-yu.md)
 
