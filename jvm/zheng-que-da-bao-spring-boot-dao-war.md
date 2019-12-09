@@ -75,3 +75,4 @@ java -jar application-name.war
 因此, 无论是在开发中直接启动, 还是输出为 `jar` 或 `war` 并当做普通 java 程序来运行, 还是输出为 `war` 并由外部 `tomcat` 加载, 都是正常的.
 
 既然 `Spring Boot` 设计的如此完美, 我们还是要学习一个.
+

@@ -8,7 +8,7 @@
 
 所以我们今天就来看看, 如何正确调试 `PHP`.
 
-### 调试器
+## 调试器
 
 `PHP` 的调试器有好几个, 其中最有名的是 `xdebug`, 同时这也是 `PHPStorm` 推荐的调试器.
 
@@ -50,7 +50,7 @@ xdebug.remote_enable=1
 
 如果配置项不存在则添加它, 最后保存这份文件.
 
-### 使用 Built-in Server
+## 使用 Built-in Server
 
 从 `PHP 5.4` 开始, `PHP` 就提供了一个用于快速调试的内建服务器, 支持静态文件与 `PHP` 脚本, 也支持 `Symbolic Link` 与 `router.php`.
 
@@ -72,7 +72,7 @@ xdebug.remote_enable=1
 
 我们还需要一个浏览器插件.
 
-### XDebug Helper
+## XDebug Helper
 
 以 `Chrome` 为例, 需要首先安装插件 [https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc](https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc)
 
@@ -92,10 +92,11 @@ xdebug.remote_enable=1
 
 注意, 启用后, 插件图标应该变绿.
 
-### 调试
+## 调试
 
 然后我们再到代码中打一个断点, 刷新页面, 此时我们的代码确实在这里停下了, 并可以看到所有的变量.
 
 ![](../.gitbook/assets/image%20%2822%29.png)
 
 我们终于可以调试 PHP 了, 小伙伴们一把眼泪一把鼻涕地跟 echo 调试法 说再见.
+

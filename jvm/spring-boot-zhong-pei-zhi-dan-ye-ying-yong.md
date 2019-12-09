@@ -8,7 +8,7 @@
 
 我们很容易想到让 Spring 找不到资源文件时抛出一个异常然后我们配置一个 `ControllerAdvice`, 于是我们搜到了这么一条配置
 
-```properties
+```text
 spring.mvc.throw-exception-if-no-handler-found=true
 ```
 
@@ -51,7 +51,7 @@ SimpleUrlHandlerMapping
 
 而在一些解决方案中, 是把默认的 `ResourceHandler` 关掉,
 
-```properties
+```text
 spring.resources.add-mappings=false
 ```
 
@@ -91,3 +91,4 @@ open class SinglePageApplicationWebMvcConfiguration(
 这样, 我们就在不重写 Spring 默认逻辑的情况下将所有未识别的访问引导到 `index.html`, 从而完成了单页应用的配置.
 
 接下去, 用户将在前端被路由, 从而看到正确的页面.
+

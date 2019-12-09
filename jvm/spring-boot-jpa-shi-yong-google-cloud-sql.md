@@ -10,7 +10,7 @@
 
 秉承 '不写任何代码' 的光荣传统, 我们找到了这个库 [https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-starters/spring-cloud-gcp-starter-sql-mysql](https://github.com/spring-cloud/spring-cloud-gcp/tree/master/spring-cloud-gcp-starters/spring-cloud-gcp-starter-sql-mysql)
 
-### 添加依赖
+## 添加依赖
 
 这个库只实现 `mysql-socket-factory`\([https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory)\) 的自动配置, JPA 的依赖还是要加的. 所以依赖至少有如下两个
 
@@ -27,11 +27,11 @@ dependencies {
 
 自动包含的 `MySQL 驱动` 是 `5.1.x`, 如果要使用更高版本必须注意 `MySQL 驱动` 版本与 `mysql-socket-factory` 版本相匹配. 版本兼容对照表详见 [https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory\#mysql](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory#mysql)
 
-### 配置文件
+## 配置文件
 
 配置文件至少包含以下项目
 
-```properties
+```text
 spring.cloud.gcp.sql.instance-connection-name=project-name:asia-northeast1:mysql-name
 spring.cloud.gcp.sql.database-name=database_name
 spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
@@ -55,7 +55,7 @@ spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 
 很久之前 `MySQL` 就默认使用 `InnoDB` 了, 所以 `Dialect` 设置为 `MySQL5` 即可.
 
-```properties
+```text
 spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
 ```
 
@@ -75,7 +75,7 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
 
 然后我们配置他的位置
 
-```properties
+```text
 spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 ```
 
@@ -85,7 +85,7 @@ spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 
 很好, 现在我们完成了配置.
 
-### 问题
+## 问题
 
 启动程序的时候我们可能会看到程序提示没有 `sqladmin` 权限, 并给出了一个链接, 但是这个链接是个 404 地址.
 
@@ -98,3 +98,4 @@ spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 我们在项目管理页上方的搜索框输入 `cloud sql admin`, 就可以找到它了.
 
 启用这个 API 并重启程序, 就可以正确连接数据库了.
+

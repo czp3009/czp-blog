@@ -121,3 +121,4 @@ fun main(args: Array<String>) {
 我们再使用 `ApplicationContext.getResource()` 时, 返回的就不是 `ClasspathResource` 了, 而是 `JarResource`, 路径在一个临时目录下\(Linux 下默认为 `/tmp/**`\)
 
 这样, 我们就可以让第三方库正常工作了.
+

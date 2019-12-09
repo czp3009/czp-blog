@@ -8,7 +8,7 @@ KMS 是微软提供的一种激活解决方案, 用于让购买了企业授权�
 
 阿里云也正是那么做的, 阿里云的激活服务器 `kms.aliyun-inc.com`, 如果你有想法, 可以在阿里云机器上转发这一地址到公网, 这可能有法律风险.
 
-当然, KMS 已经使用了那么多年, 自然也有第三方编写的模拟程序, 例如 https://github.com/SystemRage/py-kms
+当然, KMS 已经使用了那么多年, 自然也有第三方编写的模拟程序, 例如 [https://github.com/SystemRage/py-kms](https://github.com/SystemRage/py-kms)
 
 使用以下命令在一台 Linux 服务器上部署模拟程序
 
@@ -22,42 +22,42 @@ python pykms_Server.py
 
 现在我们打开需要激活的 Windows, 使用管理员权限运行 `Powershell`
 
-```ps
+```text
 slmgr /upk
 slmgr /skms kms.hiczp.com
 ```
 
-第一条命令用于清空当前已设置的产品序列号(如果有的话), 第二条命令的最后一个参数是刚才部署的模拟程序地址.
+第一条命令用于清空当前已设置的产品序列号\(如果有的话\), 第二条命令的最后一个参数是刚才部署的模拟程序地址.
 
 接下去我们必须要知道自己的 Windows 版本, 使用如下命令来查看
 
-```ps
+```text
 DISM /online /Get-CurrentEdition
 ```
 
-然后到 https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys 找到对应的 KMS 序列号.
+然后到 [https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys](https://docs.microsoft.com/en-us/windows-server/get-started/kmsclientkeys) 找到对应的 KMS 序列号. 一部分非 Server 系统在这个页面找不到, 请到这里找 [https://gist.github.com/CHEF-KOCH/1273041f0eafd20f2219](https://gist.github.com/CHEF-KOCH/1273041f0eafd20f2219)
 
 使用以下命令来设置对应的序列号
 
-```ps
+```text
 slmgr -ipk N69G4-B89J2-4G8F4-WWYCC-J464C
 ```
 
 立即连接 KMS 服务器并激活
 
-```ps
+```text
 slmgr /ato
 ```
 
 还可以使用命令来查看激活状态
 
-```ps
+```text
 slmgr /dli
 ```
 
 如果使用的是评估版本 Windows Server, 则必须在清除原密钥并设定 KMS 服务器后首先进行版本转换, 使用以下命令来查看可以转换至的版本
 
-```ps
+```text
 DISM /online /Get-TargetEditions
 ```
 
@@ -65,7 +65,7 @@ DISM /online /Get-TargetEditions
 
 选择一个想要转换至的版本, 然后在刚才的页面上查找得到目标版本的 KMS 序列号, 键入如下命令
 
-```ps
+```text
 DISM /Online /Set-Edition:ServerStandard /ProductKey:N69G4-B89J2-4G8F4-WWYCC-J464C /AcceptEula
 ```
 
@@ -73,8 +73,9 @@ DISM /Online /Set-Edition:ServerStandard /ProductKey:N69G4-B89J2-4G8F4-WWYCC-J46
 
 转换完成后将提示重启计算机, 输入 `y` 立即重启. 重启之后将自动连接 KMS 服务器进行激活, 如果没有则手动使用命令
 
-```ps
+```text
 slmgr /ato
 ```
 
 这样, Windows 就激活了.
+

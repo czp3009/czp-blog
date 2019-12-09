@@ -66,3 +66,4 @@ open class JacksonHibernate5Configuration {
 ```
 
 就这么简单么? 对, 就是这么简单!
+
