@@ -31,7 +31,7 @@ dependencies {
 
 配置文件至少包含以下项目
 
-```text
+```properties
 spring.cloud.gcp.sql.instance-connection-name=project-name:asia-northeast1:mysql-name
 spring.cloud.gcp.sql.database-name=database_name
 spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
@@ -55,7 +55,7 @@ spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 
 很久之前 `MySQL` 就默认使用 `InnoDB` 了, 所以 `Dialect` 设置为 `MySQL5` 即可.
 
-```text
+```properties
 spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
 ```
 
@@ -75,7 +75,7 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
 
 然后我们配置他的位置
 
-```text
+```properties
 spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 ```
 
@@ -98,6 +98,3 @@ spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 我们在项目管理页上方的搜索框输入 `cloud sql admin`, 就可以找到它了.
 
 启用这个 API 并重启程序, 就可以正确连接数据库了.
-
-
-

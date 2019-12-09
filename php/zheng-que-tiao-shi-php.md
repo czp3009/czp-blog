@@ -14,7 +14,7 @@
 
 `PHP` 自身不自带调试器, 调试器是一个模块. 所以我们首先要来安装它. 执行以下命令行
 
-```text
+```bash
 apt install php-xdebug
 ```
 
@@ -26,7 +26,7 @@ apt install php-xdebug
 
 使用命令行
 
-```text
+```bash
 php -r "phpinfo();" | grep xdebug
 ```
 
@@ -99,6 +99,3 @@ xdebug.remote_enable=1
 ![](../.gitbook/assets/image%20%2822%29.png)
 
 我们终于可以调试 PHP 了, 小伙伴们一把眼泪一把鼻涕地跟 echo 调试法 说再见.
-
-
-

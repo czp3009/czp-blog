@@ -443,7 +443,7 @@ Host: mooc1-api.chaoxing.com
 
 返回的内容是这样的
 
-```javascript
+```json
 [
     {
         "datas": [
@@ -525,7 +525,7 @@ Params 有这么多
 
 当 `playingTime` 与 `duration` 差异很大时, 服务器将返回这样的数据
 
-```javascript
+```json
 {
     "isPassed": false
 }
@@ -558,7 +558,7 @@ Host: passport2-api.chaoxing.com
 
 这个请求每一次发送时的参数都是一模一样的, 而且服务端返回内容也是一模一样的, 都为
 
-```javascript
+```json
 {
     "status": true
 }
@@ -583,7 +583,7 @@ Host: passport2-api.chaoxing.com
 
 服务器将返回
 
-```javascript
+```json
 {
     "version": 1536923631314,
     "status": true
@@ -599,6 +599,3 @@ Host: passport2-api.chaoxing.com
 你懂我意思吧.
 
 自动挂网课脚本的坑我会开的, 我一定会开的\(既然已经咕咕咕到现在了, 已经没有什么好害怕的了\).
-
-
-

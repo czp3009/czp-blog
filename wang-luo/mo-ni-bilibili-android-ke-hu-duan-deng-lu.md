@@ -134,7 +134,7 @@ sign
 
 请求的返回值是这样的
 
-```javascript
+```json
 {
     "ts": 1536261900,
     "code": 0,
@@ -225,7 +225,7 @@ B 站正是使用这段会变化的 hash 拼接到明文密码前面, 来保证�
 
 登陆成功后, 服务器返回
 
-```javascript
+```json
 {
   "code": 0,
   "data": {
@@ -251,6 +251,3 @@ B 站正是使用这段会变化的 hash 拼接到明文密码前面, 来保证�
 Bilibili 的 API 有很多很多, 这里就不细讲了, 感兴趣的同学可以去这个仓库看看\(没错, 我真的把这个坑开了\) [https://github.com/czp3009/bilibili-api](https://github.com/czp3009/bilibili-api)
 
 有了 token, 我们就可以为所欲为了, 小伙伴们欢呼雀跃!
-
-
-

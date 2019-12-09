@@ -4,7 +4,7 @@
 
 众所周知, Linux 的文件打开数量限制是用 `ulimit -n` 命令查看的.
 
-```text
+```bash
 $ ulimit -n 
 1024
 ```
@@ -24,7 +24,7 @@ $ ulimit -n
 
 我们用自己的账号登陆为一个命令行用户来看一下命令行用户的最大文件打开数有没有改变
 
-```text
+```bash
 $ su {yourUsername}
 $ ulimit -n
 65535
@@ -49,6 +49,3 @@ DefaultLimitNOFILE=65535
 ```
 
 不清楚这个文件怎么热重载, 所以重启计算机吧.
-
-
-

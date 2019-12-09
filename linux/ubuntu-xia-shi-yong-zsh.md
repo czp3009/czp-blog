@@ -12,7 +12,7 @@
 
 在 Ubuntu 上, 我们可以使用包管理器来简单的安装它
 
-```text
+```bash
 apt install zsh
 ```
 
@@ -24,13 +24,13 @@ apt install zsh
 
 在 `Ubuntu` 上我们执行以下命令行来安装 `git`\(root 用户\)
 
-```text
+```bash
 apt install git
 ```
 
 之后安装 `oh-my-zsh`\(普通用户\)
 
-```text
+```bash
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 ```
 
@@ -38,7 +38,7 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 
 然后设置 `zsh` 为默认 shell
 
-```text
+```bash
 chsh -s `which zsh`
 ```
 
@@ -62,7 +62,7 @@ ZSH_THEME="agnoster"
 
 使用命令来立即重载配置
 
-```text
+```bash
 source ~/.zshrc
 ```
 
@@ -82,7 +82,7 @@ source ~/.zshrc
 
 使用命令
 
-```text
+```bash
 git clone https://github.com/powerline/fonts
 cd fonts
 ./install.sh
@@ -116,7 +116,7 @@ cd fonts
 
 然后我们将其改名并放入正确的目录
 
-```text
+```bash
 ~/.oh-my-zsh/custom/plugins/incr/incr.plugin.zsh
 ```
 
@@ -135,11 +135,8 @@ plugins=(
 
 然后重载配置.
 
-```text
+```bash
 source ~/.zshrc
 ```
 
 现在, 我们的终端, 也非常好看非常好用了. 小伙伴们欢呼雀跃!
-
-
-
