@@ -40,7 +40,7 @@ DISM /online /Get-CurrentEdition
 使用以下命令来设置对应的序列号
 
 ```text
-slmgr -ipk N69G4-B89J2-4G8F4-WWYCC-J464C
+slmgr /ipk N69G4-B89J2-4G8F4-WWYCC-J464C
 ```
 
 立即连接 KMS 服务器并激活
