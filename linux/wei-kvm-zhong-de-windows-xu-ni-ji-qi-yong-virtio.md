@@ -14,9 +14,9 @@ choco install virtio-drivers
 
 安装结束后关闭虚拟机, 并在虚拟机设置中将磁盘和网络都调为 VirtIO
 
-![](../.gitbook/assets/image%20%2823%29.png)
+![](../.gitbook/assets/image%20%2824%29.png)
 
-![](../.gitbook/assets/image%20%2812%29.png)
+![](../.gitbook/assets/image%20%2813%29.png)
 
 保存设置并启动虚拟机.
 
@@ -38,13 +38,13 @@ choco install virtio-drivers
 
 另外再添加一个光驱, 指向刚才下载的驱动镜像.
 
-![](../.gitbook/assets/image%20%2816%29.png)
+![](../.gitbook/assets/image%20%2817%29.png)
 
 引导顺序不需要改动, virt-manager 会帮我们保持正确的顺序.
 
 安装的时候会无法识别磁盘
 
-![](../.gitbook/assets/image%20%2822%29.png)
+![](../.gitbook/assets/image%20%2823%29.png)
 
 点击 `加载驱动程序` , 此时可能会出现
 
@@ -52,9 +52,9 @@ choco install virtio-drivers
 
 无视这个提示, 然后点击左下角的 `浏览`  并选择一个驱动所在的目录\(Windows 2008 之后的驱动全都是通用的\).
 
-![](../.gitbook/assets/image%20%2813%29.png)
+![](../.gitbook/assets/image%20%2814%29.png)
 
-![](../.gitbook/assets/image%20%2817%29.png)
+![](../.gitbook/assets/image%20%2818%29.png)
 
 然后我们就可以看到磁盘驱动器了.
 

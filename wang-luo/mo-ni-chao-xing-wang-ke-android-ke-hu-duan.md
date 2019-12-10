@@ -20,17 +20,17 @@
 
 APP 一打开是这样的
 
-![](../.gitbook/assets/image%20%2811%29.png)
+![](../.gitbook/assets/image%20%2812%29.png)
 
 看到下面这条非常类似 IONIC 的抽屉, 起初以为是 H5 APP, 但是看了一下各种动画效果发觉并不是.
 
 点击下方抽屉里的 `我的` 按钮
 
-![](../.gitbook/assets/image%20%2831%29.png)
+![](../.gitbook/assets/image%20%2832%29.png)
 
 然后点击 `请先登陆`
 
-![](../.gitbook/assets/image%20%2828%29.png)
+![](../.gitbook/assets/image%20%2829%29.png)
 
 如果我们不输入用户名直接点 `登陆` 甚至还会有一个 Toast 来提醒用户必须输入用户名. 这个 APP 竟然有本地表单验证实在是难以置信.
 
@@ -328,7 +328,7 @@ public static String b(String str) {
 
 现在我们暂时还不知道他是怎么样一个处理过程, 我们先将这些方法拷贝出来, 运行一下.
 
-![](../.gitbook/assets/image%20%2818%29.png)
+![](../.gitbook/assets/image%20%2819%29.png)
 
 运行到此处时, `m.b(String)` 的传入值为
 
@@ -336,7 +336,7 @@ public static String b(String str) {
 token=4faa8662c59590c6f43ae9fe5b002b42&_time=1537538011800&DESKey=Z(AfY@XS
 ```
 
-![](../.gitbook/assets/image%20%2824%29.png)
+![](../.gitbook/assets/image%20%2825%29.png)
 
 而运行到此处, 也只是简单的把传入的字符串给 `MD5` 加密了一下.
 
@@ -367,7 +367,7 @@ for (int i : digest) {
 
 我们去 jadx 再次确认一下这个变量到底是怎么回事.
 
-![](../.gitbook/assets/image%20%2821%29.png)
+![](../.gitbook/assets/image%20%2822%29.png)
 
 我们发现这一行没有行号, 说明这里有编译器优化.
 
@@ -408,7 +408,7 @@ private fun String.md5() =
 
 我们观察到, APP 在登陆后会立即访问一个地址来获取个人信息, 即 UserInfo
 
-![](../.gitbook/assets/image%20%2814%29.png)
+![](../.gitbook/assets/image%20%2815%29.png)
 
 很好, 我们成功的获得了用户信息.
 
@@ -422,7 +422,7 @@ private fun String.md5() =
 
 既然我们已经成功登陆了, 现在我们来调用一些需要登陆才能调用的接口.
 
-![](../.gitbook/assets/image%20%2830%29.png)
+![](../.gitbook/assets/image%20%2831%29.png)
 
 比如说这个接口可以获取自己需要看的网课的列表.
 
