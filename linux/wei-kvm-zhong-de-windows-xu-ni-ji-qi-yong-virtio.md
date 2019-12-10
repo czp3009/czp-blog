@@ -72,5 +72,5 @@ qemupciserial/ - QEMU PCI serial device driver
 
 如果系统已经装好, 才想到要安装 VirtIO, 此时可以先关闭虚拟机, 挂载一个 VirtIO 磁盘总线的额外虚拟磁盘, 然后开机. 到设备管理器中找到这个设备, 为他安装驱动\(在所挂载的光盘镜像中选择\).
 
-现在, Windows 客户机的磁盘性能应该达到能用的程度了.
+现在, Windows 客户机的磁盘性应该能达到能用的程度了.
 
