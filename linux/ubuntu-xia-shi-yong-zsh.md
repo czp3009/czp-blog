@@ -68,7 +68,7 @@ source ~/.zshrc
 
 然后我们会看到这么一个景象
 
-![zsh &#x5B57;&#x4F53;&#x9519;&#x8BEF;](../.gitbook/assets/image%20%2816%29.png)
+![zsh &#x5B57;&#x4F53;&#x9519;&#x8BEF;](../.gitbook/assets/image%20%2817%29.png)
 
 预览图中, 这个主题的向右箭头, 现在都变成了一个不可读字符.
 
@@ -92,7 +92,7 @@ cd fonts
 
 然后我们修改终端的字体设置.
 
-![ubuntu &#x7EC8;&#x7AEF;&#x9996;&#x9009;&#x9879;](../.gitbook/assets/image%20%2833%29.png)
+![ubuntu &#x7EC8;&#x7AEF;&#x9996;&#x9009;&#x9879;](../.gitbook/assets/image%20%2838%29.png)
 
 很好, 我们的终端看上去十分漂亮了.
 

@@ -81,11 +81,11 @@ startxfce4 &
 
 那么如何连接上服务端呢. 首先我们需要一个 VNC 客户端程序. 如果你在本地使用 Ubuntu, 那么系统已经自带了 `Remmina` 并且应该已经预装了 VNC 插件. 连接配置也非常简单
 
-![](../.gitbook/assets/image%20%2811%29.png)
+![](../.gitbook/assets/image%20%2812%29.png)
 
 服务器应当填写 `服务器地址:桌面序号`
 
-![](../.gitbook/assets/image%20%2835%29.png)
+![](../.gitbook/assets/image%20%2840%29.png)
 
 如果想要长期使用 VNC, 可以将 `vnc4server` 写成服务并使用 `systemctl` 来管理.
 
