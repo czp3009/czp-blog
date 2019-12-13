@@ -4,3 +4,4 @@
 /yarn.lock
 /_hook_config.php
 !/hook_config.php
+/.htaccess
