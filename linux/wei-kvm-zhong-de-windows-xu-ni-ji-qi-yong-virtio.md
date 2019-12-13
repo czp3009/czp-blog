@@ -42,33 +42,33 @@ qemupciserial/ - QEMU PCI serial device driver
 
 注意此时就要将**磁盘和网络**都调为 VirtIO
 
-![](../.gitbook/assets/image%20%288%29.png)
+![](../.gitbook/assets/image%20%2813%29.png)
 
 另外再添加一个光驱, 指向刚才下载的驱动镜像.
 
-![](../.gitbook/assets/image%20%2832%29.png)
+![](../.gitbook/assets/image%20%2842%29.png)
 
 然后开始安装.
 
 安装的时候会无法识别磁盘
 
-![](../.gitbook/assets/image%20%2824%29.png)
+![](../.gitbook/assets/image%20%2830%29.png)
 
 点击 `加载驱动程序` , 然后点击 `浏览` , 根据你的操作系统版本选择对应的文件夹
 
-![](../.gitbook/assets/image%20%285%29.png)
+![](../.gitbook/assets/image%20%288%29.png)
 
-![](../.gitbook/assets/image%20%2830%29.png)
+![](../.gitbook/assets/image%20%2840%29.png)
 
 安装完毕之后, 我们现在可以看到磁盘了
 
-![](../.gitbook/assets/image%20%2833%29.png)
+![](../.gitbook/assets/image%20%2843%29.png)
 
 对于网络驱动也是一样的操作. 除了硬盘和网络驱动之外都是可选的, 根据实际需要来安装. 这里提供阿里云预装的 VirtIO 驱动清单: `viostor` `netkvm` `balloon` `pvpanic` `vioser` . 至于每个驱动都有什么用, 在驱动下载页有描述.
 
 安装完所需的驱动之后就可以开心的安装系统啦.
 
-![](../.gitbook/assets/image%20%2836%29.png)
+![](../.gitbook/assets/image%20%2850%29.png)
 
 如果系统已经装好, 才想到要安装 VirtIO, 此时可以先关闭虚拟机, 挂载一个 VirtIO 磁盘总线的额外的虚拟磁盘, 然后开机. 到设备管理器中找到这个设备, 为他安装驱动\(在所挂载的光盘镜像中选择\). 驱动安装完毕后关闭虚拟机, 删除临时磁盘, 将原有的磁盘设置为 VirtIO 再重新启动虚拟机.
 

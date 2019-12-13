@@ -60,7 +60,7 @@ xdebug.remote_enable=1
 
 以 `yii2` 框架为例, 配置大致上是这样的
 
-![yii2 run configurations](../.gitbook/assets/image%20%281%29.png)
+![yii2 run configurations](../.gitbook/assets/image%20%282%29.png)
 
 就这么简单么, 没错, 就是这么简单.
 
@@ -82,13 +82,13 @@ xdebug.remote_enable=1
 
 `IDE Key` 这一项下面的下拉框中选中 `PhpStorm`, 此时 `IDE Key` 会被自动设置为 `PHPSTORM`, 这就是为什么之前我们在 `xdebug` 设置中, 需要把 `xdebug.idekey` 的设置为这个.
 
-![](../.gitbook/assets/image%20%2829%29.png)
+![](../.gitbook/assets/image%20%2839%29.png)
 
 之后我们打开我们的网站上的一个页面\(随便哪个页面\)\(`HttpStatus` 必须是 `200`, 否则插件无法启用\), 然后在插件的图标上点左键, 再点 `Debug`
 
 这样, 插件就启用了对当前站点的调试.
 
-![](../.gitbook/assets/image%20%2828%29.png)
+![](../.gitbook/assets/image%20%2836%29.png)
 
 注意, 启用后, 插件图标应该变绿.
 
@@ -96,7 +96,7 @@ xdebug.remote_enable=1
 
 然后我们再到代码中打一个断点, 刷新页面, 此时我们的代码确实在这里停下了, 并可以看到所有的变量.
 
-![](../.gitbook/assets/image%20%2839%29.png)
+![](../.gitbook/assets/image%20%2853%29.png)
 
 我们终于可以调试 PHP 了, 小伙伴们一把眼泪一把鼻涕地跟 echo 调试法 说再见.
 

@@ -68,7 +68,7 @@ source ~/.zshrc
 
 然后我们会看到这么一个景象
 
-![zsh &#x5B57;&#x4F53;&#x9519;&#x8BEF;](../.gitbook/assets/image%20%2817%29.png)
+![zsh &#x5B57;&#x4F53;&#x9519;&#x8BEF;](../.gitbook/assets/image%20%2822%29.png)
 
 预览图中, 这个主题的向右箭头, 现在都变成了一个不可读字符.
 
@@ -92,7 +92,7 @@ cd fonts
 
 然后我们修改终端的字体设置.
 
-![ubuntu &#x7EC8;&#x7AEF;&#x9996;&#x9009;&#x9879;](../.gitbook/assets/image%20%2838%29.png)
+![ubuntu &#x7EC8;&#x7AEF;&#x9996;&#x9009;&#x9879;](../.gitbook/assets/image%20%2852%29.png)
 
 很好, 我们的终端看上去十分漂亮了.
 
@@ -100,7 +100,7 @@ cd fonts
 
 有时候, 我们看到别人的 `zsh` 是这样的
 
-![zsh incr &#x63D2;&#x4EF6;&#x8865;&#x5168;&#x6548;&#x679C;](../.gitbook/assets/image%20%283%29.png)
+![zsh incr &#x63D2;&#x4EF6;&#x8865;&#x5168;&#x6548;&#x679C;](../.gitbook/assets/image%20%286%29.png)
 
 命令还没输入完, `zsh` 就自动使用唯一可能的候选项充填了光标后的部分, 使得我们不需要不停的按 `tab` 来确认确实没有其他的以这几个字符开头的可能候选项.
 
