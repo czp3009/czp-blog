@@ -1,0 +1,6 @@
+RewriteEngine On
+
+RewriteRule	update/?$	/update.php		[END]
+
+RewriteCond	%{REQUEST_URI}	!_book/
+RewriteRule	^		/_book%{REQUEST_URI}	[END]

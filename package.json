@@ -1,0 +1,16 @@
+{
+  "name": "czp-blog",
+  "version": "1.0.0",
+  "description": "personal blog",
+  "repository": "https://github.com/czp3009/czp-blog",
+  "author": "czp3009 <czp3009@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "gitbook": "^3.2.3",
+    "gitbook-cli": "^2.3.2",
+    "gitbook-plugin-analytics": "^0.2.1"
+  },
+  "scripts": {
+    "build": "gitbook build"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "variables": {
+    "repository": "https://github.com/czp3009/czp-blog",
+    "host": "https://www.hiczp.com"
+  },
+  "plugins": [
+    "-sharing",
+    "analytics"
+  ],
+  "pluginsConfig": {
+    "analytics": {
+      "google": "UA-90514703-2"
+    }
+  }
+}

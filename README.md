@@ -1,4 +1,6 @@
-# Blog
+# czp 的博客
 
-让我看看我能咕咕咕到什么时候
+个人博客, 仓库地址 {{book.repository}}
+
+如需预览请见 {{book.host}}
 
