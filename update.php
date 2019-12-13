@@ -40,6 +40,6 @@ switch ($_SERVER['HTTP_X_GITHUB_EVENT'] ?? null) {
     }
 }
 //pull
-exec("nohup sh -c 'git fetch origin master && git reset --hard FETCH_HEAD && yarn install && yarn build' > latest_update.log 2>&1 &");
+exec("nohup sh -c 'git fetch origin master && git reset --hard FETCH_HEAD && yarn install && gitbook build' > latest_update.log 2>&1 &");
 die('ok');
 ?>
