@@ -3,5 +3,5 @@
 /package.json
 /yarn.lock
 /_hook_config.php
-!/hook_config.php
+/update.php
 /.htaccess
