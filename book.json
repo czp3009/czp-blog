@@ -5,11 +5,16 @@
   },
   "plugins": [
     "-sharing",
-    "analytics"
+    "analytics",
+    "sitemap",
+    "back-to-top-button"
   ],
   "pluginsConfig": {
     "analytics": {
       "google": "UA-90514703-2"
+    },
+    "sitemap": {
+      "hostname": "https://www.hiczp.com"
     }
   }
 }
