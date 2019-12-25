@@ -48,7 +48,7 @@ sudo apt install xfce4
 然后我们要对 VNC 服务端进行配置, 让它在启动时开启对应的桌面. 还记得第一次启动服务端时打印出的配置文件路径么, 编辑它
 
 ```bash
-vim /home/czp/.vnc/xstartup
+vim ~/.vnc/xstartup
 ```
 
 通常来说, 默认配置已经非常完整, 只需要在最后一行加入\(注意最后一个 &\)
