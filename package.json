@@ -10,6 +10,7 @@
     "gitbook-cli": "^2.3.2",
     "gitbook-plugin-analytics": "^0.2.1",
     "gitbook-plugin-back-to-top-button": "^0.1.4",
+    "gitbook-plugin-mygitalk": "^0.2.6",
     "gitbook-plugin-sitemap": "^1.2.0"
   },
   "scripts": {

@@ -7,7 +7,8 @@
     "-sharing",
     "analytics",
     "sitemap",
-    "back-to-top-button"
+    "back-to-top-button",
+    "mygitalk"
   ],
   "pluginsConfig": {
     "analytics": {
@@ -15,6 +16,16 @@
     },
     "sitemap": {
       "hostname": "https://www.hiczp.com"
+    },
+    "mygitalk": {
+      "clientID": "1420938fe02dceef581d",
+      "clientSecret": "9a3fc71b05e9358f5ea58cef6023b964f29ded12",
+      "repo": "czp-blog",
+      "owner": "czp3009",
+      "admin": [
+        "czp3009"
+      ],
+      "distractionFreeMode": false
     }
   }
 }
