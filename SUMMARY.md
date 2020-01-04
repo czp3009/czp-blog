@@ -35,4 +35,5 @@
 * [Telegram Bot 收不到普通群聊消息的问题](wang-luo/telegram-bot-shou-bu-dao-pu-tong-qun-liao-xiao-xi-de-wen-ti.md)
 * [使用 KMS 激活 Windows](wang-luo/shi-yong-kms-ji-huo-windows.md)
 * [模拟哔咔 Android 客户端](wang-luo/mo-ni-bi-ka-android-ke-hu-duan.md)
+* [使用 SpaceEngineers Remote API](wang-luo/shi-yong-spaceengineers-remote-api.md)
 
