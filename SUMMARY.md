@@ -1,6 +1,8 @@
 # Table of contents
 
 * [Blog](README.md)
+* [鸣谢列表](ming-xie-lie-biao.md)
+* [友链](you-lian.md)
 
 ## czp 讲故事
 
