@@ -61,7 +61,7 @@ Date: httpDateString()
 Authorization: "$nonce:$hash"
 ```
 
-在示例代码中, 我们可以看到 c\# 中是这样得到 `DateTime.UtcNow.ToString("r", CultureInfo.InvariantCulture)` , c\# 在输出时间字符串的时候会根据不同的 culture\(us, de, cn...\) 来得到不同的结果, 而 `InvariantCulture` 用于得到统一的结果. 它的输出是这样的
+在示例代码中, 我们可以看到 c\# 中是这样得到 Date 的:  `DateTime.UtcNow.ToString("r", CultureInfo.InvariantCulture)` , c\# 在输出时间字符串的时候会根据不同的 culture\(fr, de, cn...\) 来得到不同的结果, 而 `InvariantCulture` 用于得到统一的结果. 它的输出是这样的
 
 ```text
 Tue, 15 May 2012 16:34:16 GMT
@@ -135,5 +135,5 @@ banned players 和 kicked players 这两个 API 返回的列表总是空的, 不
 
 然后又试着写了一个可以在手机上管理服务器的 Android App [https://github.com/czp3009/SpaceEngineersRemoteClient](https://github.com/czp3009/SpaceEngineersRemoteClient)
 
-不过这个 APP 有很多问题, 重构又懒得弄, 咕咕咕咕咕咕
+不过这个 APP 有很多问题, 重构又懒得弄, 你猜我能咕咕咕到什么时候
 
