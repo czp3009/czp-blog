@@ -110,11 +110,10 @@ compile group: 'com.github.ulisesbocchio', name: 'spring-boot-jar-resources', ve
 @SpringBootApplication
 open class Application
 
-fun main(args: Array<String>) {
-    SpringApplicationBuilder()
-            .sources(Application::class.java)
-            .resourceLoader(JarResourceLoader())
-            .run(*args)
+fun main() {
+    runApplication<Application> {
+        resourceLoader = JarResourceLoader()
+    }
 }
 ```
 
