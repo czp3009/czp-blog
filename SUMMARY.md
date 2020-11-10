@@ -23,6 +23,7 @@
 * [Ubuntu 下使用 zsh](linux/ubuntu-xia-shi-yong-zsh.md)
 * [为 KVM 中的 Windows 虚拟机启用 VirtIO](linux/wei-kvm-zhong-de-windows-xu-ni-ji-qi-yong-virtio.md)
 * [使用 VNC 来远程管理服务器](linux/shi-yong-vnc-lai-yuan-cheng-guan-li-fu-wu-qi.md)
+* [Linux 下无限试用 JetBrains](linux/linux-xia-wu-xian-shi-yong-jetbrains.md)
 
 ## PHP
 
