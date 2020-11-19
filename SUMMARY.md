@@ -9,13 +9,17 @@
 * [小明学英语](czp-jiang-gu-shi/xiao-ming-xue-ying-yu.md)
 * [卖程序的小女孩](czp-jiang-gu-shi/mai-cheng-xu-de-xiao-nv-hai.md)
 
-## jvm
+## Spring
 
-* [在 Spring Boot 中正确注册 Jackson Module](jvm/zai-springboot-zhong-zheng-que-zhu-ce-jacksonmodule.md)
-* [Spring Boot Jpa 使用 Google Cloud SQL](jvm/spring-boot-jpa-shi-yong-google-cloud-sql.md)
-* [Spring Boot 中配置单页应用](jvm/spring-boot-zhong-pei-zhi-dan-ye-ying-yong.md)
-* [Spring Boot 无法加载 ClasspathResource 问题](jvm/spring-boot-wu-fa-jia-zai-classpathresource-wen-ti.md)
-* [正确打包 Spring Boot 到 war](jvm/zheng-que-da-bao-spring-boot-dao-war.md)
+* [在 Spring Boot 中正确注册 Jackson Module](spring/zai-springboot-zhong-zheng-que-zhu-ce-jacksonmodule.md)
+* [Spring Boot Jpa 使用 Google Cloud SQL](spring/spring-boot-jpa-shi-yong-google-cloud-sql.md)
+* [Spring Boot 中配置单页应用](spring/spring-boot-zhong-pei-zhi-dan-ye-ying-yong.md)
+* [Spring Boot 无法加载 ClasspathResource 问题](spring/spring-boot-wu-fa-jia-zai-classpathresource-wen-ti.md)
+* [正确打包 Spring Boot 到 war](spring/zheng-que-da-bao-spring-boot-dao-war.md)
+
+## PHP
+
+* [正确调试PHP](php/zheng-que-tiao-shi-php.md)
 
 ## Linux
 
@@ -24,10 +28,6 @@
 * [为 KVM 中的 Windows 虚拟机启用 VirtIO](linux/wei-kvm-zhong-de-windows-xu-ni-ji-qi-yong-virtio.md)
 * [使用 VNC 来远程管理服务器](linux/shi-yong-vnc-lai-yuan-cheng-guan-li-fu-wu-qi.md)
 * [Linux 下无限试用 JetBrains](linux/linux-xia-wu-xian-shi-yong-jetbrains.md)
-
-## PHP
-
-* [正确调试PHP](php/zheng-que-tiao-shi-php.md)
 
 ## 网络
 
