@@ -1,6 +1,6 @@
 # 正确打包 Spring Boot 到 war
 
-环境: Spring-Boot 2.0.5.RELEASE \| gradle 4.10.2
+本文撰写时的 Spring 版本: Spring-Boot 2.0.5.RELEASE \| gradle 4.10.2
 
 众所周知, `Spring Boot` 在开发时之所以能直接启动, 是因为内置了 `tomcat`. 同时这也使得 `Spring Boot` 可以直接输出为可执行的 `jar` 文件.
 
@@ -73,6 +73,4 @@ java -jar application-name.war
 而这个 `executable war` 同时也确实是一个合法的 `war`, 可以被外部的 `tomcat` 正确加载.
 
 因此, 无论是在开发中直接启动, 还是输出为 `jar` 或 `war` 并当做普通 java 程序来运行, 还是输出为 `war` 并由外部 `tomcat` 加载, 都是正常的.
-
-既然 `Spring Boot` 设计的如此完美, 我们还是要学习一个.
 

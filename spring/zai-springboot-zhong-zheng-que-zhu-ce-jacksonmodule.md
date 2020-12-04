@@ -1,6 +1,6 @@
 # 在 Spring Boot 中正确注册 Jackson Module
 
-环境: spring-boot 2.0.5.RELEASE
+本文撰写时的 Spring 版本: spring-boot 2.0.5.RELEASE
 
 当我们在进行 `Spring Boot` 开发时, `REST` 接口的默认返回类型是 `json`, 使用的序列化库为 `jackson`.
 
@@ -35,11 +35,9 @@ else if (this.findWellKnownModules) {
 
 所以简单的加入依赖是没有作用的, 我们必须要用代码来让 `Spring Boot` 知道我们想要使用这个 Module.
 
-于是我们在谷歌上搜索 `spring boot jackson hibernate`, 结果搜到这么一篇文章 [https://www.jianshu.com/p/5eeadc1f50c7](https://www.jianshu.com/p/5eeadc1f50c7)
+于是我们在谷歌上搜索 `spring boot jackson hibernate`, 结果搜到的文章都是教人直接替换 `MappingJackson2HttpMessageConverter`, 可真是一个小机灵鬼.
 
-哇, 直接替换 `MappingJackson2HttpMessageConverter`, 你可真是一个小机灵鬼.
-
-众所周知 `Spring Boot` 的设计一定是完美的, 不可能出现如此丑陋的写法.
+而一旦替换这个类, 就要把它原本的代码再写一遍, Spring 版本升级之后可能还会挂掉, 所以正确做法一定不是这样.
 
 根据 `Spring Boot` 标准命名法, 自动配置类的类名后缀为 `AutoConfiguration`, 于是我们找到了自动配置 Jackson 的地方 `org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration`
 
@@ -65,5 +63,5 @@ open class JacksonHibernate5Configuration {
 }
 ```
 
-就这么简单么? 对, 就是这么简单!
+就这么简单么? 对, 就是这么简单\(这么简单还绕了那么大一圈, 真的菜\)!
 

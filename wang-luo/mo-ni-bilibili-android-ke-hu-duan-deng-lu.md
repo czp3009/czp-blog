@@ -53,9 +53,9 @@ Accept-Encoding: gzip
 
 而 `sign` 势必是通过一种校验算法得到的校验码, 用于防止伪造请求.
 
-起初, 我研究了很久也没有猜到 `sign` 的生成算法, 直到有一天我看到了这篇文章 [http://www.jianshu.com/p/5087346d8e93](http://www.jianshu.com/p/5087346d8e93)
+起初, 我研究了很久也没有猜到 `sign` 的生成算法\(bilibili 客户端代码全部混淆过而且代码量很大\), 直到有一天我看到了这篇文章 [http://www.jianshu.com/p/5087346d8e93](http://www.jianshu.com/p/5087346d8e93)
 
-出于安全性问题, appSecret 保存在 so 文件中, 通过 jni 调用. 关于反编译 B 站客户端中的 so 文件来得到 appSecret 的文章我之前看过, 但是现在一时找不到了, 如果那篇文章有人见过, 麻烦补个链接.
+出于安全性问题, appSecret 保存在 so 文件中, 通过 jni 调用.
 
 ## sign 生成算法
 
@@ -67,7 +67,7 @@ Accept-Encoding: gzip
 key1=value1&key2=value2&key3=value3
 ```
 
-然后再拼接上 Android APP 内置的 appSecret\(仅拼接值\)
+然后再拼接上 Android APP 内置的 appSecret\(仅拼接值, 没有那些 &= 之类的东西\)
 
 ```text
 key1=value1&key2=value2&key3=value3ea85624dfcf12d7cc7b2b3a94fac1f2c

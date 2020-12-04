@@ -1,6 +1,6 @@
 # Spring Boot Jpa 使用 Google Cloud SQL
 
-环境: Spring-Boot-Data-Jpa 2.0.5.RELEASE
+本文撰写时的 Spring 版本: Spring-Boot-Data-Jpa 2.0.5.RELEASE
 
 编写使用 `Google Cloud SQL` 的应用时, 我们会发现一个问题. 当我们连接 Cloud SQL 时, 我们必须先知道 `Cloud SQL` 的 `IP`, 同时还要到 `Google Cloud Console` 给自己的应用所部署的服务器加数据库白名单\(如果是部署在同一项目下的 `APP Engine` 或者 `Compute Engine` 默认就有白名单\).
 
@@ -23,7 +23,7 @@ dependencies {
 }
 ```
 
-注意, `spring-cloud-gcp-starter-sql-mysql` 并非是 Spring 官方自己写的, 所以 Spring 插件并不能管理他的版本号. 这里的版本号是必写的.
+注意, `spring-cloud-gcp-starter-sql-mysql` 并非是 Spring 官方自己写的, 所以 Spring 插件并不能管理他的版本号. 这里的版本号是必写的\(或者用 dependency management 全局指定\).
 
 自动包含的 `MySQL 驱动` 是 `5.1.x`, 如果要使用更高版本必须注意 `MySQL 驱动` 版本与 `mysql-socket-factory` 版本相匹配. 版本兼容对照表详见 [https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory\#mysql](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory#mysql)
 
@@ -81,7 +81,7 @@ spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 
 如果我们不能在配置文件中指定它的位置, 我们还可以使用环境变量来指定它的路径, 详见 [https://cloud.google.com/docs/authentication/getting-started](https://cloud.google.com/docs/authentication/getting-started)
 
-`spring-cloud-gcp-starter-sql-mysql` 也是需要创建 `GoogleCredentials` 实例的, 同样是通过文档里提到的方法.
+如果此应用最终部署到 `ComputeEngine` 或者 `AppEngine` 不需要指定证书文件路径, spring-boot-gcp 会自动从环境中获得. 但是为了本地测试, 证书文件终究还是要创建的.
 
 很好, 现在我们完成了配置.
 

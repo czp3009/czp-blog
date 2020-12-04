@@ -1,6 +1,6 @@
 # Spring Boot 无法加载 ClasspathResource 问题
 
-环境: Spring Boot 2.0.5.RELEASE
+本文撰写时的 Spring 版本: Spring Boot 2.0.5.RELEASE
 
 一般来说, 程序运行所必须的资源文件我们会一起打包到 `jar`. 那么接下去我们就要读取这个资源文件.
 

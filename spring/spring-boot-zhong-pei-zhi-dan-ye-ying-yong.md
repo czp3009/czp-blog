@@ -1,8 +1,8 @@
 # Spring Boot 中配置单页应用
 
-环境: Spring Boot 2.1.0.RELEASE
+本文撰写时的 Spring 版本: Spring Boot 2.1.0.RELEASE
 
-有的时候我们不得不把一个单页应用\(例如 `react-router`\)与 `Spring-Boot` 后端一起打包. 但是这样就会有一个问题, 一旦用户刷新页面, 就会看到一个 404 画面, 因为服务端并没有把请求转向 `index.html`.
+有的时候我们不得不把一个单页应用\(例如 `react-router`\)与 `Spring-Boot` 后端一起打包. 但是这样就会有一个问题, 一旦用户不在首页刷新页面, 就会看到一个 404 画面, 因为服务端并没有把请求转向 `index.html`.
 
 所以我们通过一些配置, 让 Spring 在找不到对应的资源文件的情况下, 将请求统统转向到 `index.html`, 这样用户就可以前端路由了.
 
