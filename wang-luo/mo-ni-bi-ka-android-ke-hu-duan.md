@@ -599,9 +599,9 @@ BODY END
 
 \(如果用户名或密码不正确返回的 message 将不是 success. 如果 signature 错误, 将返回 success 但是没有 data 字段\)
 
-返回内容中的 `token` 就是访问其他 API 时 header 中需要的 `authorization` 的值.
+返回内容中的 `token` 就是访问其他 API 时 header 中需要的 `authorization` 的值. 这样就实现了模拟登录.
 
-而至于为什么很多 API 写成这样
+\(下面是吐槽时间\)而至于为什么很多 API 写成这样
 
 ```java
 @GET("categories")
@@ -614,7 +614,7 @@ Call<GeneralResponse<CategoryResponse>> al(@Header("authorization") String param
 
 ![](../.gitbook/assets/image%20%2810%29.png)
 
-哔咔 APP 的编译版本是 Java6.0, 很难想象由于不知道泛型而把这种类写了几十遍是如何的勤奋\(如同网易内部的非透明网关所用的包装类返回 Object 类型一样精彩\).
+哔咔 APP 的编译版本是 Java6.0, 很难想象由于不知道泛型而把这种几乎是一样的类写了几十遍是如何的勤奋.
 
 剩下的 API 没有什么特别的, 全部都在 `com.picacomic.fregata.b.a` , 感兴趣的可以自行查看. 如果懒得反编译的话可以看这则 gist [https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f](https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f)
 

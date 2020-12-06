@@ -1,12 +1,12 @@
 # 友链
 
-[9bie](https://9bie.org/)
+[9bie](https://9bie.org)
 
-[Edison Jwa](https://www.wevg.org/)
+[Edison Jwa](https://www.wevg.org)
 
-[Miku520](https://mikublog.com/)
+[Miku520](https://mikublog.com)
 
-[RMT's Blog](https://rmtt.github.io/%20)
+[RMT's Blog](https://rmtt.github.io)
 
 [蚊子](https://blog.qwq.moe/#/)
 

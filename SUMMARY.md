@@ -46,5 +46,5 @@
 
 ## 云开发
 
-* [GCP Pub/Sub push 至 IAP 保护的 AppEngine](yun-kai-fa/gcp-pubsub-push-zhi-iap-bao-hu-de-appengine.md)
+* [GCP Pub/Sub push 至 IAP 保护的 Endpoint](yun-kai-fa/gcp-pubsub-push-zhi-iap-bao-hu-de-appengine.md)
 
