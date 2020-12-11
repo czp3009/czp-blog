@@ -42,5 +42,12 @@
 
 这一套 Key-Value 存储是不是非常"注册表". 把这三个 xml 里的 entry 都删掉再重新打开鸡巴公司, 此时鸡巴公司不会再弹出试用过期提示了, 意味着无限使用成功了. 当然, 也可以直接把 `~/.java/.userPrefs/jetbrains/idea` 整个文件夹删掉, 效果是一样的.
 
+总结为以下命令
+
+```bash
+rm ~/.config/JetBrains/*/eval/*
+rm ~/.java/.userPrefs/jetbrains/*/*/evlsprt*/prefs.xml
+```
+
 再次强调, 本文只旨在对鸡巴公司的试用机制进行研究, 请勿使用此法进行白嫖.
 
