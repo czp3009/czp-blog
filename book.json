@@ -5,6 +5,7 @@
   },
   "plugins": [
     "-sharing",
+    "-search",
     "analytics",
     "sitemap",
     "back-to-top-button",
