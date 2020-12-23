@@ -1,4 +1,4 @@
-# 模拟 Bilibili Android 客户端登录
+# 模拟 Bilibili Android 客户端
 
 本文撰写时的 Bilibili Android 客户端版本 5.15.0.515000
 

@@ -1,4 +1,4 @@
-# 使用 SpaceEngineers Remote API
+# 在 Kotlin 使用 SpaceEngineers Remote API
 
 众所周知, [SpaceEngineers](https://store.steampowered.com/app/244850/Space_Engineers/) 的服务端\(vanilla, 非 [torch](https://torchapi.net/)\)上那个查看服务器内游戏信息的玩意是通过网络来获取信息的\(localhost\). 实际上这个东西有独立版本应用程序, 也在服务端根目录下, 叫做 `VRageRemoteClient` . VRage 是 SpaceEngineers 使用的游戏引擎, 这个游戏引擎本身也是 Keen 开发的.
 

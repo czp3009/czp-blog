@@ -1,4 +1,4 @@
-# 正确调试PHP
+# 正确调试 PHP
 
 环境: Ubuntu 18.04 \| PHPStorm 2018.2.3 \| PHP 7.2.10
 
