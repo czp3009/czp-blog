@@ -13,7 +13,7 @@
 
 * [在 Kotlin 使用 SpaceEngineers Remote API](kotlin/shi-yong-spaceengineers-remote-api.md)
 
-## Spring
+## spring
 
 * [在 Spring Boot 中正确注册 Jackson Module](spring/zai-springboot-zhong-zheng-que-zhu-ce-jacksonmodule.md)
 * [Spring Boot Jpa 使用 Google Cloud SQL](spring/spring-boot-jpa-shi-yong-google-cloud-sql.md)
@@ -21,18 +21,18 @@
 * [Spring Boot 无法加载 ClasspathResource 问题](spring/spring-boot-wu-fa-jia-zai-classpathresource-wen-ti.md)
 * [正确打包 Spring Boot 到 war](spring/zheng-que-da-bao-spring-boot-dao-war.md)
 
-## PHP
+## php
 
 * [正确调试 PHP](php/zheng-que-tiao-shi-php.md)
 
-## Linux
+## linux
 
 * [Ubuntu 增加最大文件打开数量限制](linux/ubuntu-zeng-jia-zui-da-wen-jian-da-kai-shu-liang-xian-zhi.md)
 * [Ubuntu 下使用 zsh](linux/ubuntu-xia-shi-yong-zsh.md)
 * [使用 VNC 来远程管理服务器](linux/shi-yong-vnc-lai-yuan-cheng-guan-li-fu-wu-qi.md)
 * [Linux 下无限试用 JetBrains](linux/linux-xia-wu-xian-shi-yong-jetbrains.md)
 
-## Windows
+## windows
 
 * [使用 KMS 激活 Windows](windows/shi-yong-kms-ji-huo-windows.md)
 
@@ -50,7 +50,7 @@
 
 * [GCP Pub/Sub push 至 IAP 保护的 Endpoint](yun-kai-fa/gcp-pubsub-push-zhi-iap-bao-hu-de-appengine.md)
 
-## Telegram
+## telegram
 
 * [Telegram Bot 收不到普通群聊消息的问题](telegram/telegram-bot-shou-bu-dao-pu-tong-qun-liao-xiao-xi-de-wen-ti.md)
 
