@@ -9,6 +9,10 @@
 * [小明学英语](czp-jiang-gu-shi/xiao-ming-xue-ying-yu.md)
 * [卖程序的小女孩](czp-jiang-gu-shi/mai-cheng-xu-de-xiao-nv-hai.md)
 
+## c/c++ <a id="c-cpp"></a>
+
+* [c 语言常见未定义行为](c-cpp/c-yu-yan-chang-jian-wei-ding-yi-hang-wei.md)
+
 ## kotlin
 
 * [在 Kotlin 使用 SpaceEngineers Remote API](kotlin/shi-yong-spaceengineers-remote-api.md)
