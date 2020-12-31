@@ -200,13 +200,70 @@ char string[] = "Hello";
 string[0] = 'h';
 ```
 
-因为这实际上是语法糖, 最终编译为:
+因为这实际上是语法糖, 最终编译为\(每个字符都在程序的正常栈内存里, 不会被编译到 `.rodata` 去\):
 
 ```c
 char string[] = {'H', 'e', 'l', 'l', 'o', '\0'};
 ```
 
-为了提升代码质量, 对于字符串字面量的正确做法是使用 const, 以免不知道在哪个代码分支里修改了它
+这到底是不是语法糖很容易验证, 首先编写以下代码
+
+```c
+int main() {
+    char string1[] = "Hello";
+    char string2[] = {'H', 'e', 'l', 'l', 'o', '\0'};
+    return 0;
+}
+```
+
+然后编译这个程序. 使用编译器的 debug 模式编译可以使 ELF 包含符号表从而更好地阅读汇编, 例如 `gcc -g main.c`
+
+接着使用 `objdump -S -d a.out` 来查看此 ELF 的 `.text` 节\(text 节用于存储指令\), 找到其中的 main 函数
+
+```text
+0000000000001169 <main>:
+#include <stdio.h>
+
+int main() {
+    1169:       f3 0f 1e fa             endbr64 
+    116d:       55                      push   %rbp
+    116e:       48 89 e5                mov    %rsp,%rbp
+    1171:       48 83 ec 20             sub    $0x20,%rsp
+    1175:       64 48 8b 04 25 28 00    mov    %fs:0x28,%rax
+    117c:       00 00 
+    117e:       48 89 45 f8             mov    %rax,-0x8(%rbp)
+    1182:       31 c0                   xor    %eax,%eax
+    char string1[] = "Hello";
+    1184:       c7 45 ec 48 65 6c 6c    movl   $0x6c6c6548,-0x14(%rbp)
+    118b:       66 c7 45 f0 6f 00       movw   $0x6f,-0x10(%rbp)
+    char string2[] = {'H', 'e', 'l', 'l', 'o', '\0'};
+    1191:       c7 45 f2 48 65 6c 6c    movl   $0x6c6c6548,-0xe(%rbp)
+    1198:       66 c7 45 f6 6f 00       movw   $0x6f,-0xa(%rbp)
+    printf("%s %s",string1,string2);
+    119e:       48 8d 55 f2             lea    -0xe(%rbp),%rdx
+    11a2:       48 8d 45 ec             lea    -0x14(%rbp),%rax
+    11a6:       48 89 c6                mov    %rax,%rsi
+    11a9:       48 8d 3d 54 0e 00 00    lea    0xe54(%rip),%rdi        # 2004 <_IO_stdin_used+0x4>
+    11b0:       b8 00 00 00 00          mov    $0x0,%eax
+    11b5:       e8 b6 fe ff ff          callq  1070 <printf@plt>
+    return 0;
+    11ba:       b8 00 00 00 00          mov    $0x0,%eax
+}
+    11bf:       48 8b 4d f8             mov    -0x8(%rbp),%rcx
+    11c3:       64 48 33 0c 25 28 00    xor    %fs:0x28,%rcx
+    11ca:       00 00 
+    11cc:       74 05                   je     11d3 <main+0x6a>
+    11ce:       e8 8d fe ff ff          callq  1060 <__stack_chk_fail@plt>
+    11d3:       c9                      leaveq 
+    11d4:       c3                      retq   
+    11d5:       66 2e 0f 1f 84 00 00    nopw   %cs:0x0(%rax,%rax,1)
+    11dc:       00 00 00 
+    11df:       90                      nop
+```
+
+非常显然 `string1` 与 `string2` 编译后是一模一样的.
+
+所以为了提升代码质量, 对于字符串字面量的正确做法是使用 const, 以免不知道在哪个代码分支里修改了它
 
 ```c
 char const *string = "Hello";
@@ -309,7 +366,7 @@ extern int printf (const char *__restrict __format, ...);
 
 `printf` 的返回值是成功输出的字符数量. 因此 return register 会被 `printf` 置为 6, 而 `func` 没有调用 return. 取返回值时就会取到实际上是上一个退栈的函数的前一个退栈的函数的返回值.
 
-在 x86 架构 cpu 中, 保存小于 32 位的整型返回值的 return register 是 `EAX` , 这可以在 x86 汇编入门上找到, 此处不再赘述. 在 c 语言中能够通过 `register` 关键字操作寄存器.
+在 x86 架构 cpu 中, 保存小于 32 位的整型返回值的 return register 是 `EAX` , 这可以用 objdump 来得知, 此处不再赘述. 在 c 语言中能够通过 `register` 关键字操作寄存器.
 
 ```c
 #include <stdio.h>
@@ -329,7 +386,7 @@ int main() {
 
 \(第二行输出 6\)
 
-x86 平台的 64 位返回值会同时使用 `EAX` 和 `EDX` , 而浮点数更是有 `st(0)` 到 `st(7)` 那么多寄存器联合使用. 所以如果上上个退栈的函数的返回类型和上一个退栈的函数类型不同, 此时甚至会取到"未初始化"的寄存器值.
+x86 平台的 64 位整型返回值会使用 `RAX` , 而浮点数更是有 `XXM0` 到 `XXM7` \(Streaming SIMD Extensions\)那么多寄存器联合使用. 所以如果上上个退栈的函数的返回类型和上一个退栈的函数类型不同, 此时甚至会取到"未初始化"的寄存器值.
 
 ### 存在副作用的子表达式
 

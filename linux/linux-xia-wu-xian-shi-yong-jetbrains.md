@@ -49,5 +49,12 @@ rm ~/.config/JetBrains/*/eval/*
 rm ~/.java/.userPrefs/jetbrains/*/*/evlsprt*/prefs.xml
 ```
 
+如果还有问题请把以上两个目录都清空\(记得先启用 IDE 设置云同步\)
+
+```bash
+rm -rf ~/.config/JetBrains
+rm -rf ~/.java/.userPrefs/jetbrains
+```
+
 再次强调, 本文只旨在对鸡巴公司的试用机制进行研究, 请勿使用此法进行白嫖.
 
