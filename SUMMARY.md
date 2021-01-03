@@ -1,6 +1,6 @@
 # Table of contents
 
-* [Blog](README.md)
+* [czp's blog](README.md)
 * [鸣谢列表](ming-xie-lie-biao.md)
 * [友链](you-lian.md)
 
