@@ -10,3 +10,5 @@
 
 [蚊子](https://blog.qwq.moe/#/)
 
+[Magentaize](https://www.magentaize.xyz/)
+
