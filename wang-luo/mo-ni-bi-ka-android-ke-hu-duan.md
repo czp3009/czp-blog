@@ -616,7 +616,7 @@ Call<GeneralResponse<CategoryResponse>> al(@Header("authorization") String param
 
 哔咔 APP 的编译版本是 Java6.0, 很难想象由于不知道泛型而把这种几乎是一样的类写了几十遍是如何的勤奋.
 
-剩下的 API 没有什么特别的, 全部都在 `com.picacomic.fregata.b.a` , 感兴趣的可以自行查看. 如果懒得反编译的话可以看这则 gist [https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f](https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f)
+剩下的 API 没有什么特别的, 全部都在 `com.picacomic.fregata.b.a` , 感兴趣的可以自行查看. 如果懒得反编译的话可以看这则 gist [https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f](https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f) \(2021-02-06 发现这篇 gist 莫名消失了, 可能是因为侵权被 Github 删了\)
 
 早些时间实现了一个哔咔 API 的调用库 [https://github.com/czp3009/picacomic-api/](https://github.com/czp3009/picacomic-api/)
 
