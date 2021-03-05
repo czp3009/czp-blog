@@ -1,4 +1,38 @@
+---
+description: 欢迎包养我
+---
+
 # 鸣谢列表
+
+![](.gitbook/assets/image%20%2829%29.png)
+
+或者通过数字货币
+
+BTC
+
+bc1q5mxcngy6yh75zg6nwstwegre50zzjm4839jj5t
+
+XMR
+
+89HTtHCpsU7SEUgWpmGqfP6LfxLcE9ViHJDPVKjqnoQzTpkknAskdz2h4SRm42GRRAJdWZyUSS6W5LCxUCwqq3ys1EhRr3R
+
+ETH
+
+0xd39eecf6fd2d47a2955dd50befb1dbd7e457e9dd
+
+DOGE
+
+DBxL94wvupXMWvFZney6smrQBx5qWzdxro
+
+USDT
+
+0xd39eecf6fd2d47a2955dd50befb1dbd7e457e9dd
+
+
+
+
+
+
 
 2015.03.16 hyx5020 捐助 100 元
 
@@ -92,7 +126,7 @@
 
 2019.01.28 hyx5020 捐助 5 元
 
-2019.01.28 韩诚 捐助 5 元
+2019.01.28 \*诚 捐助 5 元
 
 2019.01.29 深空飞行器 捐助 10 元
 
@@ -186,7 +220,7 @@
 
 2019.01.28 hyx5020 捐助 5 元
 
-2019.01.28 韩诚 捐助 5 元
+2019.01.28 \*诚 捐助 5 元
 
 2019.01.29 深空飞行器 捐助 10 元
 
