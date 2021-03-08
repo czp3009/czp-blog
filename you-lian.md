@@ -12,3 +12,5 @@
 
 [Magentaize](https://www.magentaize.xyz/)
 
+[AWSL](https://awsl.blog)
+
