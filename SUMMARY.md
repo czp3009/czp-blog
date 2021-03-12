@@ -58,3 +58,9 @@
 
 * [Telegram Bot 收不到普通群聊消息的问题](telegram/telegram-bot-shou-bu-dao-pu-tong-qun-liao-xiao-xi-de-wen-ti.md)
 
+## 加密货币
+
+* [加密货币交易](jia-mi-huo-bi/jia-mi-huo-bi-jiao-yi.md)
+* [挖掘以太坊](jia-mi-huo-bi/wa-jue-yi-tai-fang.md)
+* [挖掘门罗币](jia-mi-huo-bi/wa-jue-men-luo-bi.md)
+
