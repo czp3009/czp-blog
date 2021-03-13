@@ -10,7 +10,7 @@ Ethereum\(中文名 以太坊, 缩写 ETH\)使用 Ethash 算法来挖掘, 这种
 
 在 release 页面下载适合自己所用的操作系统的最新版程序, 例如 "ethminer-0.19.0-alpha.0-cuda-9-linux-x86\_64.tar.gz" 表示适用于 Linux 操作系统的用 CUDA9 编译的 0.19.0 版本.
 
-下载完挖矿程序之后, 还需要安装对应版本的 CUDA. 不过安装显卡驱动时可能已经自带了 CUDA, 在 Linux 系统使用以下命令行来查看显卡驱动器状态
+下载完挖矿程序之后, 还需要安装对应版本的 CUDA. 不过安装显卡驱动时可能已经自带了 CUDA, 使用以下命令来查看显卡和显卡驱动器状态
 
 ```bash
 nvidia-smi
@@ -18,7 +18,7 @@ nvidia-smi
 
 如果显示已经安装了 CUDA 就不需要另外安装了. 值得一提的是, 软件是面向旧版本 CUDA 编译的, 因为作者称新版本 CUDA 的挖矿效率没有那么高, 但是安装了新版本 CUDA\(例如 CUDA11\) 也是能运行软件\(CUDA 9/10\)的, 如果追求最高的性能可以删除安装驱动时自动安装的 CUDA 再手动安装旧版本.
 
-Windows 系统尚不明确怎么方便的查看驱动是否已经自带 CUDA, 可以先尝试运行一下挖矿程序, 运行报错则再手动安装 CUDA.
+Windows 系统也是用这个命令来查看, 但是通过 Windows 更新安装的驱动有可能没有这个命令, 可以先尝试运行一下挖矿程序, 运行报错则再手动安装 CUDA.
 
 如果安装驱动时没有自动安装 CUDA, 请到 NVIDIA 官网下载 [https://developer.nvidia.com/zh-cn/cuda-downloads](https://developer.nvidia.com/zh-cn/cuda-downloads)
 
