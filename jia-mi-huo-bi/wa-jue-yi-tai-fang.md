@@ -30,7 +30,7 @@ ETH 矿池也有很多, 在一些矿池列表网站上可以找到它们 [https:
 
 目前第一名的矿池\(按算力排序\)是 [SparkPool](https://www.sparkpool.com), 这个矿池的网站很多页面不登录不给看, 对于想要匿名挖矿的用户请直接跳过这一矿池. 第二名的矿池是 [Ethermine](https://ethermine.org), 与其他国外矿池一样, 它支持匿名挖矿, 并不需要任何个人资料也不需要任何形式的注册, 这是本文推荐的矿池.
 
-如果你已经注册了加密货币交易所, 并且交易所自己开设了矿池, 可以直接用交易所的矿池, 比如[币安矿池](https://pool.binance.com). 交易所提供的矿池一般没有最小提现额度限制, 挖出多少就可以立即在市场上交易多少. 但是交易所的矿池收益刷新不及时, 协议支持也可能不全. 并且交易所的矿池用户量远远没有其他大矿池多, 容易出现矿池本身挖了半天挖不到任何一个区块从而没有任何产出的情况, 导致矿工收益远远不如在其他大矿池挖掘来得高.
+如果你已经注册了加密货币交易所, 并且交易所自己开设了矿池, 可以直接用交易所的矿池, 比如[币安矿池](https://pool.binance.com). 交易所提供的矿池一般没有最小提现额度限制, 挖出多少就可以立即在市场上交易多少.
 
 有了钱包地址, 并且选择了矿池之后, 打开矿池的网站查看矿池提供的服务器 [https://ethermine.org/start](https://ethermine.org/start)
 
@@ -46,6 +46,12 @@ Windows
 
 ```text
 ethminer.exe -P stratum1+ssl://0xd39eecf6fd2d47a2955dd50befb1dbd7e457e9dd.home@asia1.ethermine.org:5555
+```
+
+币安矿池参数示例
+
+```text
+ethminer.exe -P stratum+tcp://czp3009.home@ethash.poolbinance.com:443
 ```
 
 \(更多命令行样例详见 [https://github.com/ethereum-mining/ethminer/blob/master/docs/POOL\_EXAMPLES\_ETH.md](https://github.com/ethereum-mining/ethminer/blob/master/docs/POOL_EXAMPLES_ETH.md)\)
