@@ -8,7 +8,7 @@
 
 加密货币交易除了面对面交易, 主要发生在加密货币交易所\(Cryptocurrency Exchange\), 这些交易所提供了交易平台, 让用户可以在平台托管自己的数字资产, 并与他人进行交易. 选择一个靠谱的交易所也就成为了交\(亏\)易\(钱\)的第一步.
 
-直接在 Google 搜索 `world's biggest bitcoin exchange` 可以找到很多交易所排名网站, 例如 [https://www.statista.com/statistics/864738/leading-cryptocurrency-exchanges-traders/](https://www.statista.com/statistics/864738/leading-cryptocurrency-exchanges-traders/) 或者 [https://coinmarketcap.com/rankings/exchanges/](https://coinmarketcap.com/rankings/exchanges/) 在绝大多数榜单上, [Binance](https://www.binance.com/zh-CN/register?ref=88039964) 都是世界第一交易所, 这也是本文推荐的交易所.
+直接在 Google 搜索 `world's biggest bitcoin exchange` 可以找到很多交易所排名网站, 例如 [https://www.statista.com/statistics/864738/leading-cryptocurrency-exchanges-traders/](https://www.statista.com/statistics/864738/leading-cryptocurrency-exchanges-traders/) 或者 [https://coinmarketcap.com/rankings/exchanges/](https://coinmarketcap.com/rankings/exchanges/) 在绝大多数榜单上, [**Binance**](https://www.binance.com/zh-CN/register?ref=88039964) 都是世界第一交易所, 这也是本文推荐的交易所.
 
 很多国内用户会被人推荐`火币`交易所, 但是本文并不推荐使用火币, 主要原因有几个:
 
@@ -16,7 +16,7 @@
 
 其次, 火币的交易手续费高达 0.2% [https://www.huobi.com/p/about/about\_detail](https://www.huobi.com/p/about/about_detail), 而主流交易所例如币安只有 0.1% [https://www.binance.com/zh-CN/fee/schedule](https://www.binance.com/zh-CN/fee/schedule) \(BNB 手续费燃烧, 邀请人返利, 高等级 VIP 还会有进一步交易手续费折扣, 最低可达 0.012%\).
 
-再次, 火币的数字资产提现手续费非常高昂\(提现到自己的钱包或者其他交易所\), 以比特币为例, 火币的比特币提现费用高达 0.001 [https://huobiglobal.zendesk.com/hc/zh-cn/articles/360000071911-%E6%8F%90%E5%B8%81%E9%99%90%E9%A2%9D-%E6%8F%90%E5%B8%81%E6%89%8B%E7%BB%AD%E8%B4%B9](https://huobiglobal.zendesk.com/hc/zh-cn/articles/360000071911-%E6%8F%90%E5%B8%81%E9%99%90%E9%A2%9D-%E6%8F%90%E5%B8%81%E6%89%8B%E7%BB%AD%E8%B4%B9), 而币安仅有 0.0005 [https://www.binance.com/zh-CN/fee/depositFee](https://www.binance.com/zh-CN/fee/depositFee). 这意味着想把资产从火币转移出去比其他交易所更难.
+再次, 火币的数字资产提现手续费非常高昂\(提现到自己的钱包或者其他交易所\), 以比特币为例, 火币的比特币提现费用高达 0.001 [https://huobiglobal.zendesk.com/hc/zh-cn/articles/360000071911-%E6%8F%90%E5%B8%81%E9%99%90%E9%A2%9D-%E6%8F%90%E5%B8%81%E6%89%8B%E7%BB%AD%E8%B4%B9](https://huobiglobal.zendesk.com/hc/zh-cn/articles/360000071911-%E6%8F%90%E5%B8%81%E9%99%90%E9%A2%9D-%E6%8F%90%E5%B8%81%E6%89%8B%E7%BB%AD%E8%B4%B9), 而币安仅有 0.0005 [https://www.binance.com/zh-CN/fee/depositFee](https://www.binance.com/zh-CN/fee/depositFee). 这意味着想把资产从火币转移出去比其他交易所更困难.
 
 ## 获得 USDT
 
