@@ -4,23 +4,29 @@
 
 ![](.gitbook/assets/image%20%2865%29.png)
 
-或者通过加密货币
+或者通过加密货币:
 
-BTC\(SegWit\)
+**BTC\(SegWit\)**
 
 bc1q5mxcngy6yh75zg6nwstwegre50zzjm4839jj5t
 
-ETH/USDT/BUSD/BNB/DOGE/DODO/UNI/SUSHI/1INCH\(ERC20/BSC\)
+**ETH/BUSD/BNB/DODO/UNI/SUSHI/1INCH\(ERC20/BSC\)**
 
 0xd39eecf6fd2d47a2955dd50befb1dbd7e457e9dd
 
-USDT\(TRC20\)
+**USDT\(TRC20\)**
 
 TSGWm1hgWL558xvxPuiLAf5nW7Wv9bDW7m
 
-XMR
+**DOGE**
+
+DBxL94wvupXMWvFZney6smrQBx5qWzdxro
+
+**XMR**
 
 89HTtHCpsU7SEUgWpmGqfP6LfxLcE9ViHJDPVKjqnoQzTpkknAskdz2h4SRm42GRRAJdWZyUSS6W5LCxUCwqq3ys1EhRr3R
+
+也可以通过币安 C2C 转账: czp3009@gmail.com
 
 =========================
 
@@ -261,4 +267,6 @@ XMR
 2021.04.21 Archeb 捐助 0.01 元
 
 2021.05.01 Archeb 捐助 0.1 元
+
+2021.06.03 emmmm 捐助 13.50562832 USDT
 
