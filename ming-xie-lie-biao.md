@@ -1,6 +1,10 @@
 # 鸣谢列表
 
-欢迎包养我
+欢迎包养我!
+
+在爱发电订阅 czp: [https://afdian.net/@czp3009](https://afdian.net/@czp3009)
+
+或者直接通过支付宝转账:
 
 ![](.gitbook/assets/image%20%2865%29.png)
 
@@ -26,7 +30,7 @@ DBxL94wvupXMWvFZney6smrQBx5qWzdxro
 
 89HTtHCpsU7SEUgWpmGqfP6LfxLcE9ViHJDPVKjqnoQzTpkknAskdz2h4SRm42GRRAJdWZyUSS6W5LCxUCwqq3ys1EhRr3R
 
-也可以通过币安 C2C 转账: czp3009@gmail.com
+币安 C2C 转账: czp3009@gmail.com
 
 =========================
 
