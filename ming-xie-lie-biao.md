@@ -2,7 +2,7 @@
 
 欢迎包养我!
 
-在爱发电订阅 czp: [https://afdian.net/@czp3009](https://afdian.net/@czp3009)
+在爱发电订阅我: [https://afdian.net/@czp3009](https://afdian.net/@czp3009)
 
 或者直接通过支付宝转账:
 
@@ -30,7 +30,7 @@ DBxL94wvupXMWvFZney6smrQBx5qWzdxro
 
 89HTtHCpsU7SEUgWpmGqfP6LfxLcE9ViHJDPVKjqnoQzTpkknAskdz2h4SRm42GRRAJdWZyUSS6W5LCxUCwqq3ys1EhRr3R
 
-币安 C2C 转账: czp3009@gmail.com
+币安 C2C 转账邮箱: czp3009@gmail.com
 
 =========================
 
@@ -287,4 +287,6 @@ DBxL94wvupXMWvFZney6smrQBx5qWzdxro
 2021.08.07 蚊子 捐助 1.22 元
 
 2021.09.09 \*\*乐 捐助 0.01 元
+
+2021.09.16 \*诚 捐助 1 元
 
