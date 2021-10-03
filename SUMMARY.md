@@ -8,6 +8,7 @@
 
 * [小明学英语](czp-jiang-gu-shi/xiao-ming-xue-ying-yu.md)
 * [卖程序的小女孩](czp-jiang-gu-shi/mai-cheng-xu-de-xiao-nv-hai.md)
+* [一个测试工程师走进一家酒吧](czp-jiang-gu-shi/yi-ge-ce-shi-gong-cheng-shi-zou-jin-yi-jia-jiu-ba.md)
 
 ## c/c++ <a id="c-cpp"></a>
 
@@ -24,6 +25,7 @@
 * [Spring Boot 中配置单页应用](spring/spring-boot-zhong-pei-zhi-dan-ye-ying-yong.md)
 * [Spring Boot 无法加载 ClasspathResource 问题](spring/spring-boot-wu-fa-jia-zai-classpathresource-wen-ti.md)
 * [正确打包 Spring Boot 到 war](spring/zheng-que-da-bao-spring-boot-dao-war.md)
+* [在 Spring Boot 中处理 MissingKotlinParameterException](spring/zai-spring-boot-zhong-chu-li-missingkotlinparameterexception.md)
 
 ## php
 
