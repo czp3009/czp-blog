@@ -27,7 +27,8 @@
       "admin": [
         "czp3009"
       ],
-      "distractionFreeMode": false
+      "distractionFreeMode": false,
+      "proxy": "/gitalk_proxy"
     }
   }
 }

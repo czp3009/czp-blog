@@ -1,6 +1,7 @@
 RewriteEngine On
 
 RewriteRule	update/?$	/update.php		[END]
+RewriteRule gitalk_proxy/?$ /gitalk_proxy.php   [END]
 
 RewriteCond	%{REQUEST_URI}	!_book/
 RewriteRule	^		/_book%{REQUEST_URI}	[END]
