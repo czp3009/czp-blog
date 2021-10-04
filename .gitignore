@@ -1,5 +1,5 @@
 .idea
-/node_modules
+node_modules
 yarn-error.log
 /_book
 *.epub
@@ -7,3 +7,4 @@ yarn-error.log
 *.pdf
 /latest_update.log
 /hook_config.php
+/proxy.php

@@ -1,8 +1,6 @@
 .bookignore
 .gitignore
-/package.json
-/yarn.lock
-/_hook_config.php
-/update.php
-/gitalk_proxy.php
-/.htaccess
+package.json
+yarn.lock
+*.php
+.htaccess
