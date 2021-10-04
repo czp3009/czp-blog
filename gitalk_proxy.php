@@ -5,7 +5,7 @@ if($_SERVER['REQUEST_METHOD'] != 'POST') {
 }
 $requestBody = file_get_contents('php://input');
 $httpArgs = array(
-    'header'  => "Content-type: application/json\r\n",
+    'header'  => ['Content-type: application/json', 'Accept: application/json'],
     'method'  => 'POST',
     'content' => $requestBody
 );
