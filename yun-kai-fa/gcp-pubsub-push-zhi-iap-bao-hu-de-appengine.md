@@ -26,7 +26,7 @@ resource.type="gae_app"
 
 可以在左边的 Log Fields 看到一个 `module_id` 是 null 的东西
 
-![](../.gitbook/assets/image%20%2865%29%20%281%29.png)
+![](../.gitbook/assets/image%20%2865%29%20%281%29%20%281%29.png)
 
 这个没有名字的模块就是 IAP 的访问日志, 由于它没有名字不能单独筛选, 只能混在所有 module 的日志里一起看.
 
