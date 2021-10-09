@@ -132,7 +132,7 @@ static class ApplicationKt$main$1 extends SuspendLambda implements Function2<Cor
 
 由于源码中的 `delay` 函数是一个 suspend 函数, 编译器将以此为切分点构建状态机, 使用 label 来标识当前运行到的地方, 以待之后切换回此协程时可以恢复状态. 而所有变量将被编译为类的成员变量, 存储在堆内存, 因此不会因为建立了很多协程而爆栈.
 
-源码被切分为三个部分:
+源码被切分为三个部分(对应到 switch 选择分支的 0, 1, 2):
 
 ```kotlin
 //step 0
@@ -199,9 +199,71 @@ fun sendRequest(continuation : Continuation<Unit>): Any {
 
 在 jvm 字节码中, 每个 suspend fun 的最后一个参数都是 continuation, 返回类型都是 Object\(对应 kotlin 中的 Any\). 返回类型为 Object 正是因为返回值可能是 `COROUTINE_SUSPENDED`.
 
-阻塞世界可以在任务开始时创建一个协程, 任务结束时结束对应协程从而连接到协程世界. 对于本来使用回调的异步代码同样可以如法炮制, 当回调被运行时结束协程来包装到协程. 协程模型可以描述所有异步过程, 最终在高层提供逻辑统一的异步模型. 很多的已有的库已经有包装到 kotlin coroutine 的扩展, 比如 ReactiveX, Netty, Retrofit 等.
+阻塞世界可以在任务开始时创建一个协程, 任务结束时结束对应协程从而连接到协程世界. 对于本来使用回调的异步代码同样可以如法炮制, 当回调被运行时结束协程来包装到协程. 协程模型可以描述所有异步过程, 最终在高层提供逻辑统一的异步模型. 很多的已有的库已经有包装到 kotlin coroutine 的扩展, 比如 ReactiveX, Netty, Retrofit 等. 回调包装成协程的例子:
 
-kotlin 协程在从阻塞世界\(至少 main 函数在原理上是阻塞的\)\(现在 main 函数也可以是 suspend fun, 不过那是语法糖\)进入时需要显式指定 CoroutineScope, 里面的协程上下文会决定协程调度器, 所有的这一切都是可自定义的. 上例子中的 `runBlocking` 是协程标准库自带的函数, 他会用阻塞当前线程并用此线程作为调度器, 直到所有协程结束. 这也为 kotlin 协程提供了无限可能.
+```kotlin
+val channelGroup = AsynchronousChannelGroup.withFixedThreadPool(1) { Thread(it) }
+
+class AsyncSocket {
+    val socketChannel = AsynchronousSocketChannel.open(channelGroup)
+
+    suspend fun connect(host: String, port: Int) {
+        suspendCoroutine<Void> { continuation ->
+            val address = InetSocketAddress.createUnresolved(host, port)
+            socketChannel.connect(address, Unit, CoroutineCompletionHandler(continuation))
+        }
+    }
+
+    suspend fun read(byteBuffer: ByteBuffer) = suspendCoroutine<Int> { continuation ->
+        socketChannel.read(byteBuffer, Unit, CoroutineCompletionHandler(continuation))
+    }
+
+    suspend fun send(byteBuffer: ByteBuffer) = suspendCoroutine<Int> { continuation ->
+        socketChannel.write(byteBuffer, Unit, CoroutineCompletionHandler(continuation))
+    }
+
+    fun close() = socketChannel.close()
+
+    private class CoroutineCompletionHandler<T>(val continuation: Continuation<T>) : CompletionHandler<T, Unit> {
+        override fun completed(result: T, attachment: Unit) {
+            continuation.resume(result)
+        }
+
+        override fun failed(exc: Throwable, attachment: Unit) {
+            continuation.resumeWithException(exc)
+        }
+    }
+}
+
+suspend fun asyncGet(url: String): Json {
+    val asyncSocket = AsyncSocket().apply {
+        connect(url, 443)
+    }
+    val byteBuffer = ByteBuffer.allocateDirect(Int.MAX_VALUE)
+    //TODO: construct http request here
+    byteBuffer.put(httpRequestBytes)   //write http request to byteBuffer
+    asyncSocket.send(byteBuffer)
+    byteBuffer.rewind() //reuse buffer
+    asyncSocket.read(byteBuffer)
+    val byteArray = byteBuffer.moveToByteArray()    //parse http response
+    //TODO: parse http response here
+    asyncSocket.close()
+    return json //parse result
+}
+
+suspend fun main() {
+    repeat(5) {
+        val result1 = asyncGet("https://api.github.com/users/czp3009/repos")
+        val firstRepoName = result.asArray.first().name
+        val result2 = asyncGet("https://api.github.com/repos/czp3009/$firstRepoName")
+        println($result2.asObject["full_name"])
+    }
+}
+```
+
+AsynchronousSocketChannel 是 java 标准库提供的操作系统网络 IO 事件通知机制\(在 Linux 上为 epoll, Mac 上为 kqueue, 在 Windows 上为 IOCP\). 它会在提供给它线程池中创建一个长期存在的线程去阻塞地获取对多个 socket 的事件通知, 只要指定的 socket 中任意一个有事件可用, 他就会处理此事件\(已连接, 有数据, 已断开等\)并调用回调. 传递给它的线程池中的其他线程会被用来执行回调\(如果线程池不为 Fixed 类型\), 我们不需要在回调中执行耗时任务, 因此只给他一个线程, 它将在一个线程上完成对多个 socket 的监听并调用给予的回调. 在回调中结束之前的协程, 继而将回调世界连接到协程世界. 在高层就可以写出非常漂亮的无回调异步代码. 这很类似于 Node.js 中通过在回调结束时执行 Promise 内部的 resolve 从而将回调式调用转换为 Promise 调用.
+
+kotlin 协程在从阻塞世界\(至少 main 函数在原理上是阻塞的\)\(main 函数也可以是 suspend fun, 不过那是语法糖\)进入时需要显式指定 CoroutineScope, 里面的协程上下文会决定协程调度器, 所有的这一切都是可自定义的. 上例子中的 `runBlocking` 是协程标准库自带的函数, 他会用阻塞当前线程并用此线程作为调度器, 直到所有协程结束. 这种高配置性也为 kotlin 协程提供了无限可能.
 
 kotlin 协程的集大成者自然是 jetbrains 发布的 [ktor](https://ktor.io/) , 它是一个基于协程的全异步 http web server 框架, CIO 引擎更是直接从 Epoll 开始包装为协程, 洁癖狂喜. 如果你还没有试过使用协程来编写代码, 你应该赶紧试试 ktor. Keep moving, don't blocking!
 
