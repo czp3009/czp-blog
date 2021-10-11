@@ -22,7 +22,7 @@ vncserver
 
 随后将会打印出这么几行内容
 
-```text
+```
 New 'server_name:1 (czp)' desktop is server_name:1
 
 Starting applications specified in /home/czp/.vnc/xstartup
@@ -37,7 +37,7 @@ Log file is /home/czp/.vnc/server_name:1.log
 vncserver -kill :1
 ```
 
-其中的 `1`  是服务端启动时打印出来的序号, 更在服务器名后面.
+其中的 `1` 是服务端启动时打印出来的序号, 更在服务器名后面.
 
 很多人对服务端安装什么桌面环境犹豫不决, 秉承 GNU 一贯的实用主义风格, 服务器应当选择一种占用资源尽可能少的桌面, 因此我推荐 `xfce4`
 
@@ -51,9 +51,9 @@ sudo apt install xfce4
 vim ~/.vnc/xstartup
 ```
 
-通常来说, 默认配置已经非常完整, 只需要在最后一行加入\(注意最后一个 &\)
+通常来说, 默认配置已经非常完整, 只需要在最后一行加入(注意最后一个 &)
 
-```text
+```
 startxfce4 &
 ```
 
@@ -81,11 +81,10 @@ startxfce4 &
 
 那么如何连接上服务端呢. 首先我们需要一个 VNC 客户端程序. 如果你在本地使用 Ubuntu, 那么系统已经自带了 `Remmina` 并且应该已经预装了 VNC 插件. 连接配置也非常简单
 
-![](../.gitbook/assets/image%20%2818%29.png)
+![](<../.gitbook/assets/image (34).png>)
 
 服务器应当填写 `服务器地址:桌面序号`
 
-![](../.gitbook/assets/image%20%2857%29.png)
+![](<../.gitbook/assets/image (35).png>)
 
 如果想要长期使用 VNC, 可以将 `vnc4server` 写成服务并使用 `systemctl` 来管理.
-

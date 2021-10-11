@@ -1,10 +1,10 @@
 # Ubuntu 下使用 zsh
 
-环境: Ubuntu 18.04 \| zsh 5.4.2
+环境: Ubuntu 18.04 | zsh 5.4.2
 
 久闻 `zsh` 大名, 但是一直没有用过, 因为听说配置起来很麻烦.
 
-直到最近听说了 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) \(早就有了\), 据称它可以几乎零配置, 所以我们今天就来试一试它.
+直到最近听说了 [oh-my-zsh](https://github.com/robbyrussell/oh-my-zsh) (早就有了), 据称它可以几乎零配置, 所以我们今天就来试一试它.
 
 ## 安装 zsh
 
@@ -22,19 +22,19 @@ apt install zsh
 
 安装 `oh-my-zsh` 可谓是出奇的简单, 但是先要安装 `git`, 很多 Linux 发行版并不会自带 `git`.
 
-在 `Ubuntu` 上我们执行以下命令行来安装 `git`\(root 用户\)
+在 `Ubuntu` 上我们执行以下命令行来安装 `git`(root 用户)
 
 ```bash
 apt install git
 ```
 
-之后安装 `oh-my-zsh`\(普通用户\)
+之后安装 `oh-my-zsh`(普通用户)
 
 ```bash
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 ```
 
-没错, 这就安装好了. 也可以用 `curl` 来下载脚本, 详见 [https://github.com/robbyrussell/oh-my-zsh\#basic-installation](https://github.com/robbyrussell/oh-my-zsh#basic-installation)
+没错, 这就安装好了. 也可以用 `curl` 来下载脚本, 详见 [https://github.com/robbyrussell/oh-my-zsh#basic-installation](https://github.com/robbyrussell/oh-my-zsh#basic-installation)
 
 然后设置 `zsh` 为默认 shell
 
@@ -56,7 +56,7 @@ chsh -s `which zsh`
 
 我们打开用户目录的 `~/.zshrc` 文件, 然后我们搜索 `ZSH_THEME`, 修改主题设置
 
-```text
+```
 ZSH_THEME="agnoster"
 ```
 
@@ -68,7 +68,7 @@ source ~/.zshrc
 
 然后我们会看到这么一个景象
 
-![zsh &#x5B57;&#x4F53;&#x9519;&#x8BEF;](../.gitbook/assets/image%20%2823%29.png)
+![zsh 字体错误](../.gitbook/assets/image.png)
 
 预览图中, 这个主题的向右箭头, 现在都变成了一个不可读字符.
 
@@ -78,7 +78,7 @@ source ~/.zshrc
 
 ## 安装 Powerline 字体
 
-既然如此, 我们就要来安装这个字体\(字体系列\)
+既然如此, 我们就要来安装这个字体(字体系列)
 
 使用命令
 
@@ -92,7 +92,7 @@ cd fonts
 
 然后我们修改终端的字体设置.
 
-![ubuntu &#x7EC8;&#x7AEF;&#x9996;&#x9009;&#x9879;](../.gitbook/assets/image%20%2854%29.png)
+![ubuntu 终端首选项](<../.gitbook/assets/image (1).png>)
 
 很好, 我们的终端看上去十分漂亮了.
 
@@ -100,7 +100,7 @@ cd fonts
 
 有时候, 我们看到别人的 `zsh` 是这样的
 
-![zsh incr &#x63D2;&#x4EF6;&#x8865;&#x5168;&#x6548;&#x679C;](../.gitbook/assets/image%20%286%29.png)
+![zsh incr 插件补全效果](<../.gitbook/assets/image (2).png>)
 
 命令还没输入完, `zsh` 就自动使用唯一可能的候选项充填了光标后的部分, 使得我们不需要不停的按 `tab` 来确认确实没有其他的以这几个字符开头的可能候选项.
 
@@ -126,7 +126,7 @@ cd fonts
 
 默认应该只有 `git` 插件被启用了, 我们将他改为
 
-```text
+```
 plugins=(
   git
   incr
@@ -140,4 +140,3 @@ source ~/.zshrc
 ```
 
 现在, 我们的终端, 也非常好看非常好用了. 小伙伴们欢呼雀跃!
-

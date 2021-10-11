@@ -1,18 +1,18 @@
 # 模拟哔咔 Android 客户端
 
-著名粉红色 APP [https://www.picacomic.com/](https://www.picacomic.com/) 大家一定非常熟悉. 今天我就来研究研究他的工作原理.
+著名粉红色 APP [https://www.picacomic.com/](https://www.picacomic.com) 大家一定非常熟悉. 今天我就来研究研究他的工作原理.
 
-首先我们下载哔咔的 Android APP, 用支持 zip 的归档管理器打开它, 取出 dex 文件准备反编译. 当然, 也可以用 apktool\([https://github.com/iBotPeaches/Apktool](https://github.com/iBotPeaches/Apktool)\) 之类的工具来解压得到 Dalvik 字节码文件.
+首先我们下载哔咔的 Android APP, 用支持 zip 的归档管理器打开它, 取出 dex 文件准备反编译. 当然, 也可以用 apktool([https://github.com/iBotPeaches/Apktool](https://github.com/iBotPeaches/Apktool)) 之类的工具来解压得到 Dalvik 字节码文件.
 
-接下去使用 dex2jar\([https://github.com/pxb1988/dex2jar](https://github.com/pxb1988/dex2jar)\) 把 dex 文件转换为 jar 文件. 现在我们有了 JVM 字节码.
+接下去使用 dex2jar([https://github.com/pxb1988/dex2jar](https://github.com/pxb1988/dex2jar)) 把 dex 文件转换为 jar 文件. 现在我们有了 JVM 字节码.
 
-很多人喜欢直接在反编译工具, 比如 jd-gui\([https://github.com/java-decompiler/jd-gui](https://github.com/java-decompiler/jd-gui)\) 里直接查看代码, 我不推荐那么做. 通常而言, 所查看的代码很有可能已经经过混淆, 在没有代码导航和 View usage 等辅助功能的情况下, 反编译代码很难阅读. 我建议在编译工具中导出源码, 然后在 IDEA 中查看.
+很多人喜欢直接在反编译工具, 比如 jd-gui([https://github.com/java-decompiler/jd-gui](https://github.com/java-decompiler/jd-gui)) 里直接查看代码, 我不推荐那么做. 通常而言, 所查看的代码很有可能已经经过混淆, 在没有代码导航和 View usage 等辅助功能的情况下, 反编译代码很难阅读. 我建议在编译工具中导出源码, 然后在 IDEA 中查看.
 
 首先新建一个 gradle 项目, 然后把 jd-gui 导出的源码 zip 包解压缩到 `src/main/java` , 项目结构就像一个标准的 Java 项目那样
 
-![](../.gitbook/assets/image%20%2811%29.png)
+![](<../.gitbook/assets/image (41).png>)
 
-由于这是一个 Android 项目, 所以还需要使用 gradle 引入运行时\(provided\)依赖来让 IDEA 提供更多代码补全, 在 `build.gradle` 中加入
+由于这是一个 Android 项目, 所以还需要使用 gradle 引入运行时(provided)依赖来让 IDEA 提供更多代码补全, 在 `build.gradle` 中加入
 
 ```groovy
 dependencies {
@@ -25,29 +25,29 @@ dependencies {
 
 对于反编译项目, 快速了解它的方法是首先查看他有哪些依赖. 很显然的, 我们可以看到哔咔使用了 `Retrofit` , 那简直是再好不过了, 随便搜索一个注解
 
-![](../.gitbook/assets/image%20%2839%29.png)
+![](<../.gitbook/assets/image (42).png>)
 
-很好, 所有 API 全部都在一个文件里面 `com.picacomic.fregata.b.a` 
+很好, 所有 API 全部都在一个文件里面 `com.picacomic.fregata.b.a`
 
-然后随便导航一个方法, 比如第一个方法, 发现他在这里被调用 `com.picacomic.fregata.fragments.GameDetail` 
+然后随便导航一个方法, 比如第一个方法, 发现他在这里被调用 `com.picacomic.fregata.fragments.GameDetail`
 
-![com.picacomic.fregata.fragments.GameDetail.dh](../.gitbook/assets/image%20%284%29.png)
+![com.picacomic.fregata.fragments.GameDetail.dh](<../.gitbook/assets/image (43).png>)
 
-再导航到 `dM()` 
+再导航到 `dM()`
 
-![](../.gitbook/assets/image.png)
+![](<../.gitbook/assets/image (44).png>)
 
 导航至变量声明位置, 然后继续导航
 
-![](../.gitbook/assets/image%20%2848%29.png)
+![](<../.gitbook/assets/image (45).png>)
 
-![com.picacomic.fregata.b.d](../.gitbook/assets/image%20%2847%29.png)
+![com.picacomic.fregata.b.d](<../.gitbook/assets/image (46).png>)
 
 现在, 我们甚至知道了客户端必须要有哪些请求头. 至于代码中那些不停在用 `StringBuilder` 构造的玩意, 应该是某种日志, 可见作者并不会用 `String.format` .
 
 通过这里的代码, 我们可以很轻松的看出, 一个合法的哔咔客户端请求应当包含以下请求头
 
-```text
+```
 //固定值
 api-key: C69BAF41DA5ABD1FFEDC6D2FEA56B
 accept: application/vnd.picacomic.com.v1+json
@@ -69,27 +69,27 @@ authorization: 绝大部分 API 所需的 token
 
 可能有人不太清楚 `app-uuid` 的值是怎么确定的, 只需要从这里开始一路导航进去
 
-![](../.gitbook/assets/image%20%2846%29.png)
+![](<../.gitbook/assets/image (47).png>)
 
-![com.picacomic.fregata.c.d](../.gitbook/assets/image%20%285%29.png)
+![com.picacomic.fregata.c.d](<../.gitbook/assets/image (48).png>)
 
 而 `app-version` 和 `app-build-version` 是通过资源文件加载的
 
-![](../.gitbook/assets/image%20%2832%29.png)
+![](<../.gitbook/assets/image (49).png>)
 
 所以我们要用 apktool 导出安装包中已被编译了的 xml 文件. 很显然, 这不是一个 i18n, 所以一定在全局的字符串资源中, 我们找到这个文件
 
-![res/values/strings.xml](../.gitbook/assets/image%20%2856%29.png)
+![res/values/strings.xml](<../.gitbook/assets/image (50).png>)
 
-然后直接搜索 `VERSION` 
+然后直接搜索 `VERSION`
 
-![](../.gitbook/assets/image%20%2849%29.png)
+![](<../.gitbook/assets/image (51).png>)
 
 现在, 我们知道了这几个东西的值了.
 
 至于 `User-Agent` , 那是 `OkHttp` 自己加上去的, 我们可以在这里找到他的版本
 
-![okhttp3.internal.Version](../.gitbook/assets/image%20%2838%29.png)
+![okhttp3.internal.Version](<../.gitbook/assets/image (52).png>)
 
 接下去我们讲讲那几个动态的请求头.
 
@@ -103,7 +103,7 @@ String str2 = UUID.randomUUID().toString().replace("-", "");
 
 哔咔的作者为了生成一个 32 长度随机字符串, 居然想到先生成一个 UUID 然后替换掉里面的 `-` , 令人摸不到头脑.
 
-`signature` 就是签名, 在一般的验证方案中, 这种签名就是把某些字符串全部拼起来, 然后做一个什么算法. 我们来看一下它的源码\(com.picacomic.fregata.MyApplication.c\)
+`signature` 就是签名, 在一般的验证方案中, 这种签名就是把某些字符串全部拼起来, 然后做一个什么算法. 我们来看一下它的源码(com.picacomic.fregata.MyApplication.c)
 
 ```java
 String str4 = request.url().toString().replace("https://picaapi.picacomic.com/", "");
@@ -116,13 +116,13 @@ str4 = MyApplication.bx().c(new String[] {
 
 我们再来看看这个方法 `c` 是什么蛇神牛鬼
 
-![com.picacomic.fregata.MyApplication.c](../.gitbook/assets/image%20%2836%29.png)
+![com.picacomic.fregata.MyApplication.c](<../.gitbook/assets/image (53).png>)
 
-虽然有很多不知所云的代码, 但是勉强还能看懂. 首先通过将数组中的每个元素拼接起来, 分隔符为 ", "\(逗号空格\) 构造了一个 `str2` , 然后输出到日志\(RAW parameters\).
+虽然有很多不知所云的代码, 但是勉强还能看懂. 首先通过将数组中的每个元素拼接起来, 分隔符为 ", "(逗号空格) 构造了一个 `str2` , 然后输出到日志(RAW parameters).
 
-再通过调用 `getStringConFromNative(String[] paramArrayOfString)` 来得到 `str1` \(CONCAT parameters\)
+再通过调用 `getStringConFromNative(String[] paramArrayOfString)` 来得到 `str1` (CONCAT parameters)
 
-最后加密时需要一个来自 `getStringSigFromNative()` 的字符串. 至于这个函数为什么被调用两遍, 为什么会被输出到日志\(CONCAT KEY\)就不得而知了.
+最后加密时需要一个来自 `getStringSigFromNative()` 的字符串. 至于这个函数为什么被调用两遍, 为什么会被输出到日志(CONCAT KEY)就不得而知了.
 
 那我们再看一看所需调用的这几个函数都是什么
 
@@ -138,11 +138,11 @@ public native String getStringSigFromNative();
 
 找到安装包带有的 so 文件, 这里取 x86\_64 平台来方便分析.
 
-![](../.gitbook/assets/image%20%2827%29.png)
+![](<../.gitbook/assets/image (54).png>)
 
 先检查一下它的 ELF header
 
-![](../.gitbook/assets/image%20%2812%29.png)
+![](<../.gitbook/assets/image (55).png>)
 
 看上去它并不需要其他第三方链接库.
 
@@ -309,7 +309,7 @@ v31 = (*(__int64 (__fastcall **)(__int64 *, __int64, __int64))(*a1 + 1384))(a1, 
 v8 = (const char *)(*(__int64 (__fastcall **)(__int64 *, __int64, _QWORD))(*a1 + 1352))(a1, v31, 0LL);
 ```
 
-这里反复在做两件事, 第一件事是得到一个指针, 第二件事是通过这个指针得到 `char*` . 众所周知, Java 内置的 `String` 类型使用 UTF16 编码, 而 C 没有原生的 Unicode 处理, `wchar_t` 那是 cpp 的东西. 所以这其中必须首先经过某些转换才能得到在 C 中可用的 `char*` . 并且由于 JVM 中的数组类型是包含长度的, 这些信息在本地语言中都不存在, 所以数组类型的传入值一定不是直接获取其中的元素的. 因此不难猜到, `*a1 + 1384` 用于取得在 Java 中的传入值 `paramArrayOfString` 中的每一个元素, 数组偏移量就是此函数的第三个参数\(`_QWORD` 即 quad word, 长度为八字节\), 通过分别使用 0 到 7 取得八个传入值的内存地址\(哪八个见上文\). 那么对应的, `*a1 + 1352` 用于将 UTF16 转为 `char*` .
+这里反复在做两件事, 第一件事是得到一个指针, 第二件事是通过这个指针得到 `char*` . 众所周知, Java 内置的 `String` 类型使用 UTF16 编码, 而 C 没有原生的 Unicode 处理, `wchar_t` 那是 cpp 的东西. 所以这其中必须首先经过某些转换才能得到在 C 中可用的 `char*` . 并且由于 JVM 中的数组类型是包含长度的, 这些信息在本地语言中都不存在, 所以数组类型的传入值一定不是直接获取其中的元素的. 因此不难猜到, `*a1 + 1384` 用于取得在 Java 中的传入值 `paramArrayOfString` 中的每一个元素, 数组偏移量就是此函数的第三个参数(`_QWORD` 即 quad word, 长度为八字节), 通过分别使用 0 到 7 取得八个传入值的内存地址(哪八个见上文). 那么对应的, `*a1 + 1352` 用于将 UTF16 转为 `char*` .
 
 接下去, 分别测量了这八个参数的长度, 然后构造了这样一个内存块.
 
@@ -319,7 +319,7 @@ v14 = (char *)malloc(v13 + v12 + v11 + v10 + v28 + v29 + v30 + v9 + 2);
 
 这很明显是要进行字符串拼接了, 至于为什么长度最后加二而不是加一不得而知.
 
-随后开始了拼接\(部分变量已手动取名\)
+随后开始了拼接(部分变量已手动取名)
 
 ```c
 if ( (unsigned int)genKey10(a1, a2) )
@@ -351,7 +351,7 @@ else
 
 首先调用了 `genKey10` 这个函数, `*a1` 就是之前用了好几次的 JVM 调用的函数指针起始位置, `*a2` 就是 Java 中的传入值, 类型是 `String[]` .
 
-至于这个函数是做什么的, 看了半天愣是没看懂. 此前看过一篇文章 [https://blog.kaaass.net/archives/1074](https://blog.kaaass.net/archives/1074) 似乎是用来校验 APK 签名的. 但是为什么校验失败之后会有另一种拼接方式, 令人困惑. \(此后我尝试了模拟校验失败之后的情况, 用 else 分支中的逻辑来拼接并产生 signature, 但是服务器的返回总是没有 data 字段, 这是 signature 错误的表现. 所以这可能仅仅是为了阻止第三方修改 APK\)
+至于这个函数是做什么的, 看了半天愣是没看懂. 此前看过一篇文章 [https://blog.kaaass.net/archives/1074](https://blog.kaaass.net/archives/1074) 似乎是用来校验 APK 签名的. 但是为什么校验失败之后会有另一种拼接方式, 令人困惑. (此后我尝试了模拟校验失败之后的情况, 用 else 分支中的逻辑来拼接并产生 signature, 但是服务器的返回总是没有 data 字段, 这是 signature 错误的表现. 所以这可能仅仅是为了阻止第三方修改 APK)
 
 那么在正常情况下, `str1` 最终的值就是拼接参数 1 到 5, 类似这样
 
@@ -404,15 +404,15 @@ __int64 __fastcall Java_com_picacomic_fregata_MyApplication_getStringSigFromNati
 
 这玩意首先定义了一个字符串, 然后再在它的各个下标用其他值替换原有的字符, 甚至有些替换是两个字节一起换的. 脑内模拟这一过程太过困难, 我们直接来运行一下它得到输出.
 
-![](../.gitbook/assets/image%20%2859%29.png)
+![](<../.gitbook/assets/image (57).png>)
 
-现在我们得到了用于产生 signature 所用的密钥\(这对应于 2.2.1.3.3.4 版本\)
+现在我们得到了用于产生 signature 所用的密钥(这对应于 2.2.1.3.3.4 版本)
 
-```text
+```
 ~d}$Q7$eIni=V)9\RK/P.RM4;9[7|@/CA}b~OW!3?EV`:<>M7pddUBL5n|0/*Cn
 ```
 
-接下去我们回到 Java 中, 看看如何使用之前得到的 `RAW parameters` 和 `CONCAT KEY` 
+接下去我们回到 Java 中, 看看如何使用之前得到的 `RAW parameters` 和 `CONCAT KEY`
 
 ```java
 return this.hl.C(str1, getStringSigFromNative());
@@ -420,9 +420,9 @@ return this.hl.C(str1, getStringSigFromNative());
 
 结果这个 `C` 方法反编译不出来
 
-![com.picacomic.fregata.utils](../.gitbook/assets/image%20%2845%29.png)
+![com.picacomic.fregata.utils](<../.gitbook/assets/image (58).png>)
 
-那我们试试直接用 IDEA\(Fernflower\) 来反编译, 这下反编译出来了, 原来是这段代码用了太多 label
+那我们试试直接用 IDEA(Fernflower) 来反编译, 这下反编译出来了, 原来是这段代码用了太多 label
 
 ```java
 //
@@ -523,7 +523,6 @@ public class d {
         }
     }
 }
-
 ```
 
 结果整了那么大一圈, `C` 方法的作用只是把之前得到的 `str1` 转为小写然后用 `a` 方法进行 SHA256 加密.
@@ -562,7 +561,7 @@ public class SignInBody {
 
 根据这些来构造请求
 
-```text
+```
 REQUEST: https://picaapi.picacomic.com/auth/sign-in
 METHOD: HttpMethod(value=POST)
 COMMON HEADERS
@@ -597,11 +596,11 @@ BODY END
 }
 ```
 
-\(如果用户名或密码不正确返回的 message 将不是 success. 如果 signature 错误, 将返回 success 但是没有 data 字段\)
+(如果用户名或密码不正确返回的 message 将不是 success. 如果 signature 错误, 将返回 success 但是没有 data 字段)
 
 返回内容中的 `token` 就是访问其他 API 时 header 中需要的 `authorization` 的值. 这样就实现了模拟登录.
 
-\(下面是吐槽时间\)而至于为什么很多 API 写成这样
+(下面是吐槽时间)而至于为什么很多 API 写成这样
 
 ```java
 @GET("categories")
@@ -612,13 +611,12 @@ Call<GeneralResponse<CategoryResponse>> al(@Header("authorization") String param
 
 更离奇的是简单的分页能被写出这样的模型
 
-![](../.gitbook/assets/image%20%2810%29.png)
+![](<../.gitbook/assets/image (59).png>)
 
 哔咔 APP 的编译版本是 Java6.0, 很难想象由于不知道泛型而把这种几乎是一样的类写了几十遍是如何的勤奋.
 
-剩下的 API 没有什么特别的, 全部都在 `com.picacomic.fregata.b.a` , 感兴趣的可以自行查看. 如果懒得反编译的话可以看这则 gist [https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f](https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f) \(2021-02-06 发现这篇 gist 莫名消失了, 可能是因为侵权被 Github 删了\)
+剩下的 API 没有什么特别的, 全部都在 `com.picacomic.fregata.b.a` , 感兴趣的可以自行查看. 如果懒得反编译的话可以看这则 gist [https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f](https://gist.github.com/czp3009/ce9de65b9784108d6bf419614f1dd89f) (2021-02-06 发现这篇 gist 莫名消失了, 可能是因为侵权被 Github 删了)
 
 早些时间实现了一个哔咔 API 的调用库 [https://github.com/czp3009/picacomic-api/](https://github.com/czp3009/picacomic-api/)
 
 这应该是少有的填完的坑, 小伙伴们痛哭流涕.
-

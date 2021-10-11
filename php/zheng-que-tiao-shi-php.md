@@ -1,6 +1,6 @@
 # 正确调试 PHP
 
-环境: Ubuntu 18.04 \| PHPStorm 2018.2.3 \| PHP 7.2.10
+环境: Ubuntu 18.04 | PHPStorm 2018.2.3 | PHP 7.2.10
 
 之前在 Google 搜索 `PHPStorm xdebug`, 结果搜到的中文结果里, 全是用什么 `PHPStorm` 的 Server 设置, 然后一阵眼花缭乱的配置, 说道, 调试 PHP 很简单.
 
@@ -20,7 +20,7 @@ apt install php-xdebug
 
 没错, 这样就安装好了.
 
-然而 `xdebug` 默认没有配置 `IDE KEY`, 所以我们还是得配置一下\(说好的 zero-configuration 呢\).
+然而 `xdebug` 默认没有配置 `IDE KEY`, 所以我们还是得配置一下(说好的 zero-configuration 呢).
 
 首先, 我们得找到 `xdebug` 的配置文件的位置, 我们使用 `PHP 探针` 来查看 `PHP` 的所有配置信息.
 
@@ -32,21 +32,21 @@ php -r "phpinfo();" | grep xdebug
 
 输出的内容中, 第一行应该是这样的
 
-```text
+```
 /etc/php/7.2/cli/conf.d/20-xdebug.ini,
 ```
 
-这就是 `xdebug` 的配置文件路径, 我们打开并修改它, 填入如下配置\(root 权限\)
+这就是 `xdebug` 的配置文件路径, 我们打开并修改它, 填入如下配置(root 权限)
 
-```text
+```
 zend_extension=xdebug.so
 xdebug.idekey='PHPSTORM' 
 xdebug.remote_enable=1
 ```
 
-`zend_extension` 是默认就存在的配置项, 不需要修改它. `xdebug.idekey` 指定了一个字符串, 用于与 `xdebug` 建立连接\(Socket\)时的密钥 `xdebug.remote_enable` 由于使用的是一个 Socket 连接, 所以所有调试都是远程调试
+`zend_extension` 是默认就存在的配置项, 不需要修改它. `xdebug.idekey` 指定了一个字符串, 用于与 `xdebug` 建立连接(Socket)时的密钥 `xdebug.remote_enable` 由于使用的是一个 Socket 连接, 所以所有调试都是远程调试
 
-\(注意, `xdebug` 的默认端口为 9000, 不应该改变这个设置, 因为大量工具都以此为默认值\)
+(注意, `xdebug` 的默认端口为 9000, 不应该改变这个设置, 因为大量工具都以此为默认值)
 
 如果配置项不存在则添加它, 最后保存这份文件.
 
@@ -60,7 +60,7 @@ xdebug.remote_enable=1
 
 以 `yii2` 框架为例, 配置大致上是这样的
 
-![yii2 run configurations](../.gitbook/assets/image%20%282%29.png)
+![yii2 run configurations](<../.gitbook/assets/image (3).png>)
 
 就这么简单么, 没错, 就是这么简单.
 
@@ -78,17 +78,17 @@ xdebug.remote_enable=1
 
 如果你使用 `FireFox`, 详见此处 [https://www.jetbrains.com/help/phpstorm/browser-debugging-extensions.html](https://www.jetbrains.com/help/phpstorm/browser-debugging-extensions.html)
 
-插件安装后, 我们在 `Chrome` 右上角可以看到插件的图标\(一个小虫子\), 我们在图标上右键, 点击 `选项` 即可打开插件的设置界面.
+插件安装后, 我们在 `Chrome` 右上角可以看到插件的图标(一个小虫子), 我们在图标上右键, 点击 `选项` 即可打开插件的设置界面.
 
 `IDE Key` 这一项下面的下拉框中选中 `PhpStorm`, 此时 `IDE Key` 会被自动设置为 `PHPSTORM`, 这就是为什么之前我们在 `xdebug` 设置中, 需要把 `xdebug.idekey` 的设置为这个.
 
-![](../.gitbook/assets/image%20%2840%29.png)
+![](<../.gitbook/assets/image (4).png>)
 
-之后我们打开我们的网站上的一个页面\(随便哪个页面\)\(`HttpStatus` 必须是 `200`, 否则插件无法启用\), 然后在插件的图标上点左键, 再点 `Debug`
+之后我们打开我们的网站上的一个页面(随便哪个页面)(`HttpStatus` 必须是 `200`, 否则插件无法启用), 然后在插件的图标上点左键, 再点 `Debug`
 
 这样, 插件就启用了对当前站点的调试.
 
-![](../.gitbook/assets/image%20%2837%29.png)
+![](<../.gitbook/assets/image (5).png>)
 
 注意, 启用后, 插件图标应该变绿.
 
@@ -96,7 +96,6 @@ xdebug.remote_enable=1
 
 然后我们再到代码中打一个断点, 刷新页面, 此时我们的代码确实在这里停下了, 并可以看到所有的变量.
 
-![](../.gitbook/assets/image%20%2855%29.png)
+![](<../.gitbook/assets/image (6).png>)
 
 我们终于可以调试 PHP 了, 小伙伴们一把眼泪一把鼻涕地跟 echo 调试法 说再见.
-

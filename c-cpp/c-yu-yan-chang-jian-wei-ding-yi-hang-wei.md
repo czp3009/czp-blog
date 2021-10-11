@@ -6,7 +6,7 @@
 
 ## 什么是未定义行为
 
-未定义行为\(undefined behavior\)\(简称 UB\)指编译器允许编译, 但是语言标准中没有定义的行为. 这种现象的出现并不是语言标准不完善, 而是因为这种行为在编译时无法检查其错误或者受限于具体的 cpu 指令以及操作系统优化等使其会有在编译时不可预知的运行结果.
+未定义行为(undefined behavior)(简称 UB)指编译器允许编译, 但是语言标准中没有定义的行为. 这种现象的出现并不是语言标准不完善, 而是因为这种行为在编译时无法检查其错误或者受限于具体的 cpu 指令以及操作系统优化等使其会有在编译时不可预知的运行结果.
 
 最简单的就是数组越界, 这种错误在 c 语言编译时无法检查, 而 c 标准也没有定义越界后会访问到什么.
 
@@ -16,32 +16,32 @@
 
 ### 数组越界
 
-平时俗称的数组越界实际上是指 数组下标越界\(array index out of bounds\). 数组越界是最常见的一种未定义行为\(一般情况下也是一种错误\). 例如以下代码
+平时俗称的数组越界实际上是指 数组下标越界(array index out of bounds). 数组越界是最常见的一种未定义行为(一般情况下也是一种错误). 例如以下代码
 
-```text
+```
 void func() {
     int array[5] = {0};
     printf("%d", array[5]);
 }
 ```
 
-![](../.gitbook/assets/image%20%2833%29.png)
+![](<../.gitbook/assets/image (64).png>)
 
 显然数组下标最大为 4, 但是却访问了 5. 在 Jetbrains Clion 中可以看到此处的代码错误提示.
 
-而至于 `array[5]` 到底会访问到什么取决于操作系统和编译器. 例如 windows 平台的 msvc 编译器的 debug 模式会将所有未初始化内存都用特定值来充填, 在未初始化内存的边缘会用另一个值来充填\(详见烫烫烫屯屯屯问题\). 但是在 linux 平台的 gcc 中此时只会访问到一个普通的未初始化内存, 因此其值是不可预期的.
+而至于 `array[5]` 到底会访问到什么取决于操作系统和编译器. 例如 windows 平台的 msvc 编译器的 debug 模式会将所有未初始化内存都用特定值来充填, 在未初始化内存的边缘会用另一个值来充填(详见烫烫烫屯屯屯问题). 但是在 linux 平台的 gcc 中此时只会访问到一个普通的未初始化内存, 因此其值是不可预期的.
 
-如果所访问的内存并没有在代码中申请过, 那么这块内存就有可能在操作系统分配给程序的内存之外, 此时就会产生以下结果\(控制台输出\)
+如果所访问的内存并没有在代码中申请过, 那么这块内存就有可能在操作系统分配给程序的内存之外, 此时就会产生以下结果(控制台输出)
 
-```text
+```
 Signal: SIGSEGV (Segmentation fault)
 
 Process finished with exit code 1
 ```
 
-平时俗称的段错误实际上指 存储器区段错误\(segmentation fault\), 这种错误最早用来表示程序企图访问一个 cpu 无法寻址的内存地址\(超过了物理内存的长度\), 而现代操作系统为了避免程序可以访问操作系统或者其他程序的内存, 会在程序企图访问一个地址前检查其访问权限\(并且现代操作系统会对程序可以访问的内存做内存映射, 程序中取得的地址并不是真实物理地址\), 因此现代段错误还包含访问权限冲突\(access violation\).
+平时俗称的段错误实际上指 存储器区段错误(segmentation fault), 这种错误最早用来表示程序企图访问一个 cpu 无法寻址的内存地址(超过了物理内存的长度), 而现代操作系统为了避免程序可以访问操作系统或者其他程序的内存, 会在程序企图访问一个地址前检查其访问权限(并且现代操作系统会对程序可以访问的内存做内存映射, 程序中取得的地址并不是真实物理地址), 因此现代段错误还包含访问权限冲突(access violation).
 
-一旦程序出现段错误, 程序就会收到 `SIGSEGV` 信号, "SIG" 是 unix 信号的固定前缀, "SEGV" 是段违例\(segmentation violation\). 如果程序没有捕获这个信号, 默认动作是异常终止.
+一旦程序出现段错误, 程序就会收到 `SIGSEGV` 信号, "SIG" 是 unix 信号的固定前缀, "SEGV" 是段违例(segmentation violation). 如果程序没有捕获这个信号, 默认动作是异常终止.
 
 ```c
 #include <stdio.h>
@@ -62,15 +62,15 @@ int main() {
 }
 ```
 
-\(所有的信号都是 `signal.h` 里定义的宏\)
+(所有的信号都是 `signal.h` 里定义的宏)
 
-也可以通过捕获 `SIGSEGV` 来使程序看起来正常退出\(return 0\), 虽然这并没有什么用.
+也可以通过捕获 `SIGSEGV` 来使程序看起来正常退出(return 0), 虽然这并没有什么用.
 
-值得注意的是, 与其他常见信号比如 `SIGINT` \(ctrl c\)不同, 如果程序捕获了 `SIGINT` 并且没有在 handler 中退出程序, 那么程序在 handler 返回后会从被中断的那一行的下面一行继续运行. 而 `SIGSEGV` 即使被捕获, handler 结束运行后会再次触发 `SIGSEGV` 使 handler 又被执行一次. 如果 handler 没有退出程序就会在出现段错误的这一行无限循环执行 handler. 因此并不能通过捕获 `SIGSEGV` 来强行使程序继续运行下去.
+值得注意的是, 与其他常见信号比如 `SIGINT` (ctrl c)不同, 如果程序捕获了 `SIGINT` 并且没有在 handler 中退出程序, 那么程序在 handler 返回后会从被中断的那一行的下面一行继续运行. 而 `SIGSEGV` 即使被捕获, handler 结束运行后会再次触发 `SIGSEGV` 使 handler 又被执行一次. 如果 handler 没有退出程序就会在出现段错误的这一行无限循环执行 handler. 因此并不能通过捕获 `SIGSEGV` 来强行使程序继续运行下去.
 
 ### 修改字符串字面量
 
-字面量\(literal\)是写在源代码中的表示固定值的符号\(token\). 平时俗称的硬编码\(hard coding\)大多数时候就是在说字面量\(有时指常量\). 举个例子
+字面量(literal)是写在源代码中的表示固定值的符号(token). 平时俗称的硬编码(hard coding)大多数时候就是在说字面量(有时指常量). 举个例子
 
 ```c
 const int var1 = 1;
@@ -104,18 +104,18 @@ int main() {
 
 以 linux 平台为例, 这段代码将打印出两个相同的内存地址, 由此可以证明 `"Hello"` 这个字面量是全 ELF 共享的, 无论有多少个使用了 "Hello" 的地方, 它们都会指向同一个地址.
 
-\*nix 平台所用的二进制文件\(包括共享库与可执行文件\)被称为 ELF, 其典型结构如下
+\*nix 平台所用的二进制文件(包括共享库与可执行文件)被称为 ELF, 其典型结构如下
 
-![\(&#x5DE6;&#x8FB9;&#x4E3A; &#x5171;&#x4EAB;&#x5E93;, &#x53F3;&#x8FB9;&#x4E3A; &#x53EF;&#x6267;&#x884C;&#x6587;&#x4EF6;\)](../.gitbook/assets/image%20%2866%29.png)
+![(左边为 共享库, 右边为 可执行文件)](<../.gitbook/assets/image (66).png>)
 
 一个 ELF 包含以下几个部分
 
-* ELF 头\(ELF header\)
-* 程序头\(program headers\)
-* 节头\(section headers\)
+* ELF 头(ELF header)
+* 程序头(program headers)
+* 节头(section headers)
 * sections
 
-ELF header 存储在 ELF 文件的起始位置, 包含一个用于表示文件格式的魔数\(magic number\)以及一系列程序基本信息, 使用 `readelf` 可以读取出其中的内容
+ELF header 存储在 ELF 文件的起始位置, 包含一个用于表示文件格式的魔数(magic number)以及一系列程序基本信息, 使用 `readelf` 可以读取出其中的内容
 
 ```bash
 $ readelf -h c_sample
@@ -145,9 +145,9 @@ ELF Header:
 
 section headers 包含了每个 section 的名字与起始位置, 使用 `readelf -S` 来查看.
 
-program headers 告诉操作系统为了执行此 ELF 需要到哪些地址\(文件偏移量\)加载数据到内存, 这些地址也在 section 区域中, 通常是多个 sections 的集合. 使用 `readelf -l` 来查看.
+program headers 告诉操作系统为了执行此 ELF 需要到哪些地址(文件偏移量)加载数据到内存, 这些地址也在 section 区域中, 通常是多个 sections 的集合. 使用 `readelf -l` 来查看.
 
-sections 组成了 ELF 的本体, 而 program headers 与 section headers 是如何使用这些 sections 的元信息. 一般情况下共享库\(shared object, 即 .so 文件\)是不包含 program headers 区域的, 但是如果有合法的 program headers 并且确实有正确的 `main` 函数, 共享库也是可以当做可执行程序运行的. 所以共享库和可执行程序并没有本体上的区别.
+sections 组成了 ELF 的本体, 而 program headers 与 section headers 是如何使用这些 sections 的元信息. 一般情况下共享库(shared object, 即 .so 文件)是不包含 program headers 区域的, 但是如果有合法的 program headers 并且确实有正确的 `main` 函数, 共享库也是可以当做可执行程序运行的. 所以共享库和可执行程序并没有本体上的区别.
 
 在那么多的 sections 中, 我们只关心其中的 `.rodata` 节. rodata 就是 read only data, 它存储着这个 ELF 中的全局共享的数据. 使用命令来读取这一节
 
@@ -157,7 +157,7 @@ Hex dump of section '.rodata':
   0x00000690 01000200 48656c6c 6f00              ....Hello.
 ```
 
-`0x00000690` 是之前在 `readelf -S` 命令中可以看到的 `.rodata` 节的起始位置, `01000200` 是与操作系统有关的魔数\(用来表示内存分配的一些 flag\), 在 linux x86\_64 平台固定为这个值, 之后就是用户代码里写的字符串字面量\(因为是字符串, 最后还有个 \0\).
+`0x00000690` 是之前在 `readelf -S` 命令中可以看到的 `.rodata` 节的起始位置, `01000200` 是与操作系统有关的魔数(用来表示内存分配的一些 flag), 在 linux x86\_64 平台固定为这个值, 之后就是用户代码里写的字符串字面量(因为是字符串, 最后还有个 \0).
 
 如果使用多个字符串字面量
 
@@ -191,7 +191,7 @@ int main() {
 
 这段代码在 linux 平台会打印出 "World"
 
-回到最初的问题, 由于字符串字面量一定会被编译到 `.rodata` 节, 而此节从 ELF 加载到内存后是被操作系统保护的, 是只读的. 之前提到过, 现代操作系统会在程序企图对一个地址进行操作前检查权限, 如果权限不正确也会产生段错误\(被中断\).
+回到最初的问题, 由于字符串字面量一定会被编译到 `.rodata` 节, 而此节从 ELF 加载到内存后是被操作系统保护的, 是只读的. 之前提到过, 现代操作系统会在程序企图对一个地址进行操作前检查权限, 如果权限不正确也会产生段错误(被中断).
 
 但是以下代码是正确的
 
@@ -200,7 +200,7 @@ char string[] = "Hello";
 string[0] = 'h';
 ```
 
-因为这实际上是语法糖, 最终编译为\(每个字符都对应到机器码里的一个字节, 不会被编译到 `.rodata` 去\):
+因为这实际上是语法糖, 最终编译为(每个字符都对应到机器码里的一个字节, 不会被编译到 `.rodata` 去):
 
 ```c
 char string[] = {'H', 'e', 'l', 'l', 'o', '\0'};
@@ -218,9 +218,9 @@ int main() {
 
 然后编译这个程序. 使用编译器的 debug 模式编译可以使 ELF 包含符号表从而更好地阅读汇编, 例如 `gcc -g main.c`
 
-接着使用 `objdump -S -d a.out` 来查看此 ELF 的 `.text` 节\(text 节用于存储指令\), 找到其中的 main 函数
+接着使用 `objdump -S -d a.out` 来查看此 ELF 的 `.text` 节(text 节用于存储指令), 找到其中的 main 函数
 
-```text
+```
 0000000000001169 <main>:
 #include <stdio.h>
 
@@ -271,9 +271,9 @@ char const *string = "Hello";
 
 ### 除零
 
-除零错误在很多语言都有, 除零错误其实是指 除以零\(division by zero\).
+除零错误在很多语言都有, 除零错误其实是指 除以零(division by zero).
 
-除以零之所以是未定义行为是因为在数学上除以零的结果就是没有定义的. 其实数学上还有好几个没有定义的值, 一些语言会用 NaN\(not a number\) 来表示这种值. 在 c 语言中这样的表达式是不允许编译的
+除以零之所以是未定义行为是因为在数学上除以零的结果就是没有定义的. 其实数学上还有好几个没有定义的值, 一些语言会用 NaN(not a number) 来表示这种值. 在 c 语言中这样的表达式是不允许编译的
 
 ```c
 #include <stdio.h>
@@ -285,7 +285,7 @@ int main() {
 }
 ```
 
-```text
+```
 main.c:4:20: warning: division by zero [-Wdiv-by-zero]
      int result = 1 / 0;
                     ^
@@ -310,7 +310,7 @@ int main() {
 Signal: SIGFPE (Arithmetic exception)
 ```
 
-FPE 即 floating-point exception, 表示程序执行了一个错误的算术操作. 与 `SIGSEGV` 类似, 不能通过捕获信号来强行使程序运行下去\(handler 会被反复运行\).
+FPE 即 floating-point exception, 表示程序执行了一个错误的算术操作. 与 `SIGSEGV` 类似, 不能通过捕获信号来强行使程序运行下去(handler 会被反复运行).
 
 所以不要再问某个数字除以零等于什么了, 这是不能运行的.
 
@@ -344,19 +344,19 @@ main.c:5:1: warning: control reaches end of non-void function [-Wreturn-type]
 
 而即使能编译, 最终的运行结果也取决于编译器和 cpu 架构.
 
-linux x86\_64 平台 gcc 7.5.0\(c89, c90, c99, c11\) 的结果是第二行输出 0
+linux x86\_64 平台 gcc 7.5.0(c89, c90, c99, c11) 的结果是第二行输出 0
 
-linux x86\_64 平台 g++ 7.5.0\(c++98, c++11, c++14\) 第二行输出 6
+linux x86\_64 平台 g++ 7.5.0(c++98, c++11, c++14) 第二行输出 6
 
-linux x86\_64 平台 clang 6.0.0\(c89, c90, c99, c11\) 第二行输出随机数字
+linux x86\_64 平台 clang 6.0.0(c89, c90, c99, c11) 第二行输出随机数字
 
 如果对此感兴趣可以找一些在线的 playground 把所有编译器都试一遍.
 
 实际上讨论到底会有什么输出是没有意义的, 因为未定义行为的结果会因为编译器, 操作系统, cpu 架构不同而不同. 下面略微讲解一下为什么 g++ 输出 6
 
-首先, 函数退栈的时候需要把返回值交给其调用者, 而函数自身已经退栈, 所以为了传递返回值必须将其存入某个事先约定的寄存器\(与 cpu 架构有关\), 函数退栈后调用者再到约定的寄存器去获取返回值. 将返回值保存到目标寄存器的操作就是 return.
+首先, 函数退栈的时候需要把返回值交给其调用者, 而函数自身已经退栈, 所以为了传递返回值必须将其存入某个事先约定的寄存器(与 cpu 架构有关), 函数退栈后调用者再到约定的寄存器去获取返回值. 将返回值保存到目标寄存器的操作就是 return.
 
-所以非常显而易见的是, 如果编译器没有做额外的处理\(故意刷新 return register\), 那么取返回值时, 总能取到上一个调用 return 的函数存入的值.
+所以非常显而易见的是, 如果编译器没有做额外的处理(故意刷新 return register), 那么取返回值时, 总能取到上一个调用 return 的函数存入的值.
 
 非常凑巧的是, `printf` 函数是有返回值的
 
@@ -384,13 +384,13 @@ int main() {
 }
 ```
 
-\(第二行输出 6\)
+(第二行输出 6)
 
-x86 平台的 64 位整型返回值会使用 `RAX` , 而浮点数更是有 `XXM0` 到 `XXM7` \(Streaming SIMD Extensions\)那么多寄存器联合使用. 所以如果上上个退栈的函数的返回类型和上一个退栈的函数类型不同, 此时甚至会取到"未初始化"的寄存器值.
+x86 平台的 64 位整型返回值会使用 `RAX` , 而浮点数更是有 `XXM0` 到 `XXM7` (Streaming SIMD Extensions)那么多寄存器联合使用. 所以如果上上个退栈的函数的返回类型和上一个退栈的函数类型不同, 此时甚至会取到"未初始化"的寄存器值.
 
 ### 存在副作用的子表达式
 
-[副作用](https://zh.wikipedia.org/wiki/%E5%89%AF%E4%BD%9C%E7%94%A8_%28%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6%29)\(side effect\)的意思是函数会对其调用者的上下文中的某些东西产生改变, 比如函数内部改变了全局变量, 或者函数传入值的表达式本身会改变其调用者所在的上下文中的变量.
+[副作用](https://zh.wikipedia.org/wiki/%E5%89%AF%E4%BD%9C%E7%94%A8\_\(%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%A7%91%E5%AD%A6\))(side effect)的意思是函数会对其调用者的上下文中的某些东西产生改变, 比如函数内部改变了全局变量, 或者函数传入值的表达式本身会改变其调用者所在的上下文中的变量.
 
 很多谭浩强爱好者会问出下面这种问题
 
@@ -404,7 +404,7 @@ int main() {
 }
 ```
 
-\(输出 "1 2"\)\(以 linux 平台的 gcc 编译器为例, 下同\)
+(输出 "1 2")(以 linux 平台的 gcc 编译器为例, 下同)
 
 然后开始盲目分析: "i++" 是用完了再加, 所以输出 1, 而到了第二个参数时 i 已经被加过了, 所以输出 2. 谭浩强直呼闭门大弟子.
 
@@ -430,13 +430,13 @@ printf("%d %d\n", i++, ++i);
 
 幸运的是 jetbrains 用户并不会写出这种代码
 
-![](../.gitbook/assets/image%20%2867%29.png)
+![](<../.gitbook/assets/image (67).png>)
 
 只要能连上互联网, 就可以在 c standard 中找到这个问题的描述
 
 C11: 6.5 Expressions:
 
-> **If a side effect on a scalar object is unsequenced relative to** either a different side effect on the same scalar object or **a value computation using the value of the same scalar object**, the behavior is undefined. If there are multiple allowable orderings of the subexpressions of an expression, the behavior is undefined if such an unsequenced side effect occurs in any of the orderings.84\).
+> **If a side effect on a scalar object is unsequenced relative to** either a different side effect on the same scalar object or **a value computation using the value of the same scalar object**, the behavior is undefined. If there are multiple allowable orderings of the subexpressions of an expression, the behavior is undefined if such an unsequenced side effect occurs in any of the orderings.84).
 
 简单地说, 如果一个很长的表达式有多个子表达式, 并且子表达式存在副作用, 那么其运行顺序就是未定义的. 到底是哪个先运行取决于编译器. 所以不要分析了, 这是没有道理的.
 
@@ -448,11 +448,11 @@ int i = 1;
 array[i] = i++;
 ```
 
-\(在 linux x86\_64 gcc 结果为 array\[2\] 被赋值为 1\)
+(在 linux x86\_64 gcc 结果为 array\[2] 被赋值为 1)
 
 避免此类问题的方法非常简单, 那就是不要忽略编译器警告
 
-```text
+```
 main.c:6:17: warning: unsequenced modification and access to 'i' [-Wunsequenced]
     array[i] = i++;
           ~     ^
@@ -488,7 +488,7 @@ int main() {
 }
 ```
 
-\(linux x86\_64 gcc 输出 2\)
+(linux x86\_64 gcc 输出 2)
 
 这种错误就很难追踪了, 在实际项目中应该尽可能避免副作用.
 
@@ -506,7 +506,7 @@ int main() {
 }
 ```
 
-某些谭浩强选手会说这里的右操作数会让 int 溢出从而变为 4294967295\(2^32 - 1\), 实际上并不是, 这是一个未定义行为.
+某些谭浩强选手会说这里的右操作数会让 int 溢出从而变为 4294967295(2^32 - 1), 实际上并不是, 这是一个未定义行为.
 
 linux x86\_64 gcc/g++ 输出 2
 
@@ -515,4 +515,3 @@ linux x86\_64 clang 输出 4195536
 ## 如何避免未定义行为
 
 立即安装 [https://www.jetbrains.com/clion/](https://www.jetbrains.com/clion/)
-

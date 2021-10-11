@@ -20,25 +20,25 @@
 
 APP 一打开是这样的
 
-![](../.gitbook/assets/image%20%2819%29.png)
+![](<../.gitbook/assets/image (7).png>)
 
 看到下面这条非常类似 IONIC 的抽屉, 起初以为是 H5 APP, 但是看了一下各种动画效果发觉并不是.
 
 点击下方抽屉里的 `我的` 按钮
 
-![](../.gitbook/assets/image%20%2853%29.png)
+![](<../.gitbook/assets/image (8).png>)
 
 然后点击 `请先登陆`
 
-![](../.gitbook/assets/image%20%2842%29.png)
+![](<../.gitbook/assets/image (9).png>)
 
 如果我们不输入用户名直接点 `登陆` 甚至还会有一个 Toast 来提醒用户必须输入用户名. 这个 APP 竟然有本地表单验证实在是难以置信.
 
 ## 截包
 
-我们马上来截包一下, 当我们登陆的时候, APP 会发出这样的一个数据包\(MultipartForm\)
+我们马上来截包一下, 当我们登陆的时候, APP 会发出这样的一个数据包(MultipartForm)
 
-```text
+```
 POST /v11/loginregister?token=4faa8662c59590c6f43ae9fe5b002b42&_time=1537463981249&inf_enc=7e0a0c15d58556a991eb94011ac16cc4 HTTP/1.1
 Accept-Language: zh_CN
 Cookie: 
@@ -97,11 +97,11 @@ Params 有三个, `token`, `_time`, `inf_enc`.
 
 我们在未输入用户名的情况下点击 `登录` 按钮会被提示 `请输入你的登录账号`, 这段文本一定在这个按钮的监听器中, 我们搜索它.
 
-![](../.gitbook/assets/image%20%289%29.png)
+![](<../.gitbook/assets/image (10).png>)
 
 搜索结果有两个, 而第二个结果里面有什么 验证码 之类的东西, 我们在 Android 客户端登录的时候是没有验证码的, 所以一定不是这个.
 
-在类 `com.chaoxing.mobile.account.d`\(已混淆\) 中我们找到了一个 ClickListener
+在类 `com.chaoxing.mobile.account.d`(已混淆) 中我们找到了一个 ClickListener
 
 ```java
 private OnClickListener q = new OnClickListener() {
@@ -184,13 +184,13 @@ private void a(String username, String password, int loginType) {   //loginType 
 }
 ```
 
-\(为了方便阅读, 一些变量已经人工反混淆并添加了一些注释, 下同\)
+(为了方便阅读, 一些变量已经人工反混淆并添加了一些注释, 下同)
 
-这里构造了一个 `MultipartEntity` \(来自 Apache HttpClient\), 而其内容就是我们登陆的时候, 发送的那个 MultipartForm.
+这里构造了一个 `MultipartEntity` (来自 Apache HttpClient), 而其内容就是我们登陆的时候, 发送的那个 MultipartForm.
 
 `uname` 就是 用户名
 
-`code` 就是 密码\(明文, 对, 你没听错, 明文\)
+`code` 就是 密码(明文, 对, 你没听错, 明文)
 
 `loginType` 实际上是硬编码的, `a(String username, String password, int loginType)` 只在一个地方被调用, IDEA 提示其值永远为 1.
 
@@ -200,7 +200,7 @@ private void a(String username, String password, int loginType) {   //loginType 
 
 然后我们继续看, 这个 `MultipartEntity` 被构造后, 被用于构造一个 `LoaderCallbacks`.
 
-我们看一下这个 `LoaderCallbacks` 在哪里, 然后惊人的发现, 还是他妈在这个类里面\(内部类\). 将 '把所有东西写在一个文件' 的作风表现到了极致.
+我们看一下这个 `LoaderCallbacks` 在哪里, 然后惊人的发现, 还是他妈在这个类里面(内部类). 将 '把所有东西写在一个文件' 的作风表现到了极致.
 
 ```java
 /* compiled from: TbsSdkJava */
@@ -291,7 +291,7 @@ private static String d(String str, String str2) {
 
 这个 `token` 确实是硬编码的, 永远为固定值 `4faa8662c59590c6f43ae9fe5b002b42`
 
-`_time` 为当前时间戳\(不是 UnixTimeStamp, 是带毫秒的\)
+`_time` 为当前时间戳(不是 UnixTimeStamp, 是带毫秒的)
 
 我们看到其中还有什么 `DESKey` 之类的东西, 难道这居然是 `DES 加密`, 后来我们知道, 我们不出所料的高估了超星程序员.
 
@@ -324,25 +324,25 @@ public static String b(String str) {
 }
 ```
 
-这里我们看到, 它对传入的字符串进行了 `MD5` 加密, 然后对结果 byte\[\] 进行了一次遍历处理, 但是不知道为何, 反编译结果中的 i2 变量并没有被初始化.
+这里我们看到, 它对传入的字符串进行了 `MD5` 加密, 然后对结果 byte\[] 进行了一次遍历处理, 但是不知道为何, 反编译结果中的 i2 变量并没有被初始化.
 
 现在我们暂时还不知道他是怎么样一个处理过程, 我们先将这些方法拷贝出来, 运行一下.
 
-![](../.gitbook/assets/image%20%2826%29.png)
+![](<../.gitbook/assets/image (11).png>)
 
 运行到此处时, `m.b(String)` 的传入值为
 
-```text
+```
 token=4faa8662c59590c6f43ae9fe5b002b42&_time=1537538011800&DESKey=Z(AfY@XS
 ```
 
-![](../.gitbook/assets/image%20%2834%29.png)
+![](<../.gitbook/assets/image (12).png>)
 
 而运行到此处, 也只是简单的把传入的字符串给 `MD5` 加密了一下.
 
 最终程序的输出为
 
-```text
+```
 token=4faa8662c59590c6f43ae9fe5b002b42&_time=1537538011800&inf_enc=00000000000000000000000000000000
 ```
 
@@ -361,13 +361,13 @@ for (int i : digest) {
 }
 ```
 
-循环一开始判断了 `i2` 的值是不是小于 0, 如果是, 则加 256 后再将其十六进制值\(两位\)拼接到字符串最后.
+循环一开始判断了 `i2` 的值是不是小于 0, 如果是, 则加 256 后再将其十六进制值(两位)拼接到字符串最后.
 
-如果 `i2` 小于 16 则先在字符串最后拼接 0 再拼接其十六进制值\(一位\).
+如果 `i2` 小于 16 则先在字符串最后拼接 0 再拼接其十六进制值(一位).
 
 我们去 jadx 再次确认一下这个变量到底是怎么回事.
 
-![](../.gitbook/assets/image%20%2830%29.png)
+![](<../.gitbook/assets/image (13).png>)
 
 我们发现这一行没有行号, 说明这里有编译器优化.
 
@@ -375,11 +375,11 @@ for (int i : digest) {
 
 我们修改一下拷贝出来的代码, 再把时间戳的值改为我们截获的数据包中的时间戳的值, 再次运行.
 
-![](../.gitbook/assets/image%20%2815%29.png)
+![](<../.gitbook/assets/image (14).png>)
 
 还记得我们截获的数据包中的 `inf_enc` 的值么, 没错, 就是这个. 我们终于破解了 `inf_enc` 的生成算法.
 
-我们整理一下这个算法, 差不多是这样的\(32 位 MD5\)
+我们整理一下这个算法, 差不多是这样的(32 位 MD5)
 
 ```kotlin
 fun main(args: Array<String>) {
@@ -402,27 +402,27 @@ private fun String.md5() =
 
 现在, 我们来试一试.
 
-![](../.gitbook/assets/image%20%283%29.png)
+![](<../.gitbook/assets/image (15).png>)
 
-接着我们得到了一大堆的 `Cookie`, 这些就是我们的凭证\(有效期为一个月\).
+接着我们得到了一大堆的 `Cookie`, 这些就是我们的凭证(有效期为一个月).
 
 我们观察到, APP 在登陆后会立即访问一个地址来获取个人信息, 即 UserInfo
 
-![](../.gitbook/assets/image%20%2822%29.png)
+![](<../.gitbook/assets/image (16).png>)
 
 很好, 我们成功的获得了用户信息.
 
-\(这一操作同时也会增加不少 `Cookie`, 所以这是必要操作\)
+(这一操作同时也会增加不少 `Cookie`, 所以这是必要操作)
 
-\([https://passport2.chaoxing.com/api/cookie](https://passport2.chaoxing.com/api/cookie) 也可以获得所有缺失的 `Cookie`\)
+([https://passport2.chaoxing.com/api/cookie](https://passport2.chaoxing.com/api/cookie) 也可以获得所有缺失的 `Cookie`)
 
-\(`Cookie` 有很多个, 一些 `Cookie` 标识用户是哪个学校的, 一些 `Cookie` 标识用户可以使用哪些 API, 相当繁杂\)
+(`Cookie` 有很多个, 一些 `Cookie` 标识用户是哪个学校的, 一些 `Cookie` 标识用户可以使用哪些 API, 相当繁杂)
 
 ## 调用接口
 
 既然我们已经成功登陆了, 现在我们来调用一些需要登陆才能调用的接口.
 
-![](../.gitbook/assets/image%20%2851%29.png)
+![](<../.gitbook/assets/image (17).png>)
 
 比如说这个接口可以获取自己需要看的网课的列表.
 
@@ -434,9 +434,9 @@ private fun String.md5() =
 
 为了模拟看网课, 我们得先搞清楚, 在正常的看网课操作下, 客户端会发送什么东西到服务端.
 
-除了加载那些 HTML, CSS, JS\(视频播放器是一个 WebView\), 以及 字幕, 副标题 之类的东西. 还会访问一个很特别的 API
+除了加载那些 HTML, CSS, JS(视频播放器是一个 WebView), 以及 字幕, 副标题 之类的东西. 还会访问一个很特别的 API
 
-```text
+```
 GET /richvideo/initdatawithviewer?&start=0&mid=5732900763131425521382549&view=json HTTP/1.1
 Host: mooc1-api.chaoxing.com
 ```
@@ -494,28 +494,28 @@ Host: mooc1-api.chaoxing.com
 
 首先是这么一个 API
 
-```text
+```
 GET /multimedia/log/78c415169c17d665ded62ee3c342707a?otherInfo=nodeId_105091689&playingTime=565&duration=819&akid=null&jobid=1425521382863&clipTime=0_819&clazzId=2369933&objectId=54f7b40d53706e35b9f25898&userid=58973666&isdrag=0&enc=7abeb4fdb90e10b7bea7e64d334dc5c8&dtype=Video&view=json HTTP/1.1
 Host: mooc1-api.chaoxing.com
 ```
 
 Params 有这么多
 
-| key | value |
-| :--- | :--- |
-| otherInfo | nodeId\_105091689 |
-| playingTime | 565 |
-| duration | 819 |
-| akid | null |
-| jobid | 1425521382863 |
-| clipTime | 0\_819 |
-| clazzId | 2369933 |
-| objectId | 54f7b40d53706e35b9f25898 |
-| userid | 58973666 |
-| isdrag | 0 |
-| enc | 7abeb4fdb90e10b7bea7e64d334dc5c8 |
-| dtype | Video |
-| view | json |
+| key         | value                            |
+| ----------- | -------------------------------- |
+| otherInfo   | nodeId\_105091689                |
+| playingTime | 565                              |
+| duration    | 819                              |
+| akid        | null                             |
+| jobid       | 1425521382863                    |
+| clipTime    | 0\_819                           |
+| clazzId     | 2369933                          |
+| objectId    | 54f7b40d53706e35b9f25898         |
+| userid      | 58973666                         |
+| isdrag      | 0                                |
+| enc         | 7abeb4fdb90e10b7bea7e64d334dc5c8 |
+| dtype       | Video                            |
+| view        | json                             |
 
 这个其实就是心跳包, 我们可以观察到, 每一个心跳包里面的 `playingTime` 参数都会递增 60.
 
@@ -531,7 +531,7 @@ Params 有这么多
 }
 ```
 
-而这两个值相差比较近时\(具体要多近不明确\), 返回内容中的 `isPassed` 将为 true.
+而这两个值相差比较近时(具体要多近不明确), 返回内容中的 `isPassed` 将为 true.
 
 也就是说, 我们在看视频的过程中, 会一直向服务器发送这个数据, 服务器正是通过判断实际提交的时间间隔与提交的 `playerTime` 的间隔是否差异过大来判断有没有作弊的.
 
@@ -539,7 +539,7 @@ Params 有这么多
 
 心跳包意味着挂机不可避免, 即使并非是真人在挂机.
 
-\(心跳包在 `playingTime` 为 0 时开始发送, 在视频结束时会额外发送一次\)
+(心跳包在 `playingTime` 为 0 时开始发送, 在视频结束时会额外发送一次)
 
 心跳包中的 `enc` 每次都会变化, 这个参数也是一种签名算法, 不过比较复杂, 它的生成算法是这样的
 
@@ -551,7 +551,7 @@ Params 有这么多
 
 除了这个心跳包是一分钟发送一次的, 还有一个请求也是一分钟发一次的.
 
-```text
+```
 GET /api/monitor-version?uid=58973111&version=1536923631314&view=json HTTP/1.1
 Host: passport2-api.chaoxing.com
 ```
@@ -576,7 +576,7 @@ Host: passport2-api.chaoxing.com
 
 打开视频的那一刹那, 会有这么一个请求
 
-```text
+```
 GET /api/mobile-version?uid=58973111&view=json HTTP/1.1
 Host: passport2-api.chaoxing.com
 ```
@@ -590,7 +590,7 @@ Host: passport2-api.chaoxing.com
 }
 ```
 
-这个就是 `version` 的来源\(实际上是时间戳\).
+这个就是 `version` 的来源(实际上是时间戳).
 
 现在我们已经知道了这两种数据包的具体情况, 我们只要每隔一分钟发送一遍他们, 我们就可以让服务器认为我们真的在看网课.
 
@@ -598,5 +598,4 @@ Host: passport2-api.chaoxing.com
 
 你懂我意思吧.
 
-自动挂网课脚本的坑我会开的, 我一定会开的\(我早都毕业了, 开个屁的坑\).
-
+自动挂网课脚本的坑我会开的, 我一定会开的(我早都毕业了, 开个屁的坑).

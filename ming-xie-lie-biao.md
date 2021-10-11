@@ -6,19 +6,19 @@
 
 或者直接通过支付宝转账:
 
-![](.gitbook/assets/image%20%2865%29.png)
+![](<.gitbook/assets/image (69).png>)
 
 或者通过加密货币:
 
-**BTC\(SegWit\)**
+**BTC(SegWit)**
 
 bc1q5mxcngy6yh75zg6nwstwegre50zzjm4839jj5t
 
-**ETH/BUSD/BNB/DODO/UNI/SUSHI/1INCH\(ERC20/BSC\)**
+**ETH/BUSD/BNB/DODO/UNI/SUSHI/1INCH(ERC20/BSC)**
 
 0xd39eecf6fd2d47a2955dd50befb1dbd7e457e9dd
 
-**USDT\(TRC20\)**
+**USDT(TRC20)**
 
 TSGWm1hgWL558xvxPuiLAf5nW7Wv9bDW7m
 
@@ -32,7 +32,7 @@ DBxL94wvupXMWvFZney6smrQBx5qWzdxro
 
 币安 C2C 转账邮箱: czp3009@gmail.com
 
-=========================
+\=========================
 
 2015.03.16 hyx5020 捐助 100 元
 
@@ -196,11 +196,11 @@ DBxL94wvupXMWvFZney6smrQBx5qWzdxro
 
 2015.12.21 志祥 捐助 5 元
 
-2015.12.22 136_\*\*_7981 捐助 2 元
+2015.12.22 136\_\*\*\_7981 捐助 2 元
 
-2015.12.28 蛋蛋 157_\*\*_9607 捐助 1 元
+2015.12.28 蛋蛋 157\_\*\*\_9607 捐助 1 元
 
-2016.02.03 杰 xuj_\*_@sina.com 捐助 10 元
+2016.02.03 杰 xuj_\*\_@sina.com 捐助 10 元
 
 2016.04.21 ...... 捐助 5 元
 
@@ -295,4 +295,3 @@ DBxL94wvupXMWvFZney6smrQBx5qWzdxro
 2021.09.28 寂听 捐助 1 元
 
 2021.10.03 神必壬 捐助 0.00011451 XMR
-
