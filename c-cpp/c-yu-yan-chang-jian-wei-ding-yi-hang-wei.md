@@ -18,7 +18,7 @@
 
 平时俗称的数组越界实际上是指 数组下标越界(array index out of bounds). 数组越界是最常见的一种未定义行为(一般情况下也是一种错误). 例如以下代码
 
-```
+```c
 void func() {
     int array[5] = {0};
     printf("%d", array[5]);

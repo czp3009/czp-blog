@@ -6,7 +6,7 @@
 
 示例代码是这样的
 
-```
+```csharp
 private readonly string m_remoteUrl = "/vrageremote/{0}";
 
 public RestRequest CreateRequest(string resourceLink, Method method, 
@@ -76,7 +76,7 @@ DateTimeFormatter
     .withZone("GMT")
 ```
 
-`Authorization` 由两部分组成, `nonce` 就是一个大于 0 的 Int 类型随机数. 而这个 `hash` 就很有来头了, hash 的值是把 url(包含 query params), nonce, date 用 `StringBuilder.AppendLine` 拼接在一起然后做一次 `HmacSHA1` , 用到的 key 就是 VRageRemoteClient 上需要填入的 `Security Key`. .Net 的 `AppendLine` 是平台相关的, 所以使用的是 `\r`
+`Authorization` 由两部分组成, `nonce` 就是一个大于 0 的 Int 类型随机数. 而这个 `hash` 就很有来头了, hash 的值是把 url(包含 query params), nonce, date 用 `StringBuilder.AppendLine` 拼接在一起然后做一次 `HmacSHA1` , 用到的 key 就是 VRageRemoteClient 上需要填入的 `Security Key`. .Net 的 `AppendLine` 是平台相关的, 所以使用的是 
 
 ```kotlin
 val nonce = Random.nextInt(0..Int.MAX_VALUE)

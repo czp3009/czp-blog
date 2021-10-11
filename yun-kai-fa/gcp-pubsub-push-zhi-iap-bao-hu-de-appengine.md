@@ -38,7 +38,7 @@ resource.type="gae_app"
 
 自己获取 JWT 的 curl 命令是这样的
 
-```
+```bash
 curl --verbose \
       --data client_id=DESKTOP_CLIENT_ID \
       --data client_secret=DESKTOP_CLIENT_SECRET \
