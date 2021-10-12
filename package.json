@@ -6,14 +6,13 @@
   "author": "czp3009 <czp3009@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "gitbook": "^3.2.3",
-    "gitbook-cli": "^2.3.2",
+    "honkit": "^3.6.22",
     "gitbook-plugin-analytics": "^0.2.1",
     "gitbook-plugin-back-to-top-button": "^0.1.4",
     "gitbook-plugin-mygitalk": "^0.2.6",
     "gitbook-plugin-sitemap": "^1.2.0"
   },
   "scripts": {
-    "build": "gitbook build"
+    "build": "honkit build"
   }
 }
