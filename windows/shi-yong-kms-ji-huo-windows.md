@@ -22,7 +22,7 @@ python pykms_Server.py
 
 现在我们打开需要激活的 Windows, 使用管理员权限运行 `Powershell`
 
-```
+```powershell
 slmgr /upk
 slmgr /skms kms.hiczp.com
 ```
@@ -31,7 +31,7 @@ slmgr /skms kms.hiczp.com
 
 接下去我们必须要知道自己的 Windows 版本, 使用如下命令来查看
 
-```
+```powershell
 DISM /online /Get-CurrentEdition
 ```
 
@@ -39,25 +39,25 @@ DISM /online /Get-CurrentEdition
 
 使用以下命令来设置对应的序列号
 
-```
+```powershell
 slmgr /ipk N69G4-B89J2-4G8F4-WWYCC-J464C
 ```
 
 立即连接 KMS 服务器并激活
 
-```
+```powershell
 slmgr /ato
 ```
 
 还可以使用命令来查看激活状态
 
-```
+```powershell
 slmgr /dli
 ```
 
 如果使用的是评估版本 Windows Server, 则必须在清除原密钥并设定 KMS 服务器后首先进行版本转换, 使用以下命令来查看可以转换至的版本
 
-```
+```powershell
 DISM /online /Get-TargetEditions
 ```
 
@@ -65,7 +65,7 @@ DISM /online /Get-TargetEditions
 
 选择一个想要转换至的版本, 然后在刚才的页面上查找得到目标版本的 KMS 序列号, 键入如下命令
 
-```
+```powershell
 DISM /Online /Set-Edition:ServerStandard /ProductKey:N69G4-B89J2-4G8F4-WWYCC-J464C /AcceptEula
 ```
 
@@ -73,7 +73,7 @@ DISM /Online /Set-Edition:ServerStandard /ProductKey:N69G4-B89J2-4G8F4-WWYCC-J46
 
 转换完成后将提示重启计算机, 输入 `y` 立即重启. 重启之后将自动连接 KMS 服务器进行激活, 如果没有则手动使用命令
 
-```
+```powershell
 slmgr /ato
 ```
 
