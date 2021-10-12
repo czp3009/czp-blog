@@ -13,8 +13,10 @@ $ ulimit -n
 
 然后我们按照人云亦云的办法, 去修改 `/etc/security/limits.conf`, 在文件末尾增加如下两行
 
-* hard nofile 65535
-* soft nofile 65535
+```
+hard nofile 65535
+soft nofile 65535
+```
 
 不要说用 `sysctl -p` 了, 即使我们重启计算机, 我们的 `ulimit -n` 也不会改变.
 
@@ -38,13 +40,13 @@ $ ulimit -n
 
 我们找到其中的一行
 
-```text
+```properties
 #DefaultLimitNOFILE=
 ```
 
 去掉 `#` 号然后写上值
 
-```text
+```properties
 DefaultLimitNOFILE=65535
 ```
 
@@ -54,4 +56,3 @@ DefaultLimitNOFILE=65535
 systemctl daemon-reexec
 systemctl system.slice restart
 ```
-

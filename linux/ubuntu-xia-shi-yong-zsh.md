@@ -56,7 +56,7 @@ chsh -s `which zsh`
 
 我们打开用户目录的 `~/.zshrc` 文件, 然后我们搜索 `ZSH_THEME`, 修改主题设置
 
-```
+```properties
 ZSH_THEME="agnoster"
 ```
 

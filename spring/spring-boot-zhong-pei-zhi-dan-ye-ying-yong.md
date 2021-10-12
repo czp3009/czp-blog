@@ -2,13 +2,13 @@
 
 本文撰写时的 Spring 版本: Spring Boot 2.1.0.RELEASE
 
-有的时候我们不得不把一个单页应用\(例如 `react-router`\)与 `Spring-Boot` 后端一起打包. 但是这样就会有一个问题, 一旦用户不在首页刷新页面, 就会看到一个 404 画面, 因为服务端并没有把请求转向 `index.html`.
+有的时候我们不得不把一个单页应用(例如 `react-router`)与 `Spring-Boot` 后端一起打包. 但是这样就会有一个问题, 一旦用户不在首页刷新页面, 就会看到一个 404 画面, 因为服务端并没有把请求转向 `index.html`.
 
 所以我们通过一些配置, 让 Spring 在找不到对应的资源文件的情况下, 将请求统统转向到 `index.html`, 这样用户就可以前端路由了.
 
 我们很容易想到让 Spring 找不到资源文件时抛出一个异常然后我们配置一个 `ControllerAdvice`, 于是我们搜到了这么一条配置
 
-```text
+```properties
 spring.mvc.throw-exception-if-no-handler-found=true
 ```
 
@@ -33,7 +33,7 @@ protected HandlerExecutionChain getHandler(HttpServletRequest request) throws Ex
 
 默认情况下, `HandlerMapping` 有七个, 分别为
 
-```text
+```
 SimpleUrlHandlerMapping
 WebMvcEndpointHandlerMapping
 ControllerEndpointHandlerMapping
@@ -51,7 +51,7 @@ SimpleUrlHandlerMapping
 
 而在一些解决方案中, 是把默认的 `ResourceHandler` 关掉,
 
-```text
+```properties
 spring.resources.add-mappings=false
 ```
 
@@ -82,7 +82,7 @@ open class SinglePageApplicationWebMvcConfiguration(
 
 注意, `spring.resources.static-locations` 并非是硬编码的, 而是在配置文件中可以修改的, 所以我们要从配置文件中得到它.
 
-该 `ResourceHandler` 将监听 `/**` 地址\(注意, `RequestMappingHandlerMapping` 一定是先于最后一个 `SimpleUrlHandlerMapping` 被执行的, 所以访问 RestFul API 的请求不会进入 `ResourceHandler`\), 当目标资源不存在时, 将返回 `index.html`, 如果 `index.html` 也不存在, 将产生 404.
+该 `ResourceHandler` 将监听 `/**` 地址(注意, `RequestMappingHandlerMapping` 一定是先于最后一个 `SimpleUrlHandlerMapping` 被执行的, 所以访问 RestFul API 的请求不会进入 `ResourceHandler`), 当目标资源不存在时, 将返回 `index.html`, 如果 `index.html` 也不存在, 将产生 404.
 
 `addResourceLocations` 添加的资源位置, 会让 `Resolver` 在每个资源位置都被轮询一次, 所以不会因为用户额外添加了 `static-location` 而导致错误.
 
@@ -91,4 +91,3 @@ open class SinglePageApplicationWebMvcConfiguration(
 这样, 我们就在不重写 Spring 默认逻辑的情况下将所有未识别的访问引导到 `index.html`, 从而完成了单页应用的配置.
 
 接下去, 用户将在前端被路由, 从而看到正确的页面.
-

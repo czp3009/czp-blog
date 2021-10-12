@@ -47,7 +47,7 @@ dependencies {
 
 通过这里的代码, 我们可以很轻松的看出, 一个合法的哔咔客户端请求应当包含以下请求头
 
-```
+```http
 //固定值
 api-key: C69BAF41DA5ABD1FFEDC6D2FEA56B
 accept: application/vnd.picacomic.com.v1+json
@@ -586,7 +586,7 @@ BODY END
 
 请求成功之后, 服务器将返回
 
-```javascript
+```json
 {
   "code": 200,
   "message": "success",

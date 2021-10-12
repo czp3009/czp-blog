@@ -38,7 +38,7 @@ php -r "phpinfo();" | grep xdebug
 
 这就是 `xdebug` 的配置文件路径, 我们打开并修改它, 填入如下配置(root 权限)
 
-```
+```properties
 zend_extension=xdebug.so
 xdebug.idekey='PHPSTORM' 
 xdebug.remote_enable=1

@@ -32,7 +32,7 @@
 
 现在我们成功截取到了数据包, 我们来看一个典型的数据包的结构
 
-```
+```http
 GET /AppRoom/index?_device=android&amp;_hwid=JxdyESFAJkcjEicQbBBsCTlbal5uX2Y&amp;access_key=cb93fb8cc20b2d3245f9ea824130ac21&amp;appkey=1d8b6e7d45233436&amp;build=515000&amp;buld=515000&amp;jumpFrom=24000&amp;mobi_app=android&amp;platform=android&amp;room_id=3151254&amp;scale=xxhdpi&amp;src=google&amp;trace_id=20171012145800040&amp;ts=1507791520&amp;version=5.15.0.515000&amp;sign=0ad8bd04c480714075b57e04aff2e8d3 HTTP/1.1
 Display-ID: 20293030-1507791479
 Buvid: JxdyESFAJkcjEicQbBBsCTlbal5uX2Yinfoc
@@ -134,7 +134,7 @@ sign
 
 请求的返回值是这样的
 
-```javascript
+```json
 {
     "ts": 1536261900,
     "code": 0,
@@ -225,7 +225,7 @@ B 站正是使用这段会变化的 hash 拼接到明文密码前面, 来保证�
 
 登陆成功后, 服务器返回
 
-```javascript
+```json
 {
   "code": 0,
   "data": {

@@ -2,7 +2,7 @@
 
 本文撰写时的 Spring 版本: Spring-Boot-Data-Jpa 2.0.5.RELEASE
 
-编写使用 `Google Cloud SQL` 的应用时, 我们会发现一个问题. 当我们连接 Cloud SQL 时, 我们必须先知道 `Cloud SQL` 的 `IP`, 同时还要到 `Google Cloud Console` 给自己的应用所部署的服务器加数据库白名单\(如果是部署在同一项目下的 `APP Engine` 或者 `Compute Engine` 默认就有白名单\).
+编写使用 `Google Cloud SQL` 的应用时, 我们会发现一个问题. 当我们连接 Cloud SQL 时, 我们必须先知道 `Cloud SQL` 的 `IP`, 同时还要到 `Google Cloud Console` 给自己的应用所部署的服务器加数据库白名单(如果是部署在同一项目下的 `APP Engine` 或者 `Compute Engine` 默认就有白名单).
 
 一个应用还可以操作一下, 如果写的是微服务, 有几十个应用, 那简直是浑身爆炸.
 
@@ -12,7 +12,7 @@
 
 ## 添加依赖
 
-这个库只实现 `mysql-socket-factory`\([https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory)\) 的自动配置, JPA 的依赖还是要加的. 所以依赖至少有如下两个
+这个库只实现 `mysql-socket-factory`([https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory)) 的自动配置, JPA 的依赖还是要加的. 所以依赖至少有如下两个
 
 ```groovy
 dependencies {
@@ -23,15 +23,15 @@ dependencies {
 }
 ```
 
-注意, `spring-cloud-gcp-starter-sql-mysql` 并非是 Spring 官方自己写的, 所以 Spring 插件并不能管理他的版本号. 这里的版本号是必写的\(或者用 dependency management 全局指定\).
+注意, `spring-cloud-gcp-starter-sql-mysql` 并非是 Spring 官方自己写的, 所以 Spring 插件并不能管理他的版本号. 这里的版本号是必写的(或者用 dependency management 全局指定).
 
-自动包含的 `MySQL 驱动` 是 `5.1.x`, 如果要使用更高版本必须注意 `MySQL 驱动` 版本与 `mysql-socket-factory` 版本相匹配. 版本兼容对照表详见 [https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory\#mysql](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory#mysql)
+自动包含的 `MySQL 驱动` 是 `5.1.x`, 如果要使用更高版本必须注意 `MySQL 驱动` 版本与 `mysql-socket-factory` 版本相匹配. 版本兼容对照表详见 [https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory#mysql](https://github.com/GoogleCloudPlatform/cloud-sql-jdbc-socket-factory#mysql)
 
 ## 配置文件
 
 配置文件至少包含以下项目
 
-```text
+```properties
 spring.cloud.gcp.sql.instance-connection-name=project-name:asia-northeast1:mysql-name
 spring.cloud.gcp.sql.database-name=database_name
 spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
@@ -55,7 +55,7 @@ spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 
 很久之前 `MySQL` 就默认使用 `InnoDB` 了, 所以 `Dialect` 设置为 `MySQL5` 即可.
 
-```text
+```properties
 spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
 ```
 
@@ -65,7 +65,7 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
 
 通常 APP 并不以个人用户身份登陆, 而是以一个专门的 `Service Account` 来作为身份凭证. 现在我们去创建一个 `Service Account`
 
-点击项目的管理页面左边侧拉抽屉里的 `IAM 和管理` &gt; `服务账号` 进入服务账号管理页面.
+点击项目的管理页面左边侧拉抽屉里的 `IAM 和管理` > `服务账号` 进入服务账号管理页面.
 
 然后创建一个服务账号, 创建好了之后查看他的详情, 点击 `创建密钥`, 生成并下载一个 `json` 文件.
 
@@ -75,7 +75,7 @@ spring.jpa.database-platform=org.hibernate.dialect.MySQL55Dialect
 
 然后我们配置他的位置
 
-```text
+```properties
 spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 ```
 
@@ -98,4 +98,3 @@ spring.cloud.gcp.credentials.location=classpath:/service-account-key/key.json
 我们在项目管理页上方的搜索框输入 `cloud sql admin`, 就可以找到它了.
 
 启用这个 API 并重启程序, 就可以正确连接数据库了.
-

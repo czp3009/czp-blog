@@ -56,7 +56,7 @@ params Tuple<string, string>[] queryParams)
 
 可以看出, 最终的请求必须有至少以下两个 header
 
-```
+```http
 Date: httpDateString()
 Authorization: "$nonce:$hash"
 ```
@@ -91,7 +91,7 @@ val hash = Mac.getInstance("HmacSHA1").apply {
 
 如果想要百分百还原, 还可以加上 UA
 
-```kotlin
+```csharp
 userAgent("RestSharp/106.6.10")
 ```
 

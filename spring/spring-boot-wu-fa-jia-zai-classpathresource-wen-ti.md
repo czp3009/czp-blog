@@ -12,7 +12,7 @@
 val myFile = ClasspathResource("/myFile.txt")
 ```
 
-\(不同于 `Class.getResourceAsStream(name:String)`, `ClasspathResource` 的参数可以去除第一个 `/`\)
+(不同于 `Class.getResourceAsStream(name:String)`, `ClasspathResource` 的参数可以去除第一个 `/`)
 
 然后我们读取这个文件的内容通常是先获取他的流
 
@@ -30,7 +30,7 @@ myFile.file
 
 看起来也没有问题, 并且在 `IDEA` 里运行的时候确实没有问题. 直到 CI 测试的时候, 就会有这么一个异常
 
-```text
+```
 java.io.FileNotFoundException: class path resource [myFile.txt] cannot be resolved to absolute file path because it does not reside in the file system: jar:file:/app.jar!/BOOT-INF/classes!/myFile.txt
 ```
 
@@ -40,17 +40,17 @@ java.io.FileNotFoundException: class path resource [myFile.txt] cannot be resolv
 
 为了能用统一的文件系统路径去表示 `jar` 内的文件, Java 开创了 `!` 这个符号.
 
-`!` 表示这个文件是一个压缩包\(zip\)\(jar 本身就是一个 zip\), 之后的路径则为压缩包内的路径\(压缩包内的路径不分运行平台, 统一为 Unix 路径\).
+`!` 表示这个文件是一个压缩包(zip)(jar 本身就是一个 zip), 之后的路径则为压缩包内的路径(压缩包内的路径不分运行平台, 统一为 Unix 路径).
 
 正常情况下的 `getFile()` 操作, 会得到一个 `jar` 包路径后面加上一个 `!` 号然后再拼接上包内路径的一个路径.
 
-`Spring Boot` 为了避免资源文件冲突\(Java 的打包规范忽略了资源文件的问题, 两个库的代码文件是可以合并的, 因为包名不同. 但是资源文件都从 `jar` 的根目录开始编排, 如果重名将互相覆盖而导致打包后资源文件的丢失\)而采用 `fat-jar` 的方式来打包程序.
+`Spring Boot` 为了避免资源文件冲突(Java 的打包规范忽略了资源文件的问题, 两个库的代码文件是可以合并的, 因为包名不同. 但是资源文件都从 `jar` 的根目录开始编排, 如果重名将互相覆盖而导致打包后资源文件的丢失)而采用 `fat-jar` 的方式来打包程序.
 
 `fat-jar` 就是一种 `nested jar`, 所有的依赖库不会合并到用户代码上, 而是以 `jar` 包的形式存放在 `jar` 包内.
 
 一个典型的 `Spring Boot` 程序打包后差不多是这样的
 
-```text
+```
 META-INF
     MANIFEST.MF
 org
@@ -75,11 +75,11 @@ BOOT-INF
 
 而用户代码根目录本身就是在 `jar` 内的, 最终我们会得到这么一个路径
 
-```text
+```
 jar:file:/app.jar!/BOOT-INF/classes!/myFile.txt
 ```
 
-\(注意, 有两个 `!` 号\)
+(注意, 有两个 `!` 号)
 
 没错, `classes` 文件夹被认为是一个压缩包了.
 
@@ -95,11 +95,11 @@ jar:file:/app.jar!/BOOT-INF/classes!/myFile.txt
 
 我们找到了这么一个库 [https://github.com/ulisesbocchio/spring-boot-jar-resources](https://github.com/ulisesbocchio/spring-boot-jar-resources)
 
-他的功能是通过自定义的 `ResourceLoader`, 当 `Spring Boot` 需要读取文件时, 首先判断这个文件是不是存在于 `classpath` 中, 如果是, 则解压这个文件到临时目录\(真实文件系统上\), 然后返回文件系统路径.
+他的功能是通过自定义的 `ResourceLoader`, 当 `Spring Boot` 需要读取文件时, 首先判断这个文件是不是存在于 `classpath` 中, 如果是, 则解压这个文件到临时目录(真实文件系统上), 然后返回文件系统路径.
 
 使用非常简单, 首先加入依赖
 
-```text
+```groovy
 // https://mvnrepository.com/artifact/com.github.ulisesbocchio/spring-boot-jar-resources
 compile group: 'com.github.ulisesbocchio', name: 'spring-boot-jar-resources', version: '1.3'
 ```
@@ -117,7 +117,6 @@ fun main() {
 }
 ```
 
-我们再使用 `ApplicationContext.getResource()` 时, 返回的就不是 `ClasspathResource` 了, 而是 `JarResource`, 路径在一个临时目录下\(Linux 下默认为 `/tmp/**`\)
+我们再使用 `ApplicationContext.getResource()` 时, 返回的就不是 `ClasspathResource` 了, 而是 `JarResource`, 路径在一个临时目录下(Linux 下默认为 `/tmp/**`)
 
 这样, 我们就可以让第三方库正常工作了.
-

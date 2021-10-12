@@ -117,7 +117,7 @@ int main() {
 
 ELF header 存储在 ELF 文件的起始位置, 包含一个用于表示文件格式的魔数(magic number)以及一系列程序基本信息, 使用 `readelf` 可以读取出其中的内容
 
-```bash
+```
 $ readelf -h c_sample
 ELF Header:
   Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
@@ -151,7 +151,7 @@ sections 组成了 ELF 的本体, 而 program headers 与 section headers 是如
 
 在那么多的 sections 中, 我们只关心其中的 `.rodata` 节. rodata 就是 read only data, 它存储着这个 ELF 中的全局共享的数据. 使用命令来读取这一节
 
-```bash
+```
 $ readelf -x .rodata c_sample
 Hex dump of section '.rodata':
   0x00000690 01000200 48656c6c 6f00              ....Hello.
@@ -171,7 +171,7 @@ int main() {
 
 那么就可以在 `.rodata` 里找到多个字符串
 
-```bash
+```
 Hex dump of section '.rodata':
   0x000006a0 01000200 48656c6c 6f00576f 726c6400 ....Hello.World.
 ```
@@ -306,7 +306,7 @@ int main() {
 
 但是并没有什么用, 这样的程序一运行就会产生
 
-```bash
+```
 Signal: SIGFPE (Arithmetic exception)
 ```
 
@@ -334,7 +334,7 @@ int main() {
 
 类似 `func` 这样声明了有返回值却没有 return 的函数, 并非在所有编译器都能编译. 而且会有类似如下的警告
 
-```bash
+```
 $ clang main.c
 main.c:5:1: warning: control reaches end of non-void function [-Wreturn-type]
 }

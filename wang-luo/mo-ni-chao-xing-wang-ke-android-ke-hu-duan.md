@@ -38,7 +38,7 @@ APP 一打开是这样的
 
 我们马上来截包一下, 当我们登陆的时候, APP 会发出这样的一个数据包(MultipartForm)
 
-```
+```http
 POST /v11/loginregister?token=4faa8662c59590c6f43ae9fe5b002b42&_time=1537463981249&inf_enc=7e0a0c15d58556a991eb94011ac16cc4 HTTP/1.1
 Accept-Language: zh_CN
 Cookie: 
@@ -436,14 +436,14 @@ private fun String.md5() =
 
 除了加载那些 HTML, CSS, JS(视频播放器是一个 WebView), 以及 字幕, 副标题 之类的东西. 还会访问一个很特别的 API
 
-```
+```http
 GET /richvideo/initdatawithviewer?&start=0&mid=5732900763131425521382549&view=json HTTP/1.1
 Host: mooc1-api.chaoxing.com
 ```
 
 返回的内容是这样的
 
-```javascript
+```json
 [
     {
         "datas": [
@@ -494,7 +494,7 @@ Host: mooc1-api.chaoxing.com
 
 首先是这么一个 API
 
-```
+```http
 GET /multimedia/log/78c415169c17d665ded62ee3c342707a?otherInfo=nodeId_105091689&playingTime=565&duration=819&akid=null&jobid=1425521382863&clipTime=0_819&clazzId=2369933&objectId=54f7b40d53706e35b9f25898&userid=58973666&isdrag=0&enc=7abeb4fdb90e10b7bea7e64d334dc5c8&dtype=Video&view=json HTTP/1.1
 Host: mooc1-api.chaoxing.com
 ```
@@ -525,7 +525,7 @@ Params 有这么多
 
 当 `playingTime` 与 `duration` 差异很大时, 服务器将返回这样的数据
 
-```javascript
+```json
 {
     "isPassed": false
 }
@@ -551,14 +551,14 @@ Params 有这么多
 
 除了这个心跳包是一分钟发送一次的, 还有一个请求也是一分钟发一次的.
 
-```
+```http
 GET /api/monitor-version?uid=58973111&version=1536923631314&view=json HTTP/1.1
 Host: passport2-api.chaoxing.com
 ```
 
 这个请求每一次发送时的参数都是一模一样的, 而且服务端返回内容也是一模一样的, 都为
 
-```javascript
+```json
 {
     "status": true
 }
@@ -576,14 +576,14 @@ Host: passport2-api.chaoxing.com
 
 打开视频的那一刹那, 会有这么一个请求
 
-```
+```http
 GET /api/mobile-version?uid=58973111&view=json HTTP/1.1
 Host: passport2-api.chaoxing.com
 ```
 
 服务器将返回
 
-```javascript
+```json
 {
     "version": 1536923631314,
     "status": true
