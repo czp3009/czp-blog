@@ -91,7 +91,7 @@ val hash = Mac.getInstance("HmacSHA1").apply {
 
 如果想要百分百还原, 还可以加上 UA
 
-```csharp
+```kotlin
 userAgent("RestSharp/106.6.10")
 ```
 
