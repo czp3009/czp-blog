@@ -8,29 +8,15 @@
 
 ![](<.gitbook/assets/image (69).png>)
 
-或者通过加密货币:
+也可以通过加密货币:
 
-**BTC(SegWit)**
+**ERC20/BSC**
 
-bc1q5mxcngy6yh75zg6nwstwegre50zzjm4839jj5t
+0x16B36024a6ae6B9CAcC403F5e44900747a1758F6
 
-**ETH/BUSD/BNB/DODO/UNI/SUSHI/1INCH(ERC20/BSC)**
+**TRC20**
 
-0xd39eecf6fd2d47a2955dd50befb1dbd7e457e9dd
-
-**USDT(TRC20)**
-
-TSGWm1hgWL558xvxPuiLAf5nW7Wv9bDW7m
-
-**DOGE**
-
-DBxL94wvupXMWvFZney6smrQBx5qWzdxro
-
-**XMR**
-
-89HTtHCpsU7SEUgWpmGqfP6LfxLcE9ViHJDPVKjqnoQzTpkknAskdz2h4SRm42GRRAJdWZyUSS6W5LCxUCwqq3ys1EhRr3R
-
-币安 C2C 转账邮箱: czp3009@gmail.com
+TT841kkRSDTQeJaBJGurdg66VmtNQNbKXR
 
 \=========================
 
@@ -288,6 +274,8 @@ DBxL94wvupXMWvFZney6smrQBx5qWzdxro
 
 2021.09.09 \*\*乐 捐助 0.01 元
 
+2021.09.15 Coin 捐助 30 元
+
 2021.09.16 \*诚 捐助 1 元
 
 2021.09.28 Swordk 捐助 1 元
@@ -297,3 +285,5 @@ DBxL94wvupXMWvFZney6smrQBx5qWzdxro
 2021.10.03 神必壬 捐助 0.00011451 XMR
 
 2021.10.12 \*\*越 捐助 0.1 元
+
+2021.10.17 书虫浩 捐助 5 元
