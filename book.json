@@ -10,7 +10,8 @@
     "analytics",
     "sitemap",
     "back-to-top-button",
-    "mygitalk"
+    "mygitalk",
+    "encode-link-round-with-angle-brackets"
   ],
   "pluginsConfig": {
     "analytics": {
