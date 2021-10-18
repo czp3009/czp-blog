@@ -389,6 +389,23 @@ commander@^5.1.0:
   resolved "https://registry.yarnpkg.com/commander/-/commander-5.1.0.tgz#46abbd1652f8e059bddaef99bbdcb2ad9cf179ae"
   integrity sha512-P0CysNDQ7rtVw4QIQtm+MRxV66vKFSvlsQvGYXZWR3qFU0jlMKHZZZgw8e+8DSah4UDKMqnknRDQz+xuQXQ/Zg==
 
+commonmark-helpers@^0.4.0:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/commonmark-helpers/-/commonmark-helpers-0.4.1.tgz#8035d28dd64c9bae519220948bea9d69b504593b"
+  integrity sha1-gDXSjdZMm65RkiCUi+qdabUEWTs=
+  dependencies:
+    commonmark "^0.21.0"
+    ramda "^0.17.1"
+
+commonmark@^0.21.0:
+  version "0.21.0"
+  resolved "https://registry.yarnpkg.com/commonmark/-/commonmark-0.21.0.tgz#ad646b335cd5f5f9892b6980129ed996326f0f6d"
+  integrity sha1-rWRrM1zV9fmJK2mAEp7ZljJvD20=
+  dependencies:
+    entities "~ 1.1.1"
+    mdurl "~ 1.0.0"
+    string.prototype.repeat "^0.2.0"
+
 concat-map@0.0.1:
   version "0.0.1"
   resolved "https://registry.yarnpkg.com/concat-map/-/concat-map-0.0.1.tgz#d8a96bd77fd68df7793a73036a3ba0d5405d477b"
@@ -681,7 +698,7 @@ entities@1.0:
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.0.0.tgz#b2987aa3821347fcde642b24fdfc9e4fb712bf26"
   integrity sha1-sph6o4ITR/zeZCsk/fyeT7cSvyY=
 
-entities@^1.1.1, entities@~1.1.1:
+entities@^1.1.1, "entities@~ 1.1.1", entities@~1.1.1:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/entities/-/entities-1.1.2.tgz#bdfa735299664dfafd34529ed4f8522a275fea56"
   integrity sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
@@ -928,6 +945,22 @@ get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1:
     has "^1.0.3"
     has-symbols "^1.0.1"
 
+get-md-desc@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/get-md-desc/-/get-md-desc-1.0.2.tgz#e8f4b6fb9f04cced945d963d18a3f8036243c8aa"
+  integrity sha1-6PS2+58EzO2UXZY9GKP4A2JDyKo=
+  dependencies:
+    commonmark-helpers "^0.4.0"
+    trim-html-tag "^1.0.4"
+
+get-md-title@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/get-md-title/-/get-md-title-1.0.4.tgz#daea37a95a2f7b136c2bdddfa917d9a7dfd70c15"
+  integrity sha1-2uo3qVovexNsK93fqRfZp9/XDBU=
+  dependencies:
+    commonmark-helpers "^0.4.0"
+    trim-html-tag "^1.0.3"
+
 get-symbol-description@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/get-symbol-description/-/get-symbol-description-1.0.0.tgz#7fdb81c900101fbd564dd5f1a30af5aadc1e58d6"
@@ -993,6 +1026,15 @@ gitbook-plugin-mygitalk@^0.2.6:
   integrity sha512-SJyyUCLdYixWaEeLbPj9ghYRqbZDk+r47mA1FBK5u/yY8e0BwYAi8gxL6tmX9wgrsIMl0ETWlG8MelEz41MEKQ==
   dependencies:
     gitalk "^1.5.0"
+
+gitbook-plugin-rss@^3.0.2:
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/gitbook-plugin-rss/-/gitbook-plugin-rss-3.0.2.tgz#4aa4af0e0c411c781b7d5a8efad5549616946cdc"
+  integrity sha1-SqSvDgxBHHgbfVqO+tVUlhaUbNw=
+  dependencies:
+    get-md-desc "^1.0.2"
+    get-md-title "^1.0.4"
+    rss "^1.2.2"
 
 gitbook-plugin-search@*, gitbook-plugin-search@^2.2.1:
   version "2.2.1"
@@ -1651,6 +1693,11 @@ lunr@0.5.12:
   resolved "https://registry.yarnpkg.com/lunr/-/lunr-0.5.12.tgz#a2f6b7d7801cbe2ccb1696da67f1f7788f89e0c8"
   integrity sha1-ova314AcvizLFpbaZ/H3eI+J4Mg=
 
+"mdurl@~ 1.0.0":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/mdurl/-/mdurl-1.0.1.tgz#fe85b2ec75a59037f2adfec100fd6c601761152e"
+  integrity sha1-/oWy7HWlkDfyrf7BAP1sYBdhFS4=
+
 memoize-one@^5.1.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/memoize-one/-/memoize-one-5.2.1.tgz#8337aa3c4335581839ec01c3d594090cebe8f00e"
@@ -1665,6 +1712,18 @@ mime-db@1.50.0:
   version "1.50.0"
   resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.50.0.tgz#abd4ac94e98d3c0e185016c67ab45d5fde40c11f"
   integrity sha512-9tMZCDlYHqeERXEHO9f/hKfNXhre5dK2eE/krIvUjZbS2KPcqGDfNShIWS1uW9XOTKQKqK6qbeOci18rbfW77A==
+
+mime-db@~1.25.0:
+  version "1.25.0"
+  resolved "https://registry.yarnpkg.com/mime-db/-/mime-db-1.25.0.tgz#c18dbd7c73a5dbf6f44a024dc0d165a1e7b1c392"
+  integrity sha1-wY29fHOl2/b0SgJNwNFloeexw5I=
+
+mime-types@2.1.13:
+  version "2.1.13"
+  resolved "https://registry.yarnpkg.com/mime-types/-/mime-types-2.1.13.tgz#e07aaa9c6c6b9a7ca3012c69003ad25a39e92a88"
+  integrity sha1-4HqqnGxrmnyjASxpADrSWjnpKog=
+  dependencies:
+    mime-db "~1.25.0"
 
 mime-types@^2.1.12, mime-types@~2.1.19:
   version "2.1.33"
@@ -1998,6 +2057,11 @@ qs@~6.5.2:
   resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
   integrity sha512-N5ZAX4/LxJmF+7wN74pUD6qAh9/wnvdQcjq9TZjevvXzSUo7bfmw91saqMjzGS2xq91/odN2dW/WOl7qQHNDGA==
 
+ramda@^0.17.1:
+  version "0.17.1"
+  resolved "https://registry.yarnpkg.com/ramda/-/ramda-0.17.1.tgz#4c198147d3ab54e8c15255f11730e2116f6e6073"
+  integrity sha1-TBmBR9OrVOjBUlXxFzDiEW9uYHM=
+
 range-parser@~1.2.1:
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/range-parser/-/range-parser-1.2.1.tgz#3cf37023d199e1c24d1a55b84800c2f3e6468031"
@@ -2138,6 +2202,14 @@ rimraf@^2.5.4:
   integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==
   dependencies:
     glob "^7.1.3"
+
+rss@^1.2.2:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/rss/-/rss-1.2.2.tgz#50a1698876138133a74f9a05d2bdc8db8d27a921"
+  integrity sha1-UKFpiHYTgTOnT5oF0r3I240nqSE=
+  dependencies:
+    mime-types "2.1.13"
+    xml "1.0.1"
 
 safe-buffer@>=5.1.0, safe-buffer@^5.0.1, safe-buffer@^5.1.2, safe-buffer@~5.2.0:
   version "5.2.1"
@@ -2312,6 +2384,11 @@ string-width@^4.1.0, string-width@^4.2.0:
     is-fullwidth-code-point "^3.0.0"
     strip-ansi "^6.0.1"
 
+string.prototype.repeat@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/string.prototype.repeat/-/string.prototype.repeat-0.2.0.tgz#aba36de08dcee6a5a337d49b2ea1da1b28fc0ecf"
+  integrity sha1-q6Nt4I3O5qWjN9SbLqHaGyj8Ds8=
+
 string.prototype.trim@^1.1.2:
   version "1.2.5"
   resolved "https://registry.yarnpkg.com/string.prototype.trim/-/string.prototype.trim-1.2.5.tgz#a587bcc8bfad8cb9829a577f5de30dd170c1682c"
@@ -2411,6 +2488,13 @@ tr46@~0.0.1:
   version "0.0.3"
   resolved "https://registry.yarnpkg.com/tr46/-/tr46-0.0.3.tgz#8184fd347dac9cdc185992f3a6622e14b9d9ab6a"
   integrity sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=
+
+trim-html-tag@^1.0.3, trim-html-tag@^1.0.4:
+  version "1.0.5"
+  resolved "https://registry.yarnpkg.com/trim-html-tag/-/trim-html-tag-1.0.5.tgz#bbeacd7fc3fcc042ce702f91aad1ccd9d05a77ae"
+  integrity sha1-u+rNf8P8wELOcC+RqtHM2dBad64=
+  dependencies:
+    ramda "^0.17.1"
 
 try-resolve@^1.0.1:
   version "1.0.1"
@@ -2618,6 +2702,11 @@ write@1.0.3:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/xml-name-validator/-/xml-name-validator-2.0.1.tgz#4d8b8f1eccd3419aa362061becef515e1e559635"
   integrity sha1-TYuPHszTQZqjYgYb7O9RXh5VljU=
+
+xml@1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/xml/-/xml-1.0.1.tgz#78ba72020029c5bc87b8a81a3cfcd74b4a2fc1e5"
+  integrity sha1-eLpyAgApxbyHuKgaPPzXS0ovweU=
 
 xtend@^4.0.2, xtend@~4.0.0:
   version "4.0.2"

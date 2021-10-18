@@ -11,7 +11,8 @@
     "sitemap",
     "back-to-top-button",
     "mygitalk",
-    "encode-link-round-with-angle-brackets"
+    "encode-link-round-with-angle-brackets",
+    "rss"
   ],
   "pluginsConfig": {
     "analytics": {
@@ -30,6 +31,21 @@
       ],
       "distractionFreeMode": false,
       "proxy": "/gitalk_proxy"
+    },
+    "rss": {
+      "title": "czp's blog",
+      "description": "czp's blog",
+      "author": "czp3009@gmail.com",
+      "site_url": "https://www.hiczp.com",
+      "feed_url": "https://www.hiczp.com/rss.xml",
+      "managingEditor": "czp3009@gmail.com",
+      "webMaster": "czp3009@gmail.com",
+      "categories": [
+        "blog",
+        "gitbook",
+        "programming",
+        "networking"
+      ]
     }
   }
 }
