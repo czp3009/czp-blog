@@ -9,8 +9,10 @@
 * [小明学英语](czp-jiang-gu-shi/xiao-ming-xue-ying-yu.md)
 * [卖程序的小女孩](czp-jiang-gu-shi/mai-cheng-xu-de-xiao-nv-hai.md)
 * [一个测试工程师走进一家酒吧](czp-jiang-gu-shi/yi-ge-ce-shi-gong-cheng-shi-zou-jin-yi-jia-jiu-ba.md)
+* [我给你们讲个 TCP 笑话吧!](czp-jiang-gu-shi/wo-gei-ni-men-jiang-ge-tcp-xiao-hua-ba.md)
+* [我给你们讲个 UDP 笑话吧！](czp-jiang-gu-shi/wo-gei-ni-men-jiang-ge-udp-xiao-hua-ba.md)
 
-## c/c++ <a id="c-cpp"></a>
+## c/c++ <a href="c-cpp" id="c-cpp"></a>
 
 * [c 语言常见未定义行为](c-cpp/c-yu-yan-chang-jian-wei-ding-yi-hang-wei.md)
 
@@ -67,4 +69,3 @@
 * [加密货币交易](jia-mi-huo-bi/jia-mi-huo-bi-jiao-yi.md)
 * [挖掘以太坊](jia-mi-huo-bi/wa-jue-yi-tai-fang.md)
 * [挖掘门罗币](jia-mi-huo-bi/wa-jue-men-luo-bi.md)
-
