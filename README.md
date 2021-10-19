@@ -4,6 +4,8 @@
 
 如需浏览请见: [https://www.hiczp.com](https://www.hiczp.com)
 
+订阅本博客的 RSS: [https://www.hiczp.com/rss.xml](https://www.hiczp.com/rss.xml)
+
 通过邮件联系我: [czp3009@gmail.com](mailto:czp3009@gmail.com)
 
 通过 Telegram 联系我: [https://t.me/czp3009](https://t.me/czp3009)
