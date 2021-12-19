@@ -53,7 +53,7 @@ Accept-Encoding: gzip
 
 而 `sign` 势必是通过一种校验算法得到的校验码, 用于防止伪造请求.
 
-起初, 我研究了很久也没有猜到 `sign` 的生成算法(bilibili 客户端代码全部混淆过而且代码量很大), 直到有一天我看到了这篇文章 [http://www.jianshu.com/p/5087346d8e93](http://www.jianshu.com/p/5087346d8e93)
+起初, 我研究了很久也没有猜到 `sign` 的生成算法(bilibili 客户端代码全部混淆过而且代码量很大), 直到有一天我看到了这篇文章 [https://blog.kaaass.net/archives/947](https://blog.kaaass.net/archives/947)
 
 出于安全性问题, appSecret 保存在 so 文件中, 通过 jni 调用.
 
@@ -103,7 +103,7 @@ version 每客户端版本号
 
 ## 登陆接口
 
-现在我们知道了各个固定参数的含义, 还知道了 sign 算法, 只要通过登陆接口, 获取 access_key, 我们就可以访问所有 API 了.
+现在我们知道了各个固定参数的含义, 还知道了 sign 算法, 只要通过登陆接口, 获取 access\_key, 我们就可以访问所有 API 了.
 
 我们在客户端登陆时进行截包, 发现登陆接口的地址在这里
 
@@ -240,7 +240,7 @@ B 站正是使用这段会变化的 hash 拼接到明文密码前面, 来保证�
 
 其中 `refresh_token` 是 OAuth2 中的 refreshToken, 刷新 token 时使用.
 
-而 `access_token`, 就是我们梦寐以求的 access_key.
+而 `access_token`, 就是我们梦寐以求的 access\_key.
 
 ## 调用 API
 
