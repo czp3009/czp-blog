@@ -102,7 +102,7 @@ repositories {
 }
 ```
 
-spring native 插件会自动为项目添加所需的依赖, 同时也会自动加入并配置 [graalvm native build 插件](https://github.com/graalvm/native-build-tools)(旧版插件需要手动为 graalvmNative 设置 sourceSet). 如果使用 graalvm 来运行 gradle 本身, 所有的改造工作到此就结束了, 执行插件提供的 `nativeBuild` 任务就可以得到构建产物了.
+spring native 插件会自动为项目添加所需的依赖, 同时也会自动加入并配置 [graalvm native build 插件](https://github.com/graalvm/native-build-tools)(旧版插件需要手动为 graalvmNative 设置 sourceSet). 如果使用 graalvm 来运行 gradle 本身, 所有的改造工作到此就结束了, 执行插件提供的 `nativeCompile` 任务就可以得到构建产物了.
 
 如果不想改变运行 gradle 所用的 JVM(java.toolchain)(比如说 OpenJDK), 需要手动配置 graalvmNative 插件:
 
@@ -125,7 +125,7 @@ export GRAALVM_HOME=/home/czp/graalvm-ce-java11-21.3.0
 这样就可以用普通 JDK 执行 gradle 与编译项目, 与此同时用 graalvm 来构建 native image 了.
 
 ```bash
-./gradlew nativeBuild
+./gradlew nativeCompile
 ```
 
 最终输出的构建产物默认在 `build/native/nativeCompile/{project.name}`
