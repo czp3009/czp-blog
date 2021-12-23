@@ -104,6 +104,8 @@ repositories {
 
 spring native 插件会自动为项目添加所需的依赖, 同时也会自动加入并配置 [graalvm native build 插件](https://github.com/graalvm/native-build-tools)(旧版插件需要手动为 graalvmNative 设置 sourceSet). 如果使用 graalvm 来运行 gradle 本身, 所有的改造工作到此就结束了, 执行插件提供的 `nativeCompile` 任务就可以得到构建产物了.
 
+(需要注意的是, spring native 插件会改变 `build` 任务的前置任务, 在构建时生成 AOT test 有关内容. 所以一旦加入了 spring native 插件, 最好同时加入 'spring-boot-starter-test', 否则原有的 `build` 任务将因找不到引用而出错)
+
 如果不想改变运行 gradle 所用的 JVM(java.toolchain)(比如说 OpenJDK), 需要手动配置 graalvmNative 插件:
 
 ```groovy
