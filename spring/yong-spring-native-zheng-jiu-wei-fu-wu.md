@@ -74,7 +74,7 @@ sys	0m0.000s
 
 spring native 例子: [https://github.com/czp3009/spring-native-sample](https://github.com/czp3009/spring-native-sample)
 
-将普通 spring boot 项目改造为 spring native 项目非常简单. 首先, 在 gradle 中加入并启用`org.springframework.experimental.aot` 插件, 如果使用的 spring native 插件还未发布到中央仓库, 需手动添加 spring 仓库, 例如一个典型的 spring native 项目的插件配置可能是这样的:
+将普通 spring boot 项目改造为 spring native 项目非常简单. 首先, 在 gradle 中加入并启用`org.springframework.experimental.aot` 插件, 如果使用的 [spring native](https://github.com/spring-projects-experimental/spring-native/tree/main/spring-aot-gradle-plugin) 插件还未发布到中央仓库, 需手动添加 spring 仓库, 一个典型的 spring native 项目的插件配置可能是这样的(注意, spring boot 版本必须与 spring native 插件相符否则可能不兼容, 详见[文档](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#\_validate\_spring\_boot\_version\_2)):
 
 ```groovy
 buildscript {
@@ -84,9 +84,7 @@ buildscript {
     }
 
     dependencies {
-        // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-gradle-plugin
         classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.6.1'
-        // https://mvnrepository.com/artifact/org.springframework.experimental.aot/org.springframework.experimental.aot.gradle.plugin
         classpath 'org.springframework.experimental.aot:org.springframework.experimental.aot.gradle.plugin:0.11.0'
     }
 }
@@ -102,7 +100,7 @@ repositories {
 }
 ```
 
-spring native 插件会自动为项目添加所需的依赖, 同时也会自动加入并配置 [graalvm native build 插件](https://github.com/graalvm/native-build-tools)(旧版插件需要手动为 graalvmNative 设置 sourceSet). 如果使用 graalvm 来运行 gradle 本身, 所有的改造工作到此就结束了, 执行插件提供的 `nativeCompile` 任务就可以得到构建产物了.
+spring native 插件会自动为项目添加所需的依赖, 同时也会自动加入并配置 [graalvm native build 插件](https://github.com/graalvm/native-build-tools)(旧版插件需要手动添加 graalvm 插件并为 graalvmNative 设置 sourceSet). 如果使用 graalvm 来运行 gradle 本身, 所有的改造工作到此就结束了, 执行插件提供的 `nativeCompile` 任务就可以得到构建产物了.
 
 (需要注意的是, spring native 插件会改变 `build` 任务的前置任务, 在构建时生成 AOT test 有关内容. 所以一旦加入了 spring native 插件, 最好同时加入 'spring-boot-starter-test', 否则原有的 `build` 任务将因找不到引用而出错)
 
@@ -117,6 +115,14 @@ graalvmNative.binaries.main {
 ```
 
 根据插件的源码, 如果不设置 `javaLauncher` 选项且 gradle 版本大于 7, 插件会使用与执行 gradle 所用的 JVM 版本一致的但供应商为 'GraalVM' 的 JVM 作为其值. 从而导致所需 JVM 与实际执行的 JVM 不匹配而让 gradle 报错. 设置了此选项就可以屏蔽默认值(convention), 让检查能够通过.
+
+如果使用版本大于等于 0.9.9 的 graalvm 插件(由于 graalvm 插件由 spring native 引入, 因此需要使用更高版本的 spring native 插件), 可以使用更简单的方式:
+
+```groovy
+graalvmNative {
+    toolchainDetection = false
+}
+```
 
 插件在寻找 graalvm 的时候会通过 `GRAALVM_HOME` 环境变量来查找(用 SDKMAN 安装的应该默认就有此环境变量). 此环境变量需指向 graalvm 安装目录, 例如:
 
