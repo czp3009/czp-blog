@@ -1,6 +1,6 @@
 # 用 Spring Native 拯救微服务
 
-本文撰写时的 Spring Native 版本: 0.11.0
+本文撰写时的 Spring Native 版本: 0.11.1
 
 ## JVM 微服务的窘境
 
@@ -18,7 +18,7 @@ jaotc 并没有加快 JVM 本身的启动和大量使用反射与代理的应用
 
 ## GraalVM
 
-[GraalVM](https://www.graalvm.org) 是 Oracle 新推出的一个 JDK 发行版, 它本身是一个大项目, 包含多个子项目. GraalVM 包含的其中一个项目是 [Truffle Framework](https://www.graalvm.org/graalvm-as-a-platform/language-implementation-framework/), 对于任意语言, 只需要实现到 Truffle 的 AST 解释器, 就可以在 GraalVM 上运行, 更可以和 Java 等其他 JVM 语言互操作, 并且 Truffle 还支持 LLVM. GraalVM 似乎是想要实现一种"终极"虚拟机.
+[GraalVM](https://www.graalvm.org) 是 Oracle 新推出的一个 JDK 发行版, 它本身是一个大项目, 包含多个子项目. GraalVM 包含的其中一个项目是 [Truffle Framework](https://www.graalvm.org/graalvm-as-a-platform/language-implementation-framework/), 对于任意语言, 只需要实现到 Truffle 的 AST 解释器, 就可以在 GraalVM 上运行, 更可以和 Java 等其他 JVM 语言互操作, 并且 Truffle 还支持 LLVM. GraalVM 是一种"终极"虚拟机.
 
 ![](<../.gitbook/assets/image (71).png>)&#x20;
 
@@ -40,7 +40,7 @@ GraalVM 本身是一个 JDK, 运行它不需要首先安装 JDK. 为了方便的
 gu install native-image
 ```
 
-在使用 Native Image 前, 首先要准备好一个可执行的 jar 文件, 可以不是用 GraalVM 编译的, 普通的 OpenJDK 编译的就行. 以一个 HelloWorld 程序为例, 对 jar 文件使用以下命令:
+在使用 Native Image 前, 首先要准备好一个可执行的 jar 文件(包含 Main-Class), 可以不是用 GraalVM 编译的, 普通的 OpenJDK 编译的就行. 以一个 HelloWorld 程序为例, 对 jar 文件使用以下命令:
 
 ```bash
 native-image -jar application.jar
@@ -74,7 +74,7 @@ sys	0m0.000s
 
 spring native 例子: [https://github.com/czp3009/spring-native-sample](https://github.com/czp3009/spring-native-sample)
 
-将普通 spring boot 项目改造为 spring native 项目非常简单. 首先, 在 gradle 中加入并启用`org.springframework.experimental.aot` 插件, 如果使用的 [spring native](https://github.com/spring-projects-experimental/spring-native/tree/main/spring-aot-gradle-plugin) 插件还未发布到中央仓库, 需手动添加 spring 仓库, 一个典型的 spring native 项目的插件配置可能是这样的(注意, spring boot 版本必须与 spring native 插件相符否则可能不兼容, 详见[文档](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#\_validate\_spring\_boot\_version\_2)):
+将普通 spring boot 项目改造为 spring native 项目非常简单. 首先, 在 gradle 中加入并启用`org.springframework.experimental.aot` 插件, 如果使用的 [spring native](https://github.com/spring-projects-experimental/spring-native/tree/main/spring-aot-gradle-plugin) 插件版本还未发布到中央仓库, 需手动添加 spring 仓库, 一个典型的 spring native 项目的插件配置可能是这样的(注意, spring boot 版本必须与 spring native 插件相符否则可能不兼容, 详见[文档](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#\_validate\_spring\_boot\_version\_2)):
 
 ```groovy
 buildscript {
@@ -84,8 +84,8 @@ buildscript {
     }
 
     dependencies {
-        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.6.1'
-        classpath 'org.springframework.experimental.aot:org.springframework.experimental.aot.gradle.plugin:0.11.0'
+        classpath 'org.springframework.boot:spring-boot-gradle-plugin:2.6.2'
+        classpath 'org.springframework.experimental.aot:org.springframework.experimental.aot.gradle.plugin:0.11.1'
     }
 }
 
@@ -93,7 +93,6 @@ apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.experimental.aot'
 
-//如果有其他实验性 spring 组件, 对依赖也要加上 spring repo
 repositories {
     mavenCentral()
     maven { url 'https://repo.spring.io/release' }
@@ -104,27 +103,7 @@ spring native 插件会自动为项目添加所需的依赖, 同时也会自动�
 
 (需要注意的是, spring native 插件会改变 `build` 任务的前置任务, 在构建时生成 AOT test 有关内容. 所以一旦加入了 spring native 插件, 最好同时加入 'spring-boot-starter-test', 否则原有的 `build` 任务将因找不到引用而出错)
 
-如果不想改变运行 gradle 所用的 JVM(java.toolchain)(比如说 OpenJDK), 需要手动配置 graalvmNative 插件:
-
-```groovy
-graalvmNative.binaries.main {
-    javaLauncher = javaToolchains.launcherFor {
-        languageVersion = JavaLanguageVersion.of(JavaVersion.current().majorVersion)
-    }
-}
-```
-
-根据插件的源码, 如果不设置 `javaLauncher` 选项且 gradle 版本大于 7, 插件会使用与执行 gradle 所用的 JVM 版本一致的但供应商为 'GraalVM' 的 JVM 作为其值. 从而导致所需 JVM 与实际执行的 JVM 不匹配而让 gradle 报错. 设置了此选项就可以屏蔽默认值(convention), 让检查能够通过.
-
-如果使用版本大于等于 0.9.9 的 graalvm 插件(由于 graalvm 插件由 spring native 引入, 因此需要使用更高版本的 spring native 插件), 可以使用更简单的方式:
-
-```groovy
-graalvmNative {
-    toolchainDetection = false
-}
-```
-
-插件在寻找 graalvm 的时候会通过 `GRAALVM_HOME` 环境变量来查找(用 SDKMAN 安装的应该默认就有此环境变量). 此环境变量需指向 graalvm 安装目录, 例如:
+如果不想改变运行 gradle 本身所用的 JVM(java.toolchain), 比如说 OpenJDK, 需要设定环境变量(用 SDKMAN 安装的应该默认就有此环境变量)来指引插件找到 graalvm 安装位置(旧版本插件需要手动为 graalvmNative 配置 javaLauncher):
 
 ```bash
 export GRAALVM_HOME=/home/czp/graalvm-ce-java11-21.3.0
@@ -138,9 +117,9 @@ export GRAALVM_HOME=/home/czp/graalvm-ce-java11-21.3.0
 
 最终输出的构建产物默认在 `build/native/nativeCompile/{project.name}`
 
-除了使用本地的 graalvm 来执行构建, 还可以使用 buildpack, 详见 spring native 文档 [https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#\_enable\_native\_image\_support](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#\_enable\_native\_image\_support)
+除了使用本地的 graalvm 来执行构建, 还可以使用 [buildpack](https://docs.spring.io/spring-native/docs/current/reference/htmlsingle/#\_enable\_native\_image\_support).
 
-graalvm native image 构建所需的资源非常多, 一个 HelloWorld 级别的 spring boot 项目大约需要 7GiB 内存, 以及大量的 cpu 时间(在我的 i7-8700 上耗时一分半), 如果想要在云 CI 上执行构建, 请确保云上环境有足够高的配置.
+graalvm native image 构建所需的资源非常多, 一个 HelloWorld 级别的 spring boot 项目大约需要 7GiB 内存, 以及大量的 cpu 时间(在我的 i7-8700 上耗时一分钟), 如果想要在云 CI 上执行构建, 请确保云上环境有足够高的配置.
 
 ## 性能对比
 
