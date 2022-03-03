@@ -1148,15 +1148,15 @@ highlight.js@^10.7.1:
   resolved "https://registry.yarnpkg.com/highlight.js/-/highlight.js-10.7.3.tgz#697272e3991356e40c3cac566a74eef681756531"
   integrity sha512-tzcUFauisWKNHaRkN4Wjl/ZA07gENAjFl3J/c480dprkGTg5EQstgaNFqBfUqCq54kZRIEcreTsAgF/m2quD7A==
 
-honkit-plugin-encode-link-round-with-angle-brackets@^0.0.1:
-  version "0.0.1"
-  resolved "https://registry.yarnpkg.com/honkit-plugin-encode-link-round-with-angle-brackets/-/honkit-plugin-encode-link-round-with-angle-brackets-0.0.1.tgz#bf94c42310706ceb7bf0ce20efcf17a3cd89f332"
-  integrity sha512-aBxY+OBP1/Lm4gi1EX6r392KiHaY5U8EUa2x919ataJbAgl97XFsZwSj0ZbEIuAYwH+/9bJpN2pSi7qYruxCBw==
+honkit-plugin-encode-link-round-with-angle-brackets@^0.0.2:
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/honkit-plugin-encode-link-round-with-angle-brackets/-/honkit-plugin-encode-link-round-with-angle-brackets-0.0.2.tgz#c9d60d4facacbda8ebc132c31d6326f0257e36dd"
+  integrity sha512-ggPA5mI3Efa8DuPbcwlHBvWRojdTAQf788tbDoeqwA0xaK01UPACPQFImTAwqRZKXudeaxHmfvvW7tlCmkEUOA==
 
-honkit@^3.6.22:
-  version "3.6.22"
-  resolved "https://registry.yarnpkg.com/honkit/-/honkit-3.6.22.tgz#5670f3e16582433a720512c3fb79ac1b0e1fdb33"
-  integrity sha512-3tW3Rgunhj7ahBKf8PDOipp/gqVTi33gMeIyLZ2HD/m+GaLODvsHzNJ15EUosy0Dn+XZMlW0d9+LB6UgEn2y3g==
+honkit@^3.6.23:
+  version "3.7.1"
+  resolved "https://registry.yarnpkg.com/honkit/-/honkit-3.7.1.tgz#ec9d2af77fb03c6648b05aa0002f1f75fa96e3a9"
+  integrity sha512-xZ2dSrbi9LfG6mkWGG6lNXKnFnqgN7XaY6PqWDqBGp17pSZQg/TCz+jxJ9R/1QVz8x8PRjlyg+Wuj85AlSAjyg==
   dependencies:
     "@honkit/asciidoc" "^3.6.17"
     "@honkit/honkit-plugin-highlight" "^3.6.19"
@@ -1192,6 +1192,7 @@ honkit@^3.6.22:
     json-schema-defaults "^0.1.1"
     jsonschema "1.1.0"
     juice "^6.0.0"
+    lru_map "^0.4.1"
     memoize-one "^5.1.1"
     mkdirp "^1.0.4"
     moment "^2.24.0"
@@ -1206,7 +1207,6 @@ honkit@^3.6.22:
     resolve "^1.17.0"
     semver "^5.1.0"
     send "^0.17.1"
-    spawn-cmd "0.0.2"
     tiny-lr "^1.1.1"
     tmp "0.0.28"
     try-resolve "^1.0.1"
@@ -1687,6 +1687,11 @@ loose-envify@^1.0.0, loose-envify@^1.4.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+lru_map@^0.4.1:
+  version "0.4.1"
+  resolved "https://registry.yarnpkg.com/lru_map/-/lru_map-0.4.1.tgz#f7b4046283c79fb7370c36f8fca6aee4324b0a98"
+  integrity sha512-I+lBvqMMFfqaV8CJCISjI3wbjmwVu/VyOoU7+qtu9d7ioW5klMgsTTiUOUp+DJvfTTzKXoPbyC6YfgkNcyPSOg==
 
 lunr@0.5.12:
   version "0.5.12"
@@ -2309,11 +2314,6 @@ source-map@~0.6.1:
   resolved "https://registry.yarnpkg.com/source-map/-/source-map-0.6.1.tgz#74722af32e9614e9c287a8d0bbde48b5e2f1a263"
   integrity sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
 
-spawn-cmd@0.0.2:
-  version "0.0.2"
-  resolved "https://registry.yarnpkg.com/spawn-cmd/-/spawn-cmd-0.0.2.tgz#6d5e251fad0eab00b0f193d245669a7a228ec0de"
-  integrity sha1-bV4lH60OqwCw8ZPSRWaaeiKOwN4=
-
 spdx-correct@^3.0.0:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/spdx-correct/-/spdx-correct-3.1.1.tgz#dece81ac9c1e6713e5f7d1b6f17d468fa53d89a9"
@@ -2548,9 +2548,9 @@ uri-js@^4.2.2:
     punycode "^2.1.0"
 
 urijs@^1.19.6:
-  version "1.19.7"
-  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.19.7.tgz#4f594e59113928fea63c00ce688fb395b1168ab9"
-  integrity sha512-Id+IKjdU0Hx+7Zx717jwLPsPeUqz7rAtuVBRLLs+qn+J2nf9NGITWVCxcijgYxBqe83C7sqsQPs6H1pyz3x9gA==
+  version "1.19.9"
+  resolved "https://registry.yarnpkg.com/urijs/-/urijs-1.19.9.tgz#3b15844835de3732866d420768c16f24be7d3e65"
+  integrity sha512-v0V+v5F3NQFt6TX0GpA2NKyrpythDJI+PHRo66sUIDP/U6cXbm6NqLVcXylQGwiwW5VYNj+OAei3EU0ALj9AWg==
 
 url-join@^0.0.1:
   version "0.0.1"
