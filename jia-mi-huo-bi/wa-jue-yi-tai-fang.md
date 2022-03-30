@@ -34,11 +34,13 @@ Windows 系统也是用这个命令来查看, 但是通过 Windows 更新安装�
 
 ## 选择矿池
 
-以太坊矿池也有很多, 在一些矿池列表网站上可以找到它们 [https://investoon.com/mining_pools/eth](https://investoon.com/mining_pools/eth)
+以太坊矿池也有很多, 在一些矿池列表网站上可以找到它们 [https://investoon.com/mining\_pools/eth](https://investoon.com/mining\_pools/eth)
 
 目前第一名的矿池(按算力排序)是 [SparkPool](https://www.sparkpool.com), 这个矿池的网站很多页面不登录不给看, 对于想要匿名挖矿的用户请直接跳过这一矿池. 第二名的矿池是 [Ethermine](https://ethermine.org), 与其他国外矿池一样, 它支持匿名挖矿, 并不需要任何个人资料也不需要任何形式的注册, 这是本文推荐的矿池.
 
 如果你已经注册了加密货币交易所, 并且交易所自己开设了矿池, 可以直接用交易所的矿池, 比如[币安矿池](https://pool.binance.com). 交易所提供的矿池一般没有最小提现额度限制, 挖出多少就可以立即在市场上交易多少.
+
+由于众所周知的原因, 主流矿池在大陆地区均无法访问, 使用前需先配置科学上网.
 
 ### Ethermine
 
@@ -58,7 +60,7 @@ Windows
 ethminer.exe -P stratum1+ssl://0xd39eecf6fd2d47a2955dd50befb1dbd7e457e9dd.home@asia1.ethermine.org:5555
 ```
 
-(更多命令行样例详见 [https://github.com/ethereum-mining/ethminer/blob/master/docs/POOL_EXAMPLES_ETH.md](https://github.com/ethereum-mining/ethminer/blob/master/docs/POOL_EXAMPLES_ETH.md))
+(更多命令行样例详见 [https://github.com/ethereum-mining/ethminer/blob/master/docs/POOL\_EXAMPLES\_ETH.md](https://github.com/ethereum-mining/ethminer/blob/master/docs/POOL\_EXAMPLES\_ETH.md))
 
 "0x" 开头的字符串是以太坊钱包地址, 钱包地址后方的 . 后面的 "home" 表示矿机名, 可以是任何字符串, 仅用于统计算力时区分算力来源, 没有实际作用.
 
