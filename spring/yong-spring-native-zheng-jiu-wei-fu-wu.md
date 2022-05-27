@@ -18,7 +18,7 @@ jaotc 并没有加快 JVM 本身的启动和大量使用反射与代理的应用
 
 ## GraalVM
 
-[GraalVM](https://www.graalvm.org) 是 Oracle 新推出的一个 JDK 发行版, 它本身是一个大项目, 包含多个子项目. GraalVM 包含的其中一个项目是 [Truffle Framework](https://www.graalvm.org/graalvm-as-a-platform/language-implementation-framework/), 对于任意语言, 只需要实现到 Truffle 的 AST 解释器, 就可以在 GraalVM 上运行, 更可以和 Java 等其他 JVM 语言互操作, 并且 Truffle 还支持 LLVM. GraalVM 是一种"终极"虚拟机.
+[GraalVM](https://www.graalvm.org/) 是 Oracle 新推出的一个 JDK 发行版, 它本身是一个大项目, 包含多个子项目. GraalVM 包含的其中一个项目是 [Truffle Framework](https://www.graalvm.org/graalvm-as-a-platform/language-implementation-framework/), 对于任意语言, 只需要实现到 Truffle 的 AST 解释器, 就可以在 GraalVM 上运行, 更可以和 Java 等其他 JVM 语言互操作, 并且 Truffle 还支持 LLVM. GraalVM 是一种"终极"虚拟机.
 
 ![](<../.gitbook/assets/image (71).png>)&#x20;
 

@@ -2,7 +2,7 @@
 
 众所周知 [IAP](https://cloud.google.com/iap/docs)(Identity Aware Proxy)对 AppEngine 开启后, 所有 GAE 的 service 都需要先通过 OAuth2 鉴权才能访问. 普通用户在浏览器打开 IAP 保护的 GAE 地址就会被跳转到登录页面去登录谷歌账号. 那问题来了, Pub/Sub 的消息如果要推送到一个 IAP 保护的地址应该怎么操作.
 
-创建 subscription 的时候如果选择了 Push 方式, 下面就会有一个 Enable Authentication 的勾选框. 填好 Endpoint(必须得是谷歌可以验证其所属的地址, 比如 GAE) 后再选择一个用来产生 JWT 签名的服务账号. 命令行操作可以看 [https://cloud.google.com/pubsub/docs/push#setting_up_for_push_authentication](https://cloud.google.com/pubsub/docs/push#setting_up_for_push_authentication)
+创建 subscription 的时候如果选择了 Push 方式, 下面就会有一个 Enable Authentication 的勾选框. 填好 Endpoint(必须得是谷歌可以验证其所属的地址, 比如 GAE) 后再选择一个用来产生 JWT 签名的服务账号. 命令行操作可以看 [https://cloud.google.com/pubsub/docs/push#setting\_up\_for\_push\_authentication](https://cloud.google.com/pubsub/docs/push#setting\_up\_for\_push\_authentication)
 
 (命令行操作还需要手动给予 Pub/Sub 自动创建的服务账号额外权限, 详见上面的文档链接)
 
@@ -26,7 +26,7 @@ resource.type="gae_app"
 
 可以在左边的 Log Fields 看到一个 `module_id` 是 null 的东西
 
-![](<../.gitbook/assets/image (65) (1) (1).png>)
+![](<../.gitbook/assets/image (62).png>)
 
 这个没有名字的模块就是 IAP 的访问日志, 由于它没有名字不能单独筛选, 只能混在所有 module 的日志里一起看.
 
@@ -34,7 +34,7 @@ resource.type="gae_app"
 
 在 StackOverflow 搜索这个问题只有一个结果, 评论区有人提到创建 subscription 时的 Audience 是必填项, 其值为 IAP 自己的 Client ID(不是用于签 JWT 的服务账号的 OAuth2 Client ID) [https://stackoverflow.com/questions/57817374/google-pub-sub-push-message-not-working-for-iap-enabled-app-engine#comment104348926\_58151897](https://stackoverflow.com/questions/57817374/google-pub-sub-push-message-not-working-for-iap-enabled-app-engine#comment104348926\_58151897)
 
-我们回到 IAP 的文档去看 Programmatic Authentication 一节再去看一下 [https://cloud.google.com/iap/docs/authentication-howto#accessing_the_application](https://cloud.google.com/iap/docs/authentication-howto#accessing_the_application)
+我们回到 IAP 的文档去看 Programmatic Authentication 一节再去看一下 [https://cloud.google.com/iap/docs/authentication-howto#accessing\_the\_application](https://cloud.google.com/iap/docs/authentication-howto#accessing\_the\_application)
 
 自己获取 JWT 的 curl 命令是这样的
 
