@@ -11,8 +11,8 @@
     "gitbook-plugin-mygitalk": "^0.2.6",
     "gitbook-plugin-rss": "^3.0.2",
     "gitbook-plugin-sitemap": "^1.2.0",
-    "honkit": "^3.6.23",
-    "honkit-plugin-encode-link-round-with-angle-brackets": "^0.0.2"
+    "honkit": "^3.7.3",
+    "honkit-plugin-encode-link": "^0.0.1"
   },
   "scripts": {
     "build": "honkit build"
