@@ -6,7 +6,7 @@
 
 或者直接通过支付宝转账:
 
-![](<.gitbook/assets/image (72).png>)
+![](<.gitbook/assets/image (71) (1).png>)
 
 也可以通过加密货币:
 
@@ -137,3 +137,4 @@ TT841kkRSDTQeJaBJGurdg66VmtNQNbKXR
 | 2022.06.01 | \*\*畅           | 0.05 元           |
 | 2022.06.08 | 胡靖air           | 6.68 元           |
 | 2022.06.18 | SnsTheta        | 0.01 元           |
+| 2022.06.22 | \*静             | 1.14 元           |
