@@ -11,6 +11,7 @@
 * [一个测试工程师走进一家酒吧](czp-jiang-gu-shi/yi-ge-ce-shi-gong-cheng-shi-zou-jin-yi-jia-jiu-ba.md)
 * [我给你们讲个 TCP 笑话吧!](czp-jiang-gu-shi/wo-gei-ni-men-jiang-ge-tcp-xiao-hua-ba.md)
 * [我给你们讲个 UDP 笑话吧！](czp-jiang-gu-shi/wo-gei-ni-men-jiang-ge-udp-xiao-hua-ba.md)
+* [格局打开](czp-jiang-gu-shi/ge-ju-da-kai.md)
 
 ## c/c++ <a href="#c-cpp" id="c-cpp"></a>
 
