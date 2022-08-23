@@ -10,13 +10,21 @@
 
 也可以通过加密货币:
 
-**ERC20/BSC**
+**ERC20/BEP20(BSC)**
 
-0x16B36024a6ae6B9CAcC403F5e44900747a1758F6
+0xd39eecf6fd2d47a2955dd50befb1dbd7e457e9dd
 
 **TRC20**
 
-TT841kkRSDTQeJaBJGurdg66VmtNQNbKXR
+TSGWm1hgWL558xvxPuiLAf5nW7Wv9bDW7m
+
+**Monero**
+
+89HTtHCpsU7SEUgWpmGqfP6LfxLcE9ViHJDPVKjqnoQzTpkknAskdz2h4SRm42GRRAJdWZyUSS6W5LCxUCwqq3ys1EhRr3R
+
+**SegWit(BTC)**
+
+bc1q5mxcngy6yh75zg6nwstwegre50zzjm4839jj5t
 
 | 日期         | 昵称              | 金额               |
 | ---------- | --------------- | ---------------- |
