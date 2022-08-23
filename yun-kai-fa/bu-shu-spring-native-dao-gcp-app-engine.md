@@ -8,7 +8,11 @@
 appengine {
     stage {
         //假设使用默认的 nativeBuild 输出路径
-        artifact = project.buildDir.toPath().resolve('native').resolve('nativeCompile').resolve(project.name)
+        artifact = project.buildDir.toPath()
+                .resolve('native')
+                .resolve('nativeCompile')
+                .resolve(project.name)
+                .resolve(project.name)
     }
 }
 //使 nativeBuild 先于 appengineStage 执行
@@ -19,7 +23,7 @@ appengineStage.dependsOn tasks.nativeBuild
 
 ```yaml
 service: default
-runtime: java11
+runtime: java17
 instance_class: F1
 
 entrypoint: ./application  #二进制文件的文件名, 默认为项目名
