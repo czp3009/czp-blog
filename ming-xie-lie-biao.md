@@ -6,7 +6,7 @@
 
 或者直接通过支付宝转账:
 
-![](<.gitbook/assets/image (72).png>)
+![](<.gitbook/assets/image (71) (1).png>)
 
 也可以通过加密货币:
 

@@ -51,6 +51,10 @@
 
 * [为 KVM 中的 Windows 虚拟机启用 VirtIO](xu-ni-hua/wei-kvm-zhong-de-windows-xu-ni-ji-qi-yong-virtio.md)
 
+## 游戏
+
+* [将 Minecraft 服务端编译到 native](you-xi/jiang-minecraft-fu-wu-duan-bian-yi-dao-native.md)
+
 ## 网络
 
 * [模拟超星网课 Android 客户端](wang-luo/mo-ni-chao-xing-wang-ke-android-ke-hu-duan.md)
