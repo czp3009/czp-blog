@@ -12,7 +12,7 @@
 
 **ERC20/BEP20(BSC)**
 
-0xd39eecf6fd2d47a2955dd50befb1dbd7e457e9dd
+0xdc50c749a1a11b522aca5b2c95fce596eeb76384
 
 **TRC20**
 
