@@ -15,7 +15,7 @@
   "status": 400,
   "error": "Bad Request",
   "message": "Failed to read HTTP message",
-  "requestId": "xxx7"
+  "requestId": "xxx"
 }
 ```
 
