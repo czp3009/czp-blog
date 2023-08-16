@@ -67,6 +67,8 @@
 * [GCP Pub/Sub push 至 IAP 保护的 Endpoint](yun-kai-fa/gcp-pubsub-push-zhi-iap-bao-hu-de-appengine.md)
 * [部署 Spring Native 到 GCP App Engine](yun-kai-fa/bu-shu-spring-native-dao-gcp-app-engine.md)
 * [多个 Gradle SubProject 同时编译导致 CI/CD 内存耗尽](yun-kai-fa/duo-ge-gradle-subproject-tong-shi-bian-yi-dao-zhi-cicd-nei-cun-hao-jin.md)
+* [Google Cloud Build 运行 DIND](yun-kai-fa/google-cloud-build-yun-hang-dind.md)
+* [在 Google Storage 中部署 SPA](yun-kai-fa/zai-google-storage-zhong-bu-shu-spa.md)
 
 ## telegram
 
