@@ -8,7 +8,7 @@
 
 [RMT's Blog](https://rmtt.github.io)
 
-[蚊子](https://blog.qwq.moe/#/)
+[蚊子](https://mozz.ie/)
 
 [Magentaize](https://www.magentaize.xyz/)
 
