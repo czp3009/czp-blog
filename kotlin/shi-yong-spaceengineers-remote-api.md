@@ -1,6 +1,6 @@
 # 在 Kotlin 使用 SpaceEngineers Remote API
 
-众所周知, [SpaceEngineers](https://store.steampowered.com/app/244850/Space_Engineers/) 的服务端(vanilla, 非 [torch](https://torchapi.net))上那个查看服务器内游戏信息的玩意是通过网络来获取信息的(localhost). 实际上这个东西有独立版本应用程序, 也在服务端根目录下, 叫做 `VRageRemoteClient` . VRage 是 SpaceEngineers 使用的游戏引擎, 这个游戏引擎本身也是 Keen 开发的.
+众所周知, [SpaceEngineers](https://store.steampowered.com/app/244850/Space\_Engineers/) 的服务端(vanilla, 非 [torch](https://www.torchapi.com/))上那个查看服务器内游戏信息的玩意是通过网络来获取信息的(localhost). 实际上这个东西有独立版本应用程序, 也在服务端根目录下, 叫做 `VRageRemoteClient` . VRage 是 SpaceEngineers 使用的游戏引擎, 这个游戏引擎本身也是 Keen 开发的.
 
 于是在谷歌上搜索 SpaceEngineers API, 只能找到这个页面 [https://www.spaceengineersgame.com/dedicated-servers.html](https://www.spaceengineersgame.com/dedicated-servers.html) 并且介绍 API 有哪几个的, 只有页面最下方的一张图 [https://www.spaceengineersgame.com/uploads/2/1/9/6/21961362/736604853\_orig.png](https://www.spaceengineersgame.com/uploads/2/1/9/6/21961362/736604853\_orig.png). 页面下方有一段 c# 代码用于示例, 但是有些东西是 .Net 平台特定的, 在其他语言可能有麻烦.
 
@@ -76,7 +76,7 @@ DateTimeFormatter
     .withZone("GMT")
 ```
 
-`Authorization` 由两部分组成, `nonce` 就是一个大于 0 的 Int 类型随机数. 而这个 `hash` 就很有来头了, hash 的值是把 url(包含 query params), nonce, date 用 `StringBuilder.AppendLine` 拼接在一起然后做一次 `HmacSHA1` , 用到的 key 就是 VRageRemoteClient 上需要填入的 `Security Key`. .Net 的 `AppendLine` 是平台相关的, 所以使用的是 
+`Authorization` 由两部分组成, `nonce` 就是一个大于 0 的 Int 类型随机数. 而这个 `hash` 就很有来头了, hash 的值是把 url(包含 query params), nonce, date 用 `StringBuilder.AppendLine` 拼接在一起然后做一次 `HmacSHA1` , 用到的 key 就是 VRageRemoteClient 上需要填入的 `Security Key`. .Net 的 `AppendLine` 是平台相关的, 所以使用的是
 
 ```kotlin
 val nonce = Random.nextInt(0..Int.MAX_VALUE)

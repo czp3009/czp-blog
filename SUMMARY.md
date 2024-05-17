@@ -69,6 +69,7 @@
 * [多个 Gradle SubProject 同时编译导致 CI/CD 内存耗尽](yun-kai-fa/duo-ge-gradle-subproject-tong-shi-bian-yi-dao-zhi-cicd-nei-cun-hao-jin.md)
 * [Google Cloud Build 运行 DIND](yun-kai-fa/google-cloud-build-yun-hang-dind.md)
 * [在 Google Storage 中部署 SPA](yun-kai-fa/zai-google-storage-zhong-bu-shu-spa.md)
+* [Terraform 不自动更新 CloudRun service](yun-kai-fa/terraform-bu-zi-dong-geng-xin-cloudrun-service.md)
 
 ## telegram
 
