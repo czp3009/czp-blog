@@ -68,7 +68,7 @@ source ~/.zshrc
 
 然后我们会看到这么一个景象
 
-![zsh 字体错误](../.gitbook/assets/image.png)
+![zsh 字体错误](<../.gitbook/assets/image (3).png>)
 
 预览图中, 这个主题的向右箭头, 现在都变成了一个不可读字符.
 
@@ -92,7 +92,7 @@ cd fonts
 
 然后我们修改终端的字体设置.
 
-![ubuntu 终端首选项](<../.gitbook/assets/image (1).png>)
+![ubuntu 终端首选项](<../.gitbook/assets/image (1) (1).png>)
 
 很好, 我们的终端看上去十分漂亮了.
 
@@ -100,7 +100,7 @@ cd fonts
 
 有时候, 我们看到别人的 `zsh` 是这样的
 
-![zsh incr 插件补全效果](<../.gitbook/assets/image (2).png>)
+![zsh incr 插件补全效果](<../.gitbook/assets/image (2) (1).png>)
 
 命令还没输入完, `zsh` 就自动使用唯一可能的候选项充填了光标后的部分, 使得我们不需要不停的按 `tab` 来确认确实没有其他的以这几个字符开头的可能候选项.
 

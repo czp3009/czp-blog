@@ -60,7 +60,7 @@ xdebug.remote_enable=1
 
 以 `yii2` 框架为例, 配置大致上是这样的
 
-![yii2 run configurations](<../.gitbook/assets/image (3).png>)
+![yii2 run configurations](<../.gitbook/assets/image (3) (1).png>)
 
 就这么简单么, 没错, 就是这么简单.
 

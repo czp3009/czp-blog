@@ -54,6 +54,7 @@
 ## 游戏
 
 * [将 Minecraft 服务端编译到 native](you-xi/jiang-minecraft-fu-wu-duan-bian-yi-dao-native.md)
+* [用凝聚力购买 P 社游戏 DLC](you-xi/yong-ning-ju-li-gou-mai-p-she-you-xi-dlc.md)
 
 ## 网络
 
