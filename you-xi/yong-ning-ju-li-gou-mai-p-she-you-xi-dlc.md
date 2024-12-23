@@ -6,7 +6,7 @@
 
 所谓凝聚力购买, 简单地说就是通过某种方式, 让游戏认为玩家拥有 DLC. 当然, **首先要有正版本体**
 
-很多老玩家可能知道 ScreamAPI, 但是现在有一款更为方便的集成破解环境 [CreamInstaller](https://github.com/pointfeev/CreamInstaller)
+很多老玩家可能知道 ScreamAPI, 但是现在有一款更为方便的集成破解环境 [CreamInstaller](https://github.com/pointfeev/CreamInstaller)(Github 仓库已被 DMCA takedown, 请至著名俄罗斯论坛 [cs.rin.ru](https://cs.rin.ru/forum/viewtopic.php?f=29\&t=117227) 下载)
 
 <figure><img src="../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
 
@@ -20,7 +20,7 @@
 
 虽然 DLC 已经破解了(游戏程序认为玩家拥有 DLC), 但是游戏运行还是需要 DLC 文件. 而 DLC 文件在未购买的情况下是不能从 steamcmd 下载的, 所以 Cream 也没有办法自动为玩家安装 DLC 文件
 
-能下载到 DLC 文件的地方很多(DLC 不分正版盗版), 比如说著名毛子网站 [cs.rin.ru](https://cs.rin.ru/forum/)
+能下载到 DLC 文件的地方很多(DLC 不分正版盗版), 比如说著名俄罗斯论坛 [cs.rin.ru](https://cs.rin.ru/forum/)
 
 在网站里搜索 stellaris 就能找到[对应的主题帖](https://cs.rin.ru/forum/viewtopic.php?f=10\&t=68551\&hilit=stellaris), 基本上所有游戏都会有主题帖
 
